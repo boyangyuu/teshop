@@ -1,0 +1,57 @@
+<div class="col-md-12">
+<div class="box">
+  <div class="row">
+<div class="col-md-12">
+  <h1>Orders History</h1>
+  <h3  class="bg-info well text-center">Total Spent: {{orders.total | currency}}</h3>
+<div class="panel panel-primary" ng-repeat="o in orders | orderBy : 'orderDate' : 'reverse'">
+
+      <div class="panel-heading">
+            <div class="panel-title"><button class="btn btn-warning">{{o.orderNo}}</button>&nbsp;{{o.orderDate | amCalendar}}
+            <div class="col-sm-3 pull-right" ng-if="isAdmin()">
+              <select ng-model="o.status"
+              ng-options="i.name for i in orderStatusLov track by i.val"
+              ng-change="changeStatus(o)"
+              class="form-control"></select>
+             </div>
+          </div>
+      </div>
+      <div class="panel-body">
+          <table class="table">
+              <tbody>
+                <tr ng-repeat="i in o.items" >
+                    <td><img ng-src="/assets/clothing/{{i.image}}" err-src="/assets/images/photo.png" width="100px" />
+                    </td>
+                    <td>{{i.name}}
+                      <br/><span class="text-muted">Qty: {{i.quantity}}</span>
+                      <br/><span class="text-muted">Packing/Size: {{i.size}}</span>
+                      <br/><span class="text-muted">Unit Price: {{i.price | currency}}</span>
+                    </td>
+                    <td><span class="text-muted">= {{i.quantity * i.price | currency}}</span></td>
+
+                </tr>
+                <tr class="well text-muted">
+                <td colspan="1" class="text-right"> </td>
+                <td class="text-right">Shipping Charge:</td>
+                <td colspan="1"> {{o.shipping.charge | currency}}</td>
+                </tr>
+                <tr class="well text-muted">
+                <td colspan="1" class="text-right"> </td>
+                <td class="text-right">Coupon:</td>
+                <td colspan="1"> {{o.shipping.couponAmount | currency}}</td>
+                </tr>
+                <tr class="well">
+                <td colspan="1" class="text-right"> </td>
+                <td class="text-right">Order Total:</td>
+                <td colspan="1">{{o.shipping.total | currency}}</td>
+                </tr>
+
+
+            </tbody>
+          </table>
+      </div>
+</div>
+</div>
+</div>
+</div>
+</div>

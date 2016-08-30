@@ -1,0 +1,16 @@
+{
+  "name": "dateformat",
+  "description": "A node.js package for Steven Levithan's excellent dateFormat() function.",
+  "maintainers": "Felix Geisendörfer <felix@debuggable.com>",
+  "homepage": "https://github.com/felixge/node-dateformat",
+  "author": "Steven Levithan",
+  "version": "1.0.2-1.2.3",
+  "main": "./lib/dateformat",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "_from": "dateformat@1.0.2-1.2.3",
+  "_resolved": "http://registry.npm.taobao.org/dateformat/download/dateformat-1.0.2-1.2.3.tgz"
+}
