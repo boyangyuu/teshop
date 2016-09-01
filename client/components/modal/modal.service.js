@@ -9,6 +9,7 @@ angular.module('shopnxApp')
     $scope.data = angular.copy(data);
     $scope.options = options;
     $scope.saveItem = function(item){
+      console.log(item);
       if(Settings.demo){
         toastr.error('Will not be able to create in demo mode');
         $modalInstance.close();
@@ -34,6 +35,7 @@ angular.module('shopnxApp')
             $modalInstance.close(item);
             return;
           }
+          console.log($scope.data);
           api.save($scope.data).$promise.then(function() {
           }, function(error) { // error handler
             if(error.data.errors){
