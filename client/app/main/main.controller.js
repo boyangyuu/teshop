@@ -2,6 +2,11 @@
 
 angular.module('shopnxApp')
   .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
+    var reviews=[
+      {"img":"./assets/img/tx.jpg","name":"John Doe –","time":"June 29, 2014 - 11:23","msg":"Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque."}
+,     {"img":"./assets/img/tx.jpg","name":"John Doe –","time":"June 29, 2014 - 11:23","msg":"Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque."}
+
+    ]
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
@@ -10,6 +15,7 @@ angular.module('shopnxApp')
     }
     var productId = localStorage !== null ? localStorage.productId : null;
 
+    $scope.reviews = reviews;
     $scope.product = Product.get({id:productId},function(data) {
       socket.syncUpdates('product', $scope.data);
       generateBreadCrumb('Category',data.category._id);
