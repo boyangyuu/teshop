@@ -54,8 +54,8 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new product in the DB.
 exports.create = function(req, res) {
+  console.log(req);
   req.body.uid = req.user.email; // id change on every login hence email is used
   req.body.updated = Date.now();
   if(req.body.name)
