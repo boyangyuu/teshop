@@ -8,6 +8,8 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 var UserSchema = new Schema({
   name: String,
   email: { type: String, lowercase: true },
+  verify:Boolean,
+  products: [{ Pid: { type: Schema.Types.ObjectId, ref: 'Product'} }],
   role: {
     type: String,
     default: 'user'

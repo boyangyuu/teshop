@@ -13,7 +13,31 @@ var validationError = function(res, err) {
  * Get list of users
  * restriction: 'admin'
  */
+exports.verifiedAdmin = function(req, res) {
+  var userId = req.params.id;
+  console.log('verify')
+  User.findById(userId, function (err, user) {
+      console.log(user)
+
+      user.verify = true;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.status(200).send('OK');
+      });
+  });
+};
+exports.getAlladmins = function(req, res) {
+  User.find({role:'admin'}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
+};
+/**
+ * Get list of users
+ * restriction: 'admin'
+ */
 exports.index = function(req, res) {
+  console.log(req.params)
   User.find({}, '-salt -hashedPassword', function (err, users) {
     if(err) return res.status(500).send(err);
     res.status(200).json(users);
@@ -24,6 +48,9 @@ exports.index = function(req, res) {
  * Creates a new user
  */
 exports.create = function (req, res, next) {
+
+
+
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
@@ -39,7 +66,7 @@ exports.create = function (req, res, next) {
  */
 exports.show = function (req, res, next) {
   var userId = req.params.id;
-
+  console.log(userId)
   User.findById(userId, function (err, user) {
     if (err) return next(err);
     if (!user) return res.status(401).send('Unauthorized');
@@ -83,11 +110,16 @@ exports.changePassword = function(req, res, next) {
  * Get my info
  */
 exports.me = function(req, res, next) {
-  var userId = req.user._id;
+  // var userId = req.user._id;
+  console.log(66666666)
+  var userId = "57c7b73826667b0e94088ef6";
   User.findOne({
     _id: userId
   }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
     if (err) return next(err);
+
+    console.log(user)
+
     if (!user) return res.status(401).send('Unauthorized');
     res.json(user);
   });

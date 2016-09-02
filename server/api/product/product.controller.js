@@ -55,12 +55,16 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new product in the DB.
 exports.create = function(req, res) {
+<<<<<<< HEAD
   console.log(req.body)
   req.body.uid = req.body.email; // id change on every login hence email is used
   req.body.Sid = req.body._id;
 
+=======
+  console.log(req);
+  req.body.uid = req.user.email; // id change on every login hence email is used
+>>>>>>> origin/master
   req.body.updated = Date.now();
   if(req.body.name)
     req.body.nameLower = req.body.name.toString().toLowerCase();
