@@ -9,6 +9,29 @@ var validationError = function(res, err) {
   return res.status(422).json(err);
 };
 
+
+exports.verifiedAdmin = function(req, res) {
+  var userId = req.params.id;
+  console.log('verify')
+  User.findById(userId, function (err, user) {
+      console.log(user)
+
+      user.verify = true;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.status(200).send('OK');
+      });
+  });
+};
+exports.getAlladmins = function(req, res) {
+  User.find({role:'admin'}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
+};
+
+
+
 /**
  * Get list of users
  * restriction: 'admin'

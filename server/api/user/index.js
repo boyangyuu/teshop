@@ -13,5 +13,8 @@ router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
-
+//验证admin用户权限
+router.get('/verifyAdmin/:id',  controller.verifiedAdmin);
+//获取admin用户
+router.get('/get/admins/all',  controller.getAlladmins)
 module.exports = router;

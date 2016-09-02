@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Product = require('./product.model');
+var User = require('../user/user.model');
 
 function isJson(str) {
   try {
@@ -54,9 +55,12 @@ exports.show = function(req, res) {
   });
 };
 
+// Creates a new product in the DB.
 exports.create = function(req, res) {
-  console.log(req);
-  req.body.uid = req.user.email; // id change on every login hence email is used
+  console.log(req.body)
+  req.body.uid = req.body.email; // id change on every login hence email is used
+  req.body.Sid = req.body._id;
+
   req.body.updated = Date.now();
   if(req.body.name)
     req.body.nameLower = req.body.name.toString().toLowerCase();
@@ -69,7 +73,22 @@ exports.create = function(req, res) {
                       .replace(/-+$/, '');
   Product.create(req.body, function(err, product) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(product);
+    
+
+    User.findByIdAndUpdate(
+      req.body.Sid,
+      {$push: { "products": { id:product._id }} },
+      {safe: true, upsert: true, new : true},
+        function(err, instance) {
+          if (err) {
+            return res.status(201).json("添加到商店的时发生错误");
+          }
+          return res.status(201).json(product);
+        }
+    );
+
+
+
   });
 };
 
