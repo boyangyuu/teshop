@@ -3,7 +3,7 @@
 angular.module('shopnxApp')
 .constant('Settings', {
   // userRoles:['guest','user','admin'],
-  demo: false,
+  demo: true,
   menu: {
     pages : [
       {text:'Books', icon: 'book', url: 'book', authenticate: true},
