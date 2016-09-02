@@ -21,5 +21,5 @@ angular.module('shopnxApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
-      })
+      });
   });
