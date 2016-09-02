@@ -69,12 +69,7 @@ angular.module('shopnxApp')
     obj.group = $resource('/api/features/group', null, {'update': { method:'PUT' }});
     return obj;
   }])
-    .factory('Feature', ['$resource', function($resource) {
-        var obj = {};
-        obj = $resource('/api/features/:id', null, {'update': { method:'PUT' } });
-        obj.group = $resource('/api/features/group', null, {'update': { method:'PUT' }});
-        return obj;
-    }])
+
 
   .factory('PaymentMethod', ['$resource', function($resource) {
     var obj = {};
