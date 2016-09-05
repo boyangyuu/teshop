@@ -38,6 +38,18 @@ em {
     border-radius: 3px;
     letter-spacing: 1.5px;
 }
-.brand-filter-panel{
-   height:200px;overflow:auto;
+.pull-left{
+    margin-right: 10px;
+}
+textarea.form-control {
+    height: auto;
+}
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+.margin-bottom-30{
+    margin-bottom: 30px;
+}
+.star{
+   margin-bottom: 15px;
 }

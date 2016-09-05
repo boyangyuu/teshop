@@ -1,5 +1,5 @@
 <div ng-controller="NavbarCtrl">
-<!-- *** top开始 ***
+<!-- *** TOPBAR ***
 _________________________________________________________ -->
 <div id="top">
     <div class="container">
@@ -19,9 +19,12 @@ _________________________________________________________ -->
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/administration')}">
                     <a href="/administration"><i class="fa fa-tag">&nbsp;</i>用户管理</a>
                   </li>
-                  <!-- 用户管理结束 -->
+                  <!-- 用户管理结束 --> 
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
                     <a href="/product"><i class="fa fa-truck">&nbsp;</i>Products</a>
+                  </li>
+                  <li ng-show="isAdmin()" ng-class="{active: isActive('/test')}">
+                    <a href="/test"><i class="fa fa-truck">&nbsp;</i>Test</a>
                   </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
                     <a href="/category"><i class="fa fa-ticket">&nbsp;</i>Categories</a>
@@ -100,9 +103,9 @@ _________________________________________________________ -->
 
 </div>
 
-<!-- *** TOP结束 *** -->
+<!-- *** TOP BAR END *** -->
 
-<!-- *** navbar开始 ***
+<!-- *** NAVBAR ***
 _________________________________________________________ -->
 
 <div class="navbar navbar-default yamm" role="navigation" id="navbar">

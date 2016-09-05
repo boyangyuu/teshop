@@ -133,4 +133,24 @@ angular.module('shopnxApp')
         else{ $scope.product = {}; }
     };
 
+    // var app = angular.module("demoApp",['ngKeditor']);
+    // app.controller("kindeditorCtrl",["$scope",function($scope){
+    // $scope.info = function($scope){
+    //         content : "hello,world"
+   
+    // $scope.config = {width: '100px'};
+
+    // $scope.reg = /\d+/g;
+    //  };
+    // }]);
+
   });
+var app = angular.module("demoApp",['ngKeditor']);
+    app.controller("kindeditorCtrl",["$scope",function($scope){
+        $scope.info = {
+                content : "hello,world"
+        };
+        $scope.config = {width: '100px'};
+
+        $scope.reg = /\d+/g;
+    }]);
