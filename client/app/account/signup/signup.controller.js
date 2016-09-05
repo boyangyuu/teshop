@@ -1,10 +1,10 @@
 'use strict';
+var shopnxApp=angular.module("shopnxApp");
 
-angular.module('shopnxApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
+  shopnxApp.controller('SignupCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
-
+    $scope.btn="btn1";
     $scope.register = function(form) {
       $scope.submitted = true;
 
