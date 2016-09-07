@@ -17,17 +17,18 @@ angular.module('shopnxApp')
     $scope.categories = Category.all.query();
     // To shuffle throught different product variants
     $scope.i=0;
-    $scope.changeIndex =function(i){
+    $scope.changeIndex = function(i){
         $scope.i=i;
     };
-    //fenye
-      var $scope.numPerPage = 5;
-      var $scope.noOfPages = Math.ceil(myData.count() / $scope.numPerPage);
-      var $scope.currentPage = 1;
-      var $scope.setPage;
-      $scope.setPage = function () {
-      $scope.data = myData.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
-     };
+    //yuboyang modified (需要解決報錯)
+    // //fenye
+    // var $scope.numPerPage = 5;
+    // var $scope.noOfPages = Math.ceil(myData.count() / $scope.numPerPage);
+    // var $scope.currentPage = 1;
+    // var $scope.setPage;
+    // $scope.setPage = function () {
+    //     $scope.data = myData.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
+    //     };
   
       // $scope.$watch( 'currentPage', $scope.setPage );
     // The main function to navigate to a page with some hidden parameters

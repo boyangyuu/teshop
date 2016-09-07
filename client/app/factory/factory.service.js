@@ -10,6 +10,11 @@ angular.module('shopnxApp')
       }
     };
   }])
+  //用户管理卖家
+  .factory('AdminSell',['$resource',function($resource){
+    var obj={};
+    obj=$resource('/api/');
+  }])
   .factory('Product', ['$resource', function($resource) {
     var obj = {};
     obj = $resource('/api/products/:id', null, {'update': { method:'PUT' } });
