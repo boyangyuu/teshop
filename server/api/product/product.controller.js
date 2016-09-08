@@ -31,12 +31,11 @@ exports.index = function(req, res) {
     // console.log(q);
     var sort = isJson(req.query.sort);
     var select = isJson(req.query.select);
-    // setTimeout(function(){
       Product.find(q).limit(req.query.limit).skip(req.query.skip).sort(sort).select(select).exec(function (err, products) {
         if(err) { return handleError(res, err); }
         return res.status(200).json(products);
       });
-    // },2000);
+
   }else{
     Product.find(function (err, products) {
       if(err) { return handleError(res, err); }
@@ -48,10 +47,11 @@ exports.index = function(req, res) {
 // Get a single product
 exports.show = function(req, res) {
   Product.findById(req.params.id, function (err, product) {
+
     if(err) { return handleError(res, err); }
     if(!product) { return res.status(404).send('Not Found'); }
     return res.json(product);
-  });
+  }).populate("replies");
 };
 
 // Creates a new product in the DB.
