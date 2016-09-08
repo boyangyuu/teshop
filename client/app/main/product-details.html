@@ -160,19 +160,17 @@
                     </div>
             
                 <div role="tabpanel" class=" box tab-pane fade " id="reviews">
-                    
-                    <!-- /REVIEW ITEM -->
 
                     <!-- REVIEW ITEM -->
-                    <div class="block margin-bottom-60" ng-repeat="item in reviews">
-                            <span class="user-avatar"><!-- user-avatar -->
-                                <img class="pull-left media-object" src={{item.img}} width="64" height="64" alt="">
-                            </span>
+                    <div class="block margin-bottom-60" ng-repeat="item in product.replies">
+                            <!--<span class="user-avatar">&lt;!&ndash; user-avatar &ndash;&gt;-->
+                                <!--<img class="pull-left media-object" src={{item.img}} width="64" height="64" alt="">-->
+                            <!--</span>-->
 
-                            <div class="media-body">
-                                <h4 class="media-heading size-14">
-                                   {{item.name}}  
-                                <span class="text-muted">{{item.time}}</span> –
+                        <div class="media-body">
+                            <h4 class="media-heading size-14">
+                                {{item.email}}
+                                <!--<span class="text-muted">{{item.time}}</span> –-->
                                 <span class="size-14 text-muted"><!-- stars -->
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -180,60 +178,59 @@
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
                                 </span>
-                                </h4>
+                            </h4>
 
-                                <p>
-                                   {{item.msg}} 
-                                </p>
+                            <p>
+                                {{item.comment}}
+                            </p>
 
-                            </div>
+                        </div>
                     </div>
                     <!-- /REVIEW ITEM -->
 
-
                     <!-- REVIEW FORM -->
                     <h4 class="page-header margin-bottom-40">ADD A REVIEW</h4>
-                    <form method="post" action="#" id="form">
+                    <form ng-submit="submitReply(form)" name="form" novalidate>
 
                         <div class="row margin-bottom-10">
 
                             <div class="col-md-6 margin-bottom-10">
                                 <!-- Name -->
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Name *" maxlength="100" required="">
+                                <input type="text" name="name" id="name" ng-model="reply.name" class="form-control" placeholder="Name *" maxlength="100" required="">
                             </div>
 
                             <div class="col-md-6">
                                 <!-- Email -->
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email *" maxlength="100" required="">
+                                <input type="email" name="email" id="email" ng-model="reply.email" class="form-control" placeholder="Email *" maxlength="100" required="">
                             </div>
 
                         </div>
 
                         <!-- Comment -->
                         <div class="margin-bottom-30">
-                            <textarea name="text" id="text" class="form-control" rows="6" placeholder="Comment" maxlength="1000"></textarea>
+                            <textarea name="text" id="text" ng-model="reply.comment" class="form-control" rows="6" placeholder="Comment" maxlength="1000"></textarea>
                         </div>
 
                         <!-- Stars -->
                         <div class="star">
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">1 Star
+                              <input type="radio" ng-model="reply.star" ng-value="1">1 Star
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">2 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="2">2 Stars
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">3 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="3">3 Stars
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4">4 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="4">4 Stars
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="5">5 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="5">5 Stars
                             </label>
                         </div>
                           <!-- Send Button -->
-                        <button type="submit" class="btn btn-primary" ng-click=""><i class="fa fa-check"></i> Send Review</button>
+                        <button type="submit" ng-disabled="form.$dirty && form.$invalid" class="btn btn-primary" ><i class="fa fa-check"></i> Send Review</button>
 
                     </form>
                     <!-- /REVIEW FORM -->
