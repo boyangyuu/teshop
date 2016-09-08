@@ -9,6 +9,11 @@ angular.module('shopnxApp')
         localStorage.productId = id;
     }
 
+    $scope.product = {};
+    $scope.product.variants = [];
+    $scope.product.features = [];
+    $scope.product.keyFeatures = []
+    $scope.product.replies = [];
 
     var productId = localStorage !== null ? localStorage.productId : null;
 
@@ -17,7 +22,7 @@ angular.module('shopnxApp')
       generateBreadCrumb('Category',data.category._id);
     });
 
-    console.log($scope.product);
+    // console.log($scope.product);
     $scope.categories = Category.all.query();
     // To shuffle throught different product variants
     $scope.i=0;
@@ -64,16 +69,19 @@ angular.module('shopnxApp')
     };
 
     //reply
-    $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : object(localStorage.productId)};
+    $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : localStorage.productId};
 
-    console.log("for11111m");
     $scope.submitReply = function(form) {
       $scope.submitted = true;
-      console.log("请求服务器");
-      console.log($scope.reply);
+      // console.log($scope.reply);
       if(form.$valid) {
-        Reply.save($scope.reply).$promise.then(function() {
+        Reply.save($scope.reply).$promise.then(function(res) {
           toastr.success("Reply info saved successfully","Success");
+          //refresh replies
+          console.log("res");
+          console.log(res);
+          $scope.product.replies.push(res);
+
         }, function(error) { // error handler
           var err = error.data.errors;
           toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);

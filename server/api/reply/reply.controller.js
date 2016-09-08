@@ -73,6 +73,7 @@ exports.show = function(req, res) {
 
 // Creates a new reply in the DB.
 exports.create = function(req, res) {
+  req.body.userName = req.user.name;
   Reply.create(req.body, function(err, reply) {
       //update product
       if(err) { return handleError(res, err); }
