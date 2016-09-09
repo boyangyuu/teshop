@@ -53,6 +53,18 @@ exports.group = function(req, res) {
 //     );
 // });
 // };
+
+// Get count
+exports.count = function(req, res) {
+    if(req.query){
+        var q = isJson(req.query.where);
+        Reply.find(q).count().exec(function (err, count) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json({count:count});
+        });
+    }
+};
+
 function isJson(str) {
     try {
         str = JSON.parse(str);
@@ -65,9 +77,9 @@ function isJson(str) {
 // Get list of replies
 exports.index = function(req, res) {
     if(req.query){
-        console.log(req.query,req.query.skip,req.query.limit,req.query.sort);
+        // console.log(req.query,req.query.skip,req.query.limit,req.query.sort);
         var q = isJson(req.query.where);
-        console.log(q);
+        // console.log(q);
         var sort = isJson(req.query.sort);
         var select = isJson(req.query.select);
         Reply.find(q).limit(req.query.limit).skip(req.query.skip).sort(sort).select(select).exec(function (err, replies) {
@@ -95,6 +107,7 @@ exports.show = function(req, res) {
 // Creates a new reply in the DB.
 exports.create = function(req, res) {
   req.body.userName = req.user.name;
+  req.body.updated = Date.now();
   Reply.create(req.body, function(err, reply) {
       //update product
       if(err) { return handleError(res, err); }

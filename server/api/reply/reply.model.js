@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 var ReplySchema = new Schema({
     comment: String,
     productId: { type: Schema.Types.ObjectId, ref: 'Product'},
-    updated: {type: Date, default: Date.now},
+    updated: {type: Date},
     userName: {type: String, default: "undefined"},
     // userid:
 });

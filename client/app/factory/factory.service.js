@@ -77,7 +77,7 @@ angular.module('shopnxApp')
   .factory('Reply', ['$resource', function($resource) {
     var obj = {};
     obj = $resource('/api/replies/:id', null, {'update': { method:'PUT' } });
-    obj.group = $resource('/api/replies/group', null, {'update': { method:'PUT' }});
+    obj.count = $resource('/api/replies/count');
     return obj;
   }])
   .factory('PaymentMethod', ['$resource', function($resource) {

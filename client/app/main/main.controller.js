@@ -60,8 +60,15 @@ angular.module('shopnxApp')
 
     //reply
     $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : localStorage.productId};
-    $scope.replyScope = {numOfPages : 3, curPage : 1};
+    $scope.replyScope = {numOfPages : 0, curPage : 1};
     var numPerPage = 10;
+
+    Reply.count.get({productId : productId}, function (data) {
+        // console.log("$scope.replyScope.numOfPages");
+        // console.log(data);
+        $scope.replyScope.numOfPages = data.count / numPerPage;
+    });
+
     $scope.setPage = function () {
         var skipNum = $scope.replyScope.curPage * numPerPage;
         $scope.replies = Reply.query({productId : productId, skip: skipNum, limit : numPerPage});
