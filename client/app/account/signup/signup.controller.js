@@ -5,7 +5,7 @@ var shopnxApp=angular.module("shopnxApp");
     $scope.user = {};
     $scope.errors = {};
     $scope.btn="btn1";
-    $scope.register = function(form) {
+    $scope.registerUser = function(form) {
       $scope.submitted = true;
 
       if(form.$valid) {
@@ -25,6 +25,37 @@ var shopnxApp=angular.module("shopnxApp");
           // Update validity of form fields that match the mongoose errors
           angular.forEach(err.errors, function(error, field) {
             form[field].$setValidity('mongoose', false);
+            $scope.errors[field] = error.message;
+          });
+        });
+      }
+    };
+
+     $scope.registerSeller = function(formshop) {
+      $scope.submittedshop = true;
+
+      if(formshop.$valid) {
+        Auth.createUser({
+          name: $scope.user.name,
+          email: $scope.user.email,
+          password: $scope.user.password,
+          compellation: $scope.user.compellation,
+          phone: $scope.user.phone,
+          number: $scope.user.number,
+          address: $scope.user.address,
+          describe: $scope.user.describe
+        })
+        .then( function() {
+          // Account created, redirect to the page with requested a signup
+          Auth.redirectToAttemptedUrl();
+        })
+        .catch( function(err) {
+          err = err.data;
+          $scope.errors = {};
+
+          // Update validity of formshop fields that match the mongoose errors
+          angular.forEach(err.errors, function(error, field) {
+            formshop[field].$setValidity('mongoose', false);
             $scope.errors[field] = error.message;
           });
         });
