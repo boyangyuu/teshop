@@ -9,7 +9,7 @@
 		<button ng-click="btn='btn1'" class="btn" ng-class="{green:btn=='btn1'}">卖家</button>
     	<button ng-click="btn='btn2'" class="btn" ng-class="{green:btn=='btn2'}">买家</button>
 	</div>
-	
+
 </div>
 
 <div class="col-md-12" ng-switch="btn">
@@ -33,20 +33,20 @@
 				      <thead>
 				          <tr>
 				              <th ts-criteria="id">序号</th>
-				              <th ts-criteria="compellation">用户名</th>
+				              <th ts-criteria="name">用户名</th>
 				              <th ts-criteria="product">产品类型</th>
-				              <th ts-criteria="active">审核状态</th>
+				              <th ts-criteria="verify">审核状态</th>
 				              <th ng-click="del()" style="text-align:center">操作</th>
 				          </tr>
 				      </thead>
 				      <tbody>
-				          <tr ng-repeat="p in supplier | filter:filter" id="{{p._id}}" animate-on-change='p.price+p.quantity+p.size+p.compellation' ng-animate="'animate'" ts-repeat>
+				          <tr ng-repeat="p in shopUserList | filter:filter" id="{{p._id}}" animate-on-change='p.price+p.quantity+p.size+p.name' ng-animate="'animate'" ts-repeat>
 				              <td style="text-align:center">{{$index+1}}</td>
-				              <td style="text-align:center"><a ui-sref="detailgys({obj:p})">{{p.compellation}}</a>
+				              <td style="text-align:center"><a ui-sref="detailgys({obj:p})">{{p.name}}</a>
 				              </td>
-				              <td style="text-align:center">{{p.product}}</td>
+				              <td style="text-align:center">{{p.describe}}</td>
 				              <td style="text-align:center">
-				                  <button class="btn" ng-class="{true:'btn-success', false:''}[p.active]" ng-click="changeActive(p);">{{p.active | active}}</button>
+				                  <button class="btn" ng-class="{true:'btn-success', false:''}[p.verify]" ng-click="changeActive(p);">{{p.verify | active}}</button>
 				              </td>
 				              <td style="text-align:center">
 				              	<a href="" ng-click="del(p.compellation)">删除</a>
@@ -87,11 +87,3 @@
 	</div>
 	<!-- 买家列表结束 -->
 </div>
-  
-  
- 
-  
-
-
-
-

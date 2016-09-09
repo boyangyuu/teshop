@@ -5,61 +5,100 @@
 		<div class="col-md-8">
 			<div class="box">
 				<h1>供应商用户详情信息</h1>
-				<form class="form" name="form" ng-submit="***">
+				<form name="form" ng-submit="submitSave(form)" novalidate>
 					<div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                                   'has-error': form.name.$invalid && submitted }">
 						<label>用户名</label>
-						<input type="text" name="name" class="form-control" ng-model="seller.compellation" required value="{{seller.compellation}}">
+						<input type="text" name="name" class="form-control" ng-model="seller.name" required value="{{seller.name}}">
+						<p class="help-block" ng-show="form.name.$error.required && submitted">
+                  			请输入用户名
+                		</p>
 					</div>
-					<div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
+
+					<!-- <div class="form-group" ng-class="{ 'has-success': form.product.$valid && submitted,
+                                                  'has-error': form.product.$invalid && submitted }">
 						<label>产品类型</label>
 						<input type="text" name="product" class="form-control" ng-model="seller.product" required value="{{seller.product}}">
+						<p class="help-block" ng-show="form.product.$error.required && submitted">
+                  				请输入产品类型
+                		</p>
+                    </div> -->
+
+                    <div class="form-group" ng-class="{ 'has-success': form.shopName.$valid && submitted,
+                                                  'has-error': form.shopName.$invalid && submitted }">
+						<label>商家真实名</label>
+						<input type="text" name="shopName" class="form-control" ng-model="seller.shopName" required value="{{seller.shopName}}">
+						<p class="help-block" ng-show="form.shopName.$error.required && submitted">
+                  			请输入商家真实名
+                		</p>
                     </div>
-                    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
-						<label>商家真实全名</label>
-						<input type="text" name="product" class="form-control" ng-model="seller.name" required value="{{seller.name}}">
-                    </div>
-                    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
+
+                    <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted,
+                                                  'has-error': form.phone.$invalid && submitted }">
 						<label>电话</label>
-						<input type="text" name="product" class="form-control" ng-model="seller.phone" required value="{{seller.phone}}">
+						<input type="number" name="phone" class="form-control" ng-model="seller.phone" value="{{seller.phone}}">
+                		<p class="help-block" ng-show="form.phone.$error.number && submitted">
+                  			请输入正确的联系方式
+                		</p>
                     </div>
-                    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
+
+                    <div class="form-group" ng-class="{ 'has-success': form.cellphone.$valid && submitted,
+                                                  'has-error': form.cellphone.$invalid && submitted }">
 						<label>手机号码</label>
-						<input type="text" name="product" class="form-control" ng-model="seller.number" required value="{{seller.number}}">
+						<input type="number" name="cellphone" class="form-control" ng-model="seller.cellphone" required value="{{seller.cellphone}}">
+						<p class="help-block" ng-show="form.cellphone.$error.required && submitted">
+                  			请输入联系电话
+                		</p>
+                		<p class="help-block" ng-show="form.cellphone.$error.number && submitted">
+                  			请输入正确的联系方式
+                		</p>
                     </div>
-                    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
+
+                    <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
+                                                  'has-error': form.email.$invalid && submitted }">
 						<label>电子邮箱</label>
-						<input type="text" name="product" class="form-control" ng-model="seller.email" required value="{{seller.email}}">
+						<input type="email" name="email" class="form-control" ng-model="seller.email" required value="{{seller.email}}">
+						<p class="help-block" ng-show="form.email.$error.email && submitted">
+		                  请输入有效的邮件地址
+		                </p>
+		                <p class="help-block" ng-show="form.email.$error.required && submitted">
+		                  请输入邮件地址
+		                </p>
                     </div>
-                    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
-						<label>联系地址</label>
-						<input type="text" name="product" class="form-control" ng-model="seller.address" required value="{{seller.address}}">
+
+                    <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted,
+                                                  'has-error': form.address.$invalid && submitted }">
+						<label>地址</label>
+						<input type="text" name="address" class="form-control" ng-model="seller.address" required value="{{seller.address}}">
+		                <p class="help-block" ng-show="form.address.$error.required && submitted">
+		                  请输入联系地址
+		                </p>
                     </div>
-                    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
+
+                    <div class="form-group" ng-class="{ 'has-success': form.describe.$valid && submitted,
+                                                  'has-error': form.describe.$invalid && submitted }">
 						<label>产品描述</label>
-						<textarea name="name" id="" cols="30" rows="10" class="form-control" required>{{seller.describe}}</textarea>
+						<textarea name="describe" id="" cols="30" rows="10" class="form-control" required>{{seller.describe}}</textarea>
+		                <p class="help-block" ng-show="form.describe.$error.required && submitted">
+		                  请输入产品描述
+		                </p>
                     </div>
-					<div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
+
+					<div class="form-group" ng-class="{ 'has-success': form.active.$valid && submitted,
+                                                  'has-error': form.active.$invalid && submitted }">
                         <label>是否通过审核</label><br>
-                        <label for="active1">是</label>
-                        <input type="radio" name="active" class="" id="active1" ng-model='seller.active' >&nbsp;&nbsp;&nbsp;
-                        <label for="active2">否</label>
-                        <input type="radio" name="active" class="" id="active2">
-                        
+                        <input type="checkbox" ng-model="seller.verify">
+
                     </div>
-					<button class="btn btn-lg btn-primary" type="submit" ui-sref="administration" ng-click="save()">保存提交</button>
+					<!-- <button class="btn btn-lg btn-primary" type="submit" ui-sref="administration">保存提交</button> -->
+					<div class="text-center">
+                    	<button class="btn btn-lg btn-primary" type="submit">保存提交</button>
+              		</div>
+
 				</form>
 			</div>
 		</div>
-		
+
 		<!-- 内容部分结束 -->
 		<div class="col-md-2"></div>
 	</div>
