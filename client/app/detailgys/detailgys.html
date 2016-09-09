@@ -24,11 +24,11 @@
                 		</p>
                     </div>
 
-                    <div class="form-group" ng-class="{ 'has-success': form.compellation.$valid && submitted,
-                                                  'has-error': form.compellation.$invalid && submitted }">
+                    <div class="form-group" ng-class="{ 'has-success': form.shopName.$valid && submitted,
+                                                  'has-error': form.shopName.$invalid && submitted }">
 						<label>商家真实名</label>
-						<input type="text" name="compellation" class="form-control" ng-model="seller.compellation" required value="{{seller.compellation}}">
-						<p class="help-block" ng-show="form.compellation.$error.required && submitted">
+						<input type="text" name="shopName" class="form-control" ng-model="seller.shopName" required value="{{seller.shopName}}">
+						<p class="help-block" ng-show="form.shopName.$error.required && submitted">
                   			请输入商家真实名
                 		</p>
                     </div>
@@ -42,14 +42,14 @@
                 		</p>
                     </div>
 
-                    <div class="form-group" ng-class="{ 'has-success': form.number.$valid && submitted,
-                                                  'has-error': form.number.$invalid && submitted }">
+                    <div class="form-group" ng-class="{ 'has-success': form.cellphone.$valid && submitted,
+                                                  'has-error': form.cellphone.$invalid && submitted }">
 						<label>手机号码</label>
-						<input type="number" name="number" class="form-control" ng-model="seller.number" required value="{{seller.number}}">
-						<p class="help-block" ng-show="form.number.$error.required && submitted">
+						<input type="number" name="cellphone" class="form-control" ng-model="seller.cellphone" required value="{{seller.cellphone}}">
+						<p class="help-block" ng-show="form.cellphone.$error.required && submitted">
                   			请输入联系电话
                 		</p>
-                		<p class="help-block" ng-show="form.number.$error.number && submitted">
+                		<p class="help-block" ng-show="form.cellphone.$error.number && submitted">
                   			请输入正确的联系方式
                 		</p>
                     </div>

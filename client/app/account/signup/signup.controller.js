@@ -39,9 +39,9 @@ var shopnxApp=angular.module("shopnxApp");
           name: $scope.user.name,
           email: $scope.user.email,
           password: $scope.user.password,
-          compellation: $scope.user.compellation,
+          shopName: $scope.user.shopName,
           phone: $scope.user.phone,
-          number: $scope.user.number,
+          cellphone: $scope.user.cellphone,
           address: $scope.user.address,
           describe: $scope.user.describe
         })
