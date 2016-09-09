@@ -13,6 +13,8 @@ var UserSchema = new Schema({
   class: String,
   verify:Boolean,
   shopName: String,
+  phone: String,
+  cellphone: String,
   role: {
     type: String,
     default: 'user'

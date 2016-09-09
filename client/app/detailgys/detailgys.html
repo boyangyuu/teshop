@@ -15,14 +15,14 @@
                 		</p>
 					</div>
 
-					<div class="form-group" ng-class="{ 'has-success': form.product.$valid && submitted,
+					<!-- <div class="form-group" ng-class="{ 'has-success': form.product.$valid && submitted,
                                                   'has-error': form.product.$invalid && submitted }">
 						<label>产品类型</label>
 						<input type="text" name="product" class="form-control" ng-model="seller.product" required value="{{seller.product}}">
 						<p class="help-block" ng-show="form.product.$error.required && submitted">
                   				请输入产品类型
                 		</p>
-                    </div>
+                    </div> -->
 
                     <div class="form-group" ng-class="{ 'has-success': form.shopName.$valid && submitted,
                                                   'has-error': form.shopName.$invalid && submitted }">
@@ -87,21 +87,18 @@
 					<div class="form-group" ng-class="{ 'has-success': form.active.$valid && submitted,
                                                   'has-error': form.active.$invalid && submitted }">
                         <label>是否通过审核</label><br>
-                        <label for="active1">是</label>
-                        <input type="radio" name="active" id="active1" checked="">&nbsp;&nbsp;&nbsp;
-                        <label for="active2">否</label>
-                        <input type="radio" name="active" id="active2">
-                        
+                        <input type="checkbox" ng-model="seller.verify">
+
                     </div>
 					<!-- <button class="btn btn-lg btn-primary" type="submit" ui-sref="administration">保存提交</button> -->
 					<div class="text-center">
                     	<button class="btn btn-lg btn-primary" type="submit">保存提交</button>
               		</div>
-					
+
 				</form>
 			</div>
 		</div>
-		
+
 		<!-- 内容部分结束 -->
 		<div class="col-md-2"></div>
 	</div>
