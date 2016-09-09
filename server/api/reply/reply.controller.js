@@ -53,13 +53,34 @@ exports.group = function(req, res) {
 //     );
 // });
 // };
+function isJson(str) {
+    try {
+        str = JSON.parse(str);
+    } catch (e) {
+        str = str;
+    }
+    return str
+}
 
 // Get list of replies
 exports.index = function(req, res) {
-  Reply.find(function (err, replies) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(replies);
-  });
+    if(req.query){
+        console.log(req.query,req.query.skip,req.query.limit,req.query.sort);
+        var q = isJson(req.query.where);
+        console.log(q);
+        var sort = isJson(req.query.sort);
+        var select = isJson(req.query.select);
+        Reply.find(q).limit(req.query.limit).skip(req.query.skip).sort(sort).select(select).exec(function (err, replies) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json(replies);
+        });
+
+    }else{
+        Reply.find(function (err, replies) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json(replies);
+        });
+    }
 };
 
 // Get a single reply
