@@ -8,5 +8,3 @@ dist
 npm-debug.log
 mongo.sh
 sample_data
-
-*.json
