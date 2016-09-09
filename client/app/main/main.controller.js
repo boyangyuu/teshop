@@ -1,19 +1,28 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
+  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Reply, Category, socket,toastr, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
     if (localStorage !== null && JSON !== null && id !== null) {
         localStorage.productId = id;
     }
+
+    $scope.product = {};
+    $scope.product.variants = [];
+    $scope.product.features = [];
+    $scope.product.keyFeatures = []
+    $scope.product.replies = [];
+
     var productId = localStorage !== null ? localStorage.productId : null;
 
     $scope.product = Product.get({id:productId},function(data) {
       socket.syncUpdates('product', $scope.data);
       generateBreadCrumb('Category',data.category._id);
     });
+
+    // console.log($scope.product);
     $scope.categories = Category.all.query();
     // To shuffle throught different product variants
     $scope.i=0;
@@ -25,7 +34,7 @@ angular.module('shopnxApp')
     // var $scope.numPerPage = 5;
     // var $scope.noOfPages = Math.ceil(myData.count() / $scope.numPerPage);
     // var $scope.currentPage = 1;
-    // var $scope.setPage;
+    // var $scope.s=
     // $scope.setPage = function () {
     //     $scope.data = myData.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
     //     };
@@ -59,6 +68,26 @@ angular.module('shopnxApp')
       });
     };
 
+    //reply
+    $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : localStorage.productId};
+
+    $scope.submitReply = function(form) {
+      $scope.submitted = true;
+      // console.log($scope.reply);
+      if(form.$valid) {
+        Reply.save($scope.reply).$promise.then(function(res) {
+          toastr.success("Reply info saved successfully","Success");
+          //refresh replies
+          console.log("res");
+          console.log(res);
+          $scope.product.replies.push(res);
+
+        }, function(error) { // error handler
+          var err = error.data.errors;
+          toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
+        });
+      }
+    };
   })
 
   .controller('MainCtrl', function ($scope, $state, $stateParams, $location, Product, Brand, Category, Feature, socket, $rootScope, $injector, $loading) {
@@ -70,7 +99,7 @@ angular.module('shopnxApp')
 
 
 
-// For Price slider
+    // For Price slider
     $scope.currencyFormatting = function(value){
       return  '$ ' + value.toString();
     };
