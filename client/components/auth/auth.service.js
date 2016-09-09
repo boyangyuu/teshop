@@ -146,7 +146,9 @@ angular.module('shopnxApp')
       isAdmin: function() {
         return currentUser.role === 'admin';
       },
-
+      getRole:function () {
+        return currentUser.role;
+      },
       /**
        * Get auth token
        */
