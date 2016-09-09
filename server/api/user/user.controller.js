@@ -30,6 +30,12 @@ exports.index = function(req, res) {
  * Creates a new user
  */
 exports.create = function (req, res, next) {
+
+  if (req.body.shopName) {
+    req.body.verify = false;
+    req.body.class = 'shop';
+  };
+
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';

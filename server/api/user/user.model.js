@@ -10,7 +10,9 @@ var UserSchema = new Schema({
   email: { type: String, lowercase: true },
   address:[{}],
   describe: String,
-  
+  class: String,
+  verify:Boolean,
+  shopName: String,
   role: {
     type: String,
     default: 'user'
