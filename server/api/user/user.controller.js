@@ -9,6 +9,12 @@ var validationError = function(res, err) {
   return res.status(422).json(err);
 };
 
+exports.getAllShops = function(req, res) {
+  User.find({class:'shop'}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
+};
 /**
  * Get list of users
  * restriction: 'admin'
