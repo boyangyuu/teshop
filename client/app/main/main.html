@@ -1,23 +1,24 @@
 <link rel="stylesheet" href="bower_components/angular-loading/angular-loading.css"/>
+  <div class="container">
+ 
+  <div class="col-md-12">
+      <ul class="breadcrumb">
+          <li><a ui-sref="main" href="">Home</a></li>
+          <li ng-repeat="b in breadcrumb.items | reverse">
+              <a href="/" ng-if="!$last">{{b.name}}</a>
+              <span ng-if="$last">{{b.name}}</span>
+          </li>
+      </ul>
+  </div>
 
-                <div class="col-md-12">
-                    <ul class="breadcrumb">
-                        <li><a ui-sref="main" href="">Home</a></li>
-                        <li ng-repeat="b in breadcrumb.items | reverse">
-                            <a href="/" ng-if="!$last">{{b.name}}</a>
-                            <span ng-if="$last">{{b.name}}</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3">
+  <div class="col-md-3">
 
      <div class="panel panel-default sidebar-menu">
 
-         <div class="panel-heading">
-             <h3 class="panel-title">Price Range <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i> Reset</a></h3>
-         </div>
-
+        <div class="panel-heading">
+          <h3 class="panel-title">Price Range <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i> Reset</a></h3>
+        </div>
+          
          <div class="panel-body">
 
              <form>
@@ -133,9 +134,9 @@
 
                                   <a ng-if="fl.categories.length>0" class="btn btn-xs btn-warning" href="" ng-click="removeCategory();" style="margin-left:5px;"><i class="fa fa-times-circle"></i>{{fl.categories[0].name}}</a>
 
-<span ng-repeat="features in fl.features">
-    <a ng-if="features" ng-click="removeFeatures(features);" ng-repeat="f in features" class="btn btn-xs btn-warning" href="" style="margin-left:5px;">{{f}}</a>
-</span>
+                        <span ng-repeat="features in fl.features">
+                            <a ng-if="features" ng-click="removeFeatures(features);" ng-repeat="f in features" class="btn btn-xs btn-warning" href="" style="margin-left:5px;">{{f}}</a>
+                        </span>
 
                                   <!-- <select ng-model="products.brand"  ng-change="navigate('Brand',products.brand);" ng-options="b.name for b in brands track by b._id" class="pull-right">
                                       <option value="">All Brands</option>
@@ -203,3 +204,4 @@
                 </div>
                 <!-- /.col-md-9 -->
 </div> <!-- /just to enable infinite scroll -->
+</div>

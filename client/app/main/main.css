@@ -24,7 +24,7 @@ p.price .text-muted{
 }
 .products .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height: 330px;
-}
+}   
 /*div.front {
 	text-align: center;
 }*/
@@ -52,4 +52,42 @@ textarea.form-control {
 }
 .star{
    margin-bottom: 15px;
+}
+table tr td a{
+    color:black;
+}
+table tr td a:hover{
+    color:red;
+}
+ul li a{
+    color:black;
+}
+ul li a:hover{
+    color:red;
+}
+.margin-bottom-60{
+    margin-bottom: 15px;
+}
+img.pull-left {
+    margin: 0 20px 10px 0;
+}
+.media-body h4 {
+    font-size: 18px;
+    letter-spacing: normal;
+    margin: 0 0 14px 0;
+}
+p {
+    margin: 0 0 10px;
+    font-size: 14px ;
+    line-height: 18px;
+}
+.media-body p{
+    margin-top: 5px;
+}
+.margin-bottom-40{
+    margin-bottom:15px;
+    margin-top: 15px;
+}
+hr{
+    margin-top: -10px;
 }

@@ -1,8 +1,78 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
+  .factory('Pages', ['$resource', function($resource) {
+    var obj = {};
+    obj = $resource('http://192.168.31.170:3000/api/Addresses/AddressPage');
+    return obj;
+  }])
+  .controller('ProductDetailsCtrl', function ($scope, Pages, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
+
+      console.log("formmmm");
+      var starNum = 1;
+      var allstart = 5;
+      $scope.starsArr =  new Array();
+      while($scope.starsArr.length<starNum){
+          $scope.starsArr.push($scope.starsArr.length);
+      } 
+      $scope.NostarsArr =  new Array();
+      while($scope.NostarsArr.length<allstart-starNum){
+          $scope.NostarsArr.push($scope.NostarsArr.length);
+      } 
+      $scope.save=function(form){
+        console.log("提交成功！");
+        $scope.reply={
+          name:$scope.reply.name,
+          email:$scope.reply.email,
+          comment:$scope.reply.comment,
+          star:$scope.reply.star
+        };
+
+        var starNum = $scope.reply.star;
+        var allstart = 5;
+        console.log($scope.reply.star);
+        $scope.starsArr =  new Array();
+        while($scope.starsArr.length<starNum){
+            $scope.starsArr.push($scope.starsArr.length);
+        } 
+        $scope.NostarsArr =  new Array();
+        while($scope.NostarsArr.length<allstart-starNum){
+            $scope.NostarsArr.push($scope.NostarsArr.length);
+        } 
+        //console.log($scope.NostarsArr)
+        console.log($scope.reply);
+      }
+      $scope.data=[{"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
+                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
+                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
+                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
+                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
+                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"}
+
+      ]
+    // http://127.0.0.1:3000/api/Addresses/AddressPage?page=1&count=10
+      $scope.numPerPage = 5;
+      $scope.noOfPages = 10;
+      $scope.currentPage = 1;
+
+      $scope.setPage = function () {
+        // $scope.data = myData.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
+
+        Pages.get({page:$scope.currentPage, count:10}, function(res) {
+          console.log(res)
+          $scope.data = res.results;
+          $scope.noOfPages =res.pageCount
+        })
+
+      };
+      
+      $scope.$watch( 'currentPage', $scope.setPage );
+
+
+
+
+
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
     if (localStorage !== null && JSON !== null && id !== null) {
@@ -20,16 +90,7 @@ angular.module('shopnxApp')
     $scope.changeIndex =function(i){
         $scope.i=i;
     };
-    //fenye
-      var $scope.numPerPage = 5;
-      var $scope.noOfPages = Math.ceil(myData.count() / $scope.numPerPage);
-      var $scope.currentPage = 1;
-      var $scope.setPage;
-      $scope.setPage = function () {
-      $scope.data = myData.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
-     };
-  
-      // $scope.$watch( 'currentPage', $scope.setPage );
+
     // The main function to navigate to a page with some hidden parameters
     $scope.navigate = function(page,params){
       if(params){
