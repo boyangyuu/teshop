@@ -59,6 +59,10 @@ var shopnxApp=angular.module("shopnxApp");
             $scope.errors[field] = error.message;
           });
         });
+
+
+
+
       }
     };
 
