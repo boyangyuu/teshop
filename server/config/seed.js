@@ -5,18 +5,17 @@
 
 'use strict';
 
-var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Setting = require('../api/setting/setting.model');
 var Product = require('../api/product/product.model');
 var Category = require('../api/category/category.model');
 var Brand = require('../api/brand/brand.model');
 var PaymentMethod = require('../api/PaymentMethod/PaymentMethod.model');
-var Setting = require('../api/setting/setting.model');
 var Feature = require('../api/feature/feature.model');
 var Coupon = require('../api/coupon/coupon.model');
 var Shipping = require('../api/shipping/shipping.model');
 var Country = require('../api/country/country.model');
+var Reply = require('../api/reply/reply.model');
 
 Shipping.find(function (err, data) {
   if(data.length < 1){
@@ -204,8 +203,8 @@ User.find(function (err, data) {
 });
 
 Product.find(function (err, data) {
-  if(data.length < 1){
-    Product.create({
+  if(data.length < 10){
+    var product = new Product({
     "_id" : "5607a6af0dc20f1b0366522a",
     "name" : "ArrowGrey Slim Fit Formal Trouser",
     "info" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
@@ -292,10 +291,18 @@ Product.find(function (err, data) {
         "_id" : "560774dad4124c770bfc4b68"
     },
     "__v" : 0
-}, function() {
-        console.log('finished populating products');
+});
+    product.save();
+    var reply = new Reply({
+        comment: "内容"
     });
+    reply.save();
+    product.replies.push(reply._id);
+
+
   }
+
+
 });
 
 Category.find(function (err, data) {

@@ -2,66 +2,200 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <div class="box">
-            <h1>New account</h1>
+        <div id="title">
+          <button ng-click="btn='btn1'" class="btn" ng-class="{green:btn=='btn1'}">我是买家</button>
+          <button ng-click="btn='btn2'" class="btn" ng-class="{green:btn=='btn2'}">我是卖家</button>
+        </div>
+        <div class="box" ng-switch="btn">
+            <h1>新用户</h1>
 
             <p class="lead">Not our registered customer yet?</p>
             <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
             <p class="text-muted">If you have any questions, please feel free to <a href="/contact">contact us</a>, our customer service center is working for you 24/7.</p>
 
             <hr>
-
-            <form ng-submit="register(form)" novalidate name="form">
-              <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                  'has-error': form.name.$invalid && submitted }">
-                <label>Name</label>
+            <!-- 买家注册开始 -->
+            <form ng-submit="registerUser(formUser)" novalidate name="formUser" ng-switch-when="btn1">
+              <div class="form-group" ng-class="{ 'has-success': formUser.name.$valid && submitted,
+                                                  'has-error': formUser.name.$invalid && submitted }">
+                <label>用户名</label>
 
                 <input type="text" name="name" class="form-control" ng-model="user.name"
-                       required placeholder="Your name"/>
-                <p class="help-block" ng-show="form.name.$error.required && submitted">
-                  A name is required
+                       required placeholder="给自己起一个名字吧！！"/>
+                <p class="help-block" ng-show="formUser.name.$error.required && submitted">
+                  请输入用户名
                 </p>
               </div>
-
-              <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
-                                                  'has-error': form.email.$invalid && submitted }">
-                <label>Email</label>
+              <!-- 邮件地址 -->
+              <div class="form-group" ng-class="{ 'has-success': formUser.email.$valid && submitted,
+                                                  'has-error': formUser.email.$invalid && submitted }">
+                <label>邮箱</label>
 
                 <input type="email" name="email" class="form-control" ng-model="user.email"
                        required
-                       mongoose-error placeholder="Email ID"/>
-                <p class="help-block" ng-show="form.email.$error.email && submitted">
-                  Doesn't look like a valid email.
+                       mongoose-error placeholder="请输入一个有效的邮箱地址"/>
+                <p class="help-block" ng-show="formUser.email.$error.email && submitted">
+                  请输入一个有效的邮箱地址
                 </p>
-                <p class="help-block" ng-show="form.email.$error.required && submitted">
-                  What's your email address?
+                <p class="help-block" ng-show="formUser.email.$error.required && submitted">
+                  请输入邮件地址
                 </p>
-                <p class="help-block" ng-show="form.email.$error.mongoose">
+                <p class="help-block" ng-show="formUser.email.$error.mongoose">
                   {{ errors.email }}
                 </p>
               </div>
-
-              <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
-                                                  'has-error': form.password.$invalid && submitted }">
-                <label>Password</label>
+                <!-- 密码 -->
+              <div class="form-group" ng-class="{ 'has-success': formUser.password.$valid && submitted,
+                                                  'has-error': formUser.password.$invalid && submitted }">
+                <label>密码</label>
 
                 <input type="password" name="password" class="form-control" ng-model="user.password"
                        ng-minlength="3"
                        required
-                       mongoose-error placeholder="Password"/>
+                       mongoose-error placeholder="请输入密码"/>
                 <p class="help-block"
-                   ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
-                  Password must be at least 3 characters.
+                   ng-show="(formUser.password.$error.minlength || formUser.password.$error.required) && submitted">
+                  密码必须包含三个以上字符
                 </p>
-                <p class="help-block" ng-show="form.password.$error.mongoose">
+                <p class="help-block" ng-show="formUser.password.$error.mongoose">
                   {{ errors.password }}
                 </p>
               </div>
-                <div class="text-center">
+              <!-- 确认密码 -->
+              <div class="form-group" ng-class="{ 'has-success': formUser.password2.$valid && submitted,
+                                                 'has-error': formUser.password2.$invalid && submitted }">
+               <label>确认密码</label>
+             
+               <input type="password" name="password2" class="form-control" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
+               <p class="help-block" ng-show="formUser.password2.$error.compare && submitted">
+                 俩次密码输入不一致
+               </p>
+             </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Sign up</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="" href="/login">Login</a>
+              </div>
+            </form>
+            <!-- 买家注册结束 -->
+
+            <!-- 卖家注册开始 -->
+            <form ng-submit="registerSeller(formseller)" novalidate name="formseller" ng-switch-when="btn2">
+              <div class="form-group" ng-class="{ 'has-success': formseller.name.$valid && submittedshop,
+                                                  'has-error': formseller.name.$invalid && submittedshop }">
+                <label>登录用户名</label>
+
+                <input type="text" name="name" class="form-control" ng-model="user.name"
+                       required placeholder="请输入注册用户名"/>
+                <p class="help-block" ng-show="formseller.name.$error.required && submittedshop">
+                  请输入用户名！！
+                </p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': formseller.password.$valid && submittedshop,
+                                                  'has-error': formseller.password.$invalid && submittedshop }">
+                <label>密码</label>
+
+                <input type="password" name="password" class="form-control" ng-model="user.password"
+                       ng-minlength="3"
+                       required
+                       mongoose-error placeholder="请输入设置密码"/>
+                <p class="help-block"
+                   ng-show="(formseller.password.$error.minlength || formseller.password.$error.required) && submittedshop">
+                  密码必须包含三个字符以上!!               
+                </p>
+                <p class="help-block" ng-show="formseller.password.$error.mongoose">
+                  {{ errors.password }}
+                </p>
+              </div>
+              <div class="form-group" ng-class="{ 'has-success': formseller.password2.$valid && submittedshop,
+                                                 'has-error': formseller.password2.$invalid && submittedshop }">
+               <label>确认密码</label>
+             
+               <input type="password" name="password2" class="form-control" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
+               <p class="help-block" ng-show="formseller.password2.$error.compare && submittedshop">
+                 俩次密码输入不一致
+               </p>
+             </div>
+
+              <div class="form-group" ng-class="{ 'has-success': formseller.shopName.$valid && submittedshop,
+                                                  'has-error': formseller.shopName.$invalid && submittedshop }">
+                <label>商户真实全名</label>
+
+                <input type="text" name="shopName" class="form-control" ng-model="user.shopName"
+                       required placeholder="请输入真实的用户名"/>
+                <p class="help-block" ng-show="formseller.shopName.$error.required && submittedshop">
+                  请输入有效的联系方式！！
+                </p>
+
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': formseller.phone.$valid && submittedshop,
+                                                  'has-error': formseller.phone.$invalid && submittedshop }">
+                <label>固定电话</label>
+
+                <input type="number" name="phone" class="form-control" ng-model="user.phone"
+                       placeholder="固定电话联系方式"/>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': formseller.cellphone.$valid && submittedshop,
+                                                  'has-error': formseller.cellphone.$invalid && submittedshop }">
+                <label>手机号码</label>
+
+                <input type="number" name="cellphone" class="form-control" ng-model="user.cellphone"
+                       required placeholder="移动电话联系方式" ng-minlength='11' ng-maxlength='11'/>
+                <p class="help-block" ng-show="formseller.cellphone.$error.required && submittedshop">
+                  请输入联系方式
+                </p>
+                <p class="help-block" ng-show="(formseller.cellphone.$error.number || formseller.cellphone.$error.minlength || formseller.cellphone.$error.maxlength) && formseller.cellphone.$dirty">
+                  请输入移动电话号码（11位有效数字）
+                </p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': formseller.email.$valid && submittedshop,
+                                                  'has-error': formseller.email.$invalid && submittedshop }">
+                <label>电子邮箱</label>
+
+                <input type="email" name="email" class="form-control" ng-model="user.email"
+                       required
+                       mongoose-error placeholder="请输入有效的邮件地址"/>
+                <p class="help-block" ng-show="formseller.email.$error.email && submittedshop">
+                  请输入有效的电子邮件地址
+                </p>
+                <p class="help-block" ng-show="formseller.email.$error.required && submittedshop">
+                  请输入电子邮箱地址！！
+                </p>
+                <p class="help-block" ng-show="formseller.email.$error.mongoose">
+                  {{ errors.email }}
+                </p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': formseller.address.$valid && submittedshop,
+                                                  'has-error': formseller.address.$invalid && submittedshop }">
+                <label>联系地址</label>
+
+                <input type="text" name="address" class="form-control" ng-model="user.address"
+                       required placeholder="请输入联系地址"/>
+                <p class="help-block" ng-show="formseller.address.$error.required && submittedshop">
+                  请输入联系地址
+                </p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': formseller.describe.$valid && submittedshop,
+                                                  'has-error': formseller.describe.$invalid && submittedshop }">
+                <label>产品介绍</label>
+                <textarea name="describe" cols="30" rows="10" class="form-control" ng-model="user.describe" placeholder="请输入产品介绍/产品描述"></textarea>
+                <p class="help-block" ng-show="formseller.describe.$error.required && submittedshop">
+                  请输入产品描述
+                </p>
+              </div>
+
+              <div class="text-center">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Sign up</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="" href="/login">Login</a>
-                </div>
+              </div>
             </form>
+            <!-- 卖家注册开始 -->
         </div>
     </div>
     <div class="col-md-3"></div>

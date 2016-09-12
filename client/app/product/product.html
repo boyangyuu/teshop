@@ -8,12 +8,13 @@
   </div>
 
   <div class="col-md-9">
-    <button type="button" class="btn btn-danger" ng-click="edit({});"><i class="fa fa-plus"></i>&nbsp;Add New</button>
+    <button type="button" class="btn btn-danger" ng-click="edit({});"><i class="fa fa-plus"></i>&nbsp;添加</button>
     <button type="submit" class="btn btn-info" ng-click="save(product);"><i class="fa fa-save"></i> &nbsp;Save</button>
     &nbsp;&nbsp;<a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a>
     <button type="button" class="btn" ng-click="delete(product);" ng-if="product._id"><i class="fa fa-trash"></i>&nbsp;Delete</button>
 
     <hr/>
+    <!-- 详情内容部分 -->
     <div class="box" ng-if="product._id">
       <form class="form-horizontal" role="form">
         <div class="form-group">

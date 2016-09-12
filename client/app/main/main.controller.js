@@ -1,93 +1,32 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .factory('Pages', ['$resource', function($resource) {
-    var obj = {};
-    obj = $resource('http://192.168.31.170:3000/api/Addresses/AddressPage');
-    return obj;
-  }])
-  .controller('ProductDetailsCtrl', function ($scope, Pages, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
+  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Reply, Category, socket,toastr, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
-
-      console.log("formmmm");
-      var starNum = 1;
-      var allstart = 5;
-      $scope.starsArr =  new Array();
-      while($scope.starsArr.length<starNum){
-          $scope.starsArr.push($scope.starsArr.length);
-      } 
-      $scope.NostarsArr =  new Array();
-      while($scope.NostarsArr.length<allstart-starNum){
-          $scope.NostarsArr.push($scope.NostarsArr.length);
-      } 
-      $scope.save=function(form){
-        console.log("提交成功！");
-        $scope.reply={
-          name:$scope.reply.name,
-          email:$scope.reply.email,
-          comment:$scope.reply.comment,
-          star:$scope.reply.star
-        };
-
-        var starNum = $scope.reply.star;
-        var allstart = 5;
-        console.log($scope.reply.star);
-        $scope.starsArr =  new Array();
-        while($scope.starsArr.length<starNum){
-            $scope.starsArr.push($scope.starsArr.length);
-        } 
-        $scope.NostarsArr =  new Array();
-        while($scope.NostarsArr.length<allstart-starNum){
-            $scope.NostarsArr.push($scope.NostarsArr.length);
-        } 
-        //console.log($scope.NostarsArr)
-        console.log($scope.reply);
-      }
-      $scope.data=[{"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
-                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
-                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
-                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
-                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"},
-                   {"img":"","name":"abc","time":"20160904","msg":"kshfjahfsjjsfh"}
-
-      ]
-    // http://127.0.0.1:3000/api/Addresses/AddressPage?page=1&count=10
-      $scope.numPerPage = 5;
-      $scope.noOfPages = 10;
-      $scope.currentPage = 1;
-
-      $scope.setPage = function () {
-        // $scope.data = myData.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
-
-        Pages.get({page:$scope.currentPage, count:10}, function(res) {
-          console.log(res)
-          $scope.data = res.results;
-          $scope.noOfPages =res.pageCount
-        })
-
-      };
-      
-      $scope.$watch( 'currentPage', $scope.setPage );
-
-
-
-
-
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
     if (localStorage !== null && JSON !== null && id !== null) {
         localStorage.productId = id;
     }
+
+    $scope.product = {};
+    $scope.product.variants = [];
+    $scope.product.features = [];
+    $scope.product.keyFeatures = []
+    $scope.product.replies = [];
+
     var productId = localStorage !== null ? localStorage.productId : null;
 
     $scope.product = Product.get({id:productId},function(data) {
       socket.syncUpdates('product', $scope.data);
       generateBreadCrumb('Category',data.category._id);
     });
+
+    // console.log($scope.product);
     $scope.categories = Category.all.query();
     // To shuffle throught different product variants
     $scope.i=0;
-    $scope.changeIndex =function(i){
+    $scope.changeIndex = function(i){
         $scope.i=i;
     };
 
@@ -119,6 +58,36 @@ angular.module('shopnxApp')
       });
     };
 
+    //reply
+    $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : localStorage.productId};
+    $scope.replyScope = {numOfPages : 0, curPage : 1};
+    var numPerPage = 10;
+
+    Reply.count.get({productId : productId}, function (data) {
+        // console.log("$scope.replyScope.numOfPages");
+        // console.log(data);
+        $scope.replyScope.numOfPages = data.count / numPerPage;
+    });
+
+    $scope.setPage = function () {
+        var skipNum = $scope.replyScope.curPage * numPerPage;
+        $scope.replies = Reply.query({productId : productId, skip: skipNum, limit : numPerPage});
+        // console.log("setPage");
+    };
+    $scope.$watch('replyScope.curPage', $scope.setPage);
+    $scope.submitReply = function(form) {
+      $scope.submitted = true;
+      if(form.$valid) {
+        Reply.save($scope.reply).$promise.then(function(res) {
+          toastr.success("Reply info saved successfully","Success");
+          $scope.product.replies.push(res);
+
+        }, function(error) { // error handler
+          var err = error.data.errors;
+          toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
+        });
+      }
+    };
   })
 
   .controller('MainCtrl', function ($scope, $state, $stateParams, $location, Product, Brand, Category, Feature, socket, $rootScope, $injector, $loading) {
@@ -127,10 +96,7 @@ angular.module('shopnxApp')
         $scope.product = $scope.store.getProduct($stateParams.productSku);
     }
 
-
-
-
-// For Price slider
+    // For Price slider
     $scope.currencyFormatting = function(value){
       return  '$ ' + value.toString();
     };
@@ -246,79 +212,6 @@ angular.module('shopnxApp')
 
       displayProducts(q,true);
     };
-
-    // $scope.filterFeatures = function() {
-    //   if ($scope.products.busy){ return; }
-    //   $scope.products.busy = true;
-    //   a.fl = [];
-    //   if($scope.fl.features){
-    //       angular.forEach($scope.fl.features,function(val, key){
-    //         if(val.length>0){
-    //           a.fl.push({'features.key' : key, 'features.val' : { $in: val}});
-    //         }
-    //       });
-    //       if(a.fl.length>0 && a.br && a.price) {
-    //         q.where = { $and : [a.price, a.br,{$and : a.fl}]};
-    //       }
-    //       else if(a.br && a.price) {
-    //         q.where = { $and : [a.price, a.br]};
-    //       }else if(a.br) {
-    //         q.where = { $and : [a.br]};
-    //       }else{
-    //         q.where = {};
-    //       }
-    //       displayProducts(q,true);
-    //   }
-    // };
-    //
-    // $scope.filterBrands = function() {
-    //   // This function required to query from database in place of filtering items from angular $scope,
-    //   // In some cases we load only 20 products for pagination in that case we won't be able to filter properly
-    //   if ($scope.products.busy){ return; }
-    //   $scope.products.busy = true;
-    //   a.br = [];
-    //   console.log($scope.priceSlider);
-    //   if($scope.fl.brands){
-    //     if($scope.fl.brands.length>0){
-    //       var brandIds = [];
-    //       angular.forEach($scope.fl.brands,function(brand){
-    //         brandIds.push(brand._id);
-    //       });
-    //       a.price = {'variants.price' : { $gt: $scope.priceSlider.min, $lt:$scope.priceSlider.max } };
-    //         a.br = {'brand._id' : { $in: brandIds } };
-    //         q.where = { $and : [a.price, a.br, {$and : a.fl}]};
-    //     }else if(a.fl){
-    //       q.where = { $and : [a.price, a.fl] };
-    //     }else{
-    //       q.where = { $and : [a.price] };
-    //     }
-    //   }else {
-    //     q.where.brand = undefined;
-    //     q.where['brand._id'] = undefined;
-    //   }
-    //   displayProducts(q,true);
-    // };
-    //
-    // $scope.filterPrice = function(price) {
-    //   // This function required to query from database in place of filtering items from angular $scope,
-    //   // In some cases we load only 20 products for pagination in that case we won't be able to filter properly
-    //   $scope.products.busy = false;
-    //   $scope.products.end = false;
-    //   $scope.products.after = 0;
-    //   $scope.products.items = [];
-    //
-    //   if ($scope.products.busy){ return;}
-    //   $scope.products.busy = true;
-    //     console.log('price');
-    //   if(price){
-    //     a.price = {'variants.price' : { $gt: price.min, $lt:price.max } };
-    //     q.where = { $and : [a.price, a.br, {$and : a.fl}]};
-    //   }else{
-    //     q.where = { $and : [a.br, {$and : a.fl}]};
-    //   }
-    //   // q.where['variants.price'] = { $gt: price.min, $lt:price.max };
-    //   displayProducts(q,true);
-    // };
 
     $scope.sortNow = function(sort){
         q.sort = sort;

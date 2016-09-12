@@ -101,8 +101,8 @@
                 <ul id="myTab" class="nav nav-tabs nav-top-border margin-top-40" role="tablist">
                     <li role="presentation" class="active">
                         <a href="#details" role="tab" data-toggle="tab" aria-expanded="false">商品介绍</a>
-                    </li>
-                    <li role="presentation" >
+                        </li>
+                        <li role="presentation" >
                         <a href="#reviews" role="tab" data-toggle="tab" aria-expanded="true">商品评价</a>
                     </li>
                 </ul>
@@ -160,52 +160,60 @@
                     </div>
             
                 <div role="tabpanel" class=" box tab-pane fade " id="reviews">
-                    
-                    <!-- /REVIEW ITEM -->
 
                     <!-- REVIEW ITEM -->
-                    <div class="block margin-bottom-60" ng-repeat="item in data">
-                            <span class="user-avatar"><!-- user-avatar -->
-                                <img class="pull-left media-object" src={{item.img}} width="64" height="64" alt="">
-                            </span>
+                    <div class="block margin-bottom-60" ng-repeat="item in replies">
+                            <!--<span class="user-avatar">&lt;!&ndash; user-avatar &ndash;&gt;-->
+                                <!--<img class="pull-left media-object" src={{item.img}} width="64" height="64" alt="">-->
+                            <!--</span>-->
 
-                            <div class="media-body">
-                                <h4 class="media-heading size-14">
-                                   {{item.name}}  
-                                <span class="text-muted">{{item.time}}</span> –
-                                <span class="size-14 text-muted" ng-repeat="item in starsArr"><!-- stars -->
-               
+                        <div class="media-body">
+                            <h4 class="media-heading size-14">
+                                {{item.email}}
+                                <!--<span class="text-muted">{{item.time}}</span> –-->
+                                <span class="size-14 text-muted"><!-- stars -->
                                     <i class="fa fa-star"></i>
-
-                                </span>
-                                <span class="size-14 text-muted" ng-repeat="item in NostarsArr"><!-- stars -->
-
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
                                     <i class="fa fa-star-o"></i>
-                                </span>               
-                                </h4>
+                                    <i class="fa fa-star-o"></i>
+                                </span>
+                            </h4>
+                            <p>
+                                用户名:{{item.userName}}
+                            </p>
+                            <p>
+                                提交时间:{{item.updated}}
+                            </p>
+                            <p>
+                                {{item.comment}}
+                            </p>
 
-                                <p>
-                                   {{item.msg}} 
-                                </p>
-
-                            </div>
-                            <hr>
+                        </div>
                     </div>
                     <!-- /REVIEW ITEM -->
 
-
                     <!-- 分页 -->
-                     <!-- <ul>
-                      <li ng-repeat="item in data">{{item._id}}</li>
-                    </ul> -->
-                    <pagination num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination>
+                    <pagination num-pages="replyScope.numOfPages" current-page="replyScope.curPage" class="pagination-small"></pagination>
                     <!-- 分页 -->
 
-                    <hr>
                     <!-- REVIEW FORM -->
-                    <h4 class="margin-bottom-40">ADD A REVIEW</h4>
+                    <h4 class="page-header margin-bottom-40">ADD A REVIEW</h4>
+                    <form ng-submit="submitReply(form)" name="form" novalidate>
 
-                    <form  ng-submit="save(form)"  id="form">
+                        <div class="row margin-bottom-10">
+
+                            <div class="col-md-6 margin-bottom-10">
+                                <!-- Name -->
+                                <input type="text" name="name" id="name" ng-model="reply.name" class="form-control" placeholder="Name *" maxlength="100" required="">
+                            </div>
+
+                            <div class="col-md-6">
+                                <!-- Email -->
+                                <input type="email" name="email" id="email" ng-model="reply.email" class="form-control" placeholder="Email *" maxlength="100" required="">
+                            </div>
+
+                        </div>
 
                         <!-- Comment -->
                         <div class="margin-bottom-30">
@@ -215,29 +223,51 @@
                         <!-- Stars -->
                         <div class="star">
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" ng-model="reply.star">1 Star
+                              <input type="radio" ng-model="reply.star" ng-value="1">1 Star
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" ng-model="reply.star">2 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="2">2 Stars
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" ng-model="reply.star">3 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="3">3 Stars
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4" ng-model="reply.star">4 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="4">4 Stars
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="5" ng-model="reply.star">5 Stars
+                              <input type="radio" ng-model="reply.star" ng-value="5">5 Stars
                             </label>
                         </div>
                           <!-- Send Button -->
-                        <button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Send Review</button>
+                        <button type="submit" ng-disabled="form.$dirty && form.$invalid" class="btn btn-primary" ><i class="fa fa-check"></i> Send Review</button>
 
                     </form>
                     <!-- /REVIEW FORM -->
-                 
-                   
-                    
+                  <!--   <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul> -->
+                   <!--  <div class="rate-paginator">
+                        <span class="rate-page-prev">&lt;&lt;上一页</span>
+                        <span>1</span>
+                        <a href="?page=2">2</a>
+                        <a href="?page=3">3</a>
+                        <span class="rate-page-break">...</span>
+                        <a data-page="2" href="?page=2" class="rate-page-prev">下一页&gt;&gt;</a>
+                    </div> -->
+                    <!-- <tm-pagination conf="paginationConf"></tm-pagination> -->
+                    <pagination1 num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination1>
+                    <div class="pagination">
+                        <ul>
+                            <li ng-class="{disabled: noPrevious()}"><a ng-click="selectPrevious()">Previous</a></li>
+                            <li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="selectPage(page)">{{page}}</a></li>
+                            <li ng-class="{disabled: noNext()}"><a ng-click="selectNext()">Next</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

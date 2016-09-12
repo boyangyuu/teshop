@@ -15,9 +15,10 @@ var ProductSchema = new Schema({
   uid: String,
   variants: [{ image : String, price : Number, mrp : Number, weight : String, size : String }],
   features: Array,
+  replies: [{ type: Schema.Types.ObjectId, ref: 'Reply'}],
   keyFeatures: Array,
   active: { type: Boolean, default: true },
-  updated: {type: Date, default: Date.now}
-}, { versionKey: false });
+  updated: {type: Date, default: Date.now},
+ }, { versionKey: false });
 
 module.exports = mongoose.model('Product', ProductSchema);

@@ -9,6 +9,12 @@ var validationError = function(res, err) {
   return res.status(422).json(err);
 };
 
+exports.getAllShops = function(req, res) {
+  User.find({class:'shop'}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
+};
 /**
  * Get list of users
  * restriction: 'admin'
@@ -24,6 +30,12 @@ exports.index = function(req, res) {
  * Creates a new user
  */
 exports.create = function (req, res, next) {
+
+  if (req.body.shopName) {
+    req.body.verify = false;
+    req.body.class = 'shop';
+  };
+
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';

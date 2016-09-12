@@ -33,7 +33,7 @@ angular.module('shopnxApp')
     $scope.brands = Brand.query(function() {
       socket.syncUpdates('brand', $scope.brands);
     });
-    $scope.edit = function(product) {
+    $scope.edit = function(product){
       var title; if(product.name){ title = 'Editing ' + product.name;} else{ title = 'Add New';}
       Modal.show(product,{title:title, api:'Product', columns: cols});
     };

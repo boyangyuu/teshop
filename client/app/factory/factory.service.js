@@ -10,6 +10,11 @@ angular.module('shopnxApp')
       }
     };
   }])
+  //用户管理卖家
+  .factory('AdminSell',['$resource',function($resource){
+    var obj={};
+    obj=$resource('/api/');
+  }])
   .factory('Product', ['$resource', function($resource) {
     var obj = {};
     obj = $resource('/api/products/:id', null, {'update': { method:'PUT' } });
@@ -67,6 +72,12 @@ angular.module('shopnxApp')
     var obj = {};
     obj = $resource('/api/features/:id', null, {'update': { method:'PUT' } });
     obj.group = $resource('/api/features/group', null, {'update': { method:'PUT' }});
+    return obj;
+  }])
+  .factory('Reply', ['$resource', function($resource) {
+    var obj = {};
+    obj = $resource('/api/replies/:id', null, {'update': { method:'PUT' } });
+    obj.count = $resource('/api/replies/count');
     return obj;
   }])
   .factory('PaymentMethod', ['$resource', function($resource) {

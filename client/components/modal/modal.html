@@ -8,6 +8,7 @@
   <p ng-if="options.body" ng-bind="options.body"></p>
   <div class="form-group" ng-repeat="i in options.columns" ng-if="options.columns">
     <label class="col-sm-3 control-label no-padding-right">{{i.heading | labelCase}}</label>
+    <!-- 表单开始 -->
     <div class="col-sm-7">
       <span class="block input-icon input-icon-right">
         <input type="text" class="form-control" name="name" ng-model="data[i.heading]" ng-disabled="i.heading=='_id' || (i.heading==options.disabledColumn && options.title==='Add New')" autofocus="i.heading=='name'" placeholder="{{i.heading | labelCase}}" ng-if="i.sortType==='parseFloat'" only-numbers>
@@ -15,6 +16,7 @@
         <input type="checkbox" ng-model="data[i.heading]" ng-if="i.dataType==='boolean'" class="form-control">
       </span>
     </div>
+    <!-- 表单结束 -->
   </div>
 
   <div class="form-group" ng-repeat="(i, name) in data track by $index" ng-if="!options.columns">
