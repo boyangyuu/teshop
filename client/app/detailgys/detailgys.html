@@ -36,22 +36,18 @@
                     <div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted,
                                                   'has-error': form.phone.$invalid && submitted }">
 						<label>电话</label>
-						<input type="number" name="phone" class="form-control" ng-model="seller.phone" value="{{seller.phone}}">
-                		<p class="help-block" ng-show="form.phone.$error.number && submitted">
-                  			请输入正确的联系方式
-                		</p>
+						<input type="text" name="phone" class="form-control" ng-model="seller.phone" value="{{seller.phone}}">
+
                     </div>
 
                     <div class="form-group" ng-class="{ 'has-success': form.cellphone.$valid && submitted,
                                                   'has-error': form.cellphone.$invalid && submitted }">
 						<label>手机号码</label>
-						<input type="number" name="cellphone" class="form-control" ng-model="seller.cellphone" required value="{{seller.cellphone}}">
+						<input type="text" name="cellphone" class="form-control" ng-model="seller.cellphone" required value="{{seller.cellphone}}">
 						<p class="help-block" ng-show="form.cellphone.$error.required && submitted">
                   			请输入联系电话
                 		</p>
-                		<p class="help-block" ng-show="form.cellphone.$error.number && submitted">
-                  			请输入正确的联系方式
-                		</p>
+
                     </div>
 
                     <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,

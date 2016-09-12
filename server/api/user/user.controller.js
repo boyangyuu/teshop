@@ -8,7 +8,17 @@ var jwt = require('jsonwebtoken');
 var validationError = function(res, err) {
   return res.status(422).json(err);
 };
-
+exports.verifiedShop = function(req, res) {
+  var userId = req.params.id;
+  User.findById(userId, function (err, user) {
+      user.verify = true;
+      user.role = 'shop';
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.status(200).json({verify:'ok'});
+      });
+  });
+};
 exports.getAllShops = function(req, res) {
   User.find({class:'shop'}, '-salt -hashedPassword', function (err, users) {
     if(err) return res.status(500).send(err);

@@ -20,11 +20,8 @@ _________________________________________________________ -->
                     <a href="/administration"><i class="fa fa-tag">&nbsp;</i>用户管理</a>
                   </li>
                   <!-- 用户管理结束 -->
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
-                    <a href="/product"><i class="fa fa-truck">&nbsp;</i>Products</a>
-                  </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/test')}">
-                    <a href="/test"><i class="fa fa-truck">&nbsp;</i>Test</a>
+                  <li ng-show="isShowMenuItem('productManager')" ng-class="{active: isActive('/product')}">
+                    <a href="/product"><i class="fa fa-truck">&nbsp;</i>商品管理</a>
                   </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/news')}">
                     <a href="/news"><i class="fa fa-truck">&nbsp;</i>News</a>
@@ -44,7 +41,7 @@ _________________________________________________________ -->
                     <a href="/coupon"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
                   </li>
                   <li ng-show="isLoggedIn()" ng-class="{active: isActive('/order')}">
-                    <a href="/order"><i class="fa fa-road">&nbsp;</i>Orders</a>
+                    <a href="/order"><i class="fa fa-road">&nbsp;</i>订单</a>
                   </li>
                   <li class="divider"></li>
                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">

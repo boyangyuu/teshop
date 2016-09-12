@@ -46,10 +46,10 @@
 				              </td>
 				              <td style="text-align:center">{{p.describe}}</td>
 				              <td style="text-align:center">
-				                  <button class="btn" ng-class="{true:'btn-success', false:''}[p.verify]" ng-click="changeActive(p);">{{p.verify | active}}</button>
+				                  <button class="btn" ng-class="{true:'btn-success', false:''}[p.verify]" ng-click="verifyShop(p._id);">{{p.verify | active}}</button>
 				              </td>
 				              <td style="text-align:center">
-				              	<a href="" ng-click="del(p.compellation)">删除</a>
+				              	<a href="" ng-click="del(p._id)">删除</a>
 				              	<!-- <a href="" ng-click="revise()">修改</a> -->
 				              </td>
 				          </tr>
