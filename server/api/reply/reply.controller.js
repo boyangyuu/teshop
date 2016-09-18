@@ -54,26 +54,66 @@ exports.group = function(req, res) {
 // });
 // };
 
+// Get count
+exports.count = function(req, res) {
+    if(req.query){
+        var q = isJson(req.query.where);
+        Reply.find(q).count().exec(function (err, count) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json({count:count});
+        });
+    }
+};
+
+function isJson(str) {
+    try {
+        str = JSON.parse(str);
+    } catch (e) {
+        str = str;
+    }
+    return str
+}
+
 // Get list of replies
 exports.index = function(req, res) {
-  Reply.find(function (err, replies) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(replies);
-  });
+    if(req.query){
+        // console.log(req.query,req.query.skip,req.query.limit,req.query.sort);
+        var q = isJson(req.query.where);
+        // console.log(q);
+        var sort = isJson(req.query.sort);
+        var select = isJson(req.query.select);
+        Reply.find(q).limit(req.query.limit).skip(req.query.skip).sort(sort).select(select).exec(function (err, replies) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json(replies);
+        });
+
+    }else{
+        Reply.find(function (err, replies) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json(replies);
+        });
+    }
 };
 
 // Get a single reply
 exports.show = function(req, res) {
-  Reply.findById(req.params.id, function (err, reply) {
-    if(err) { return handleError(res, err); }
-    if(!reply) { return res.status(404).send('Not Found'); }
-    return res.json(reply);
-  });
+  // Reply.findById(req.params.id, function (err, reply) {
+  //   if(err) { return handleError(res, err); }
+  //   if(!reply) { return res.status(404).send('Not Found'); }
+  //   return res.json(reply);
+  // });
+  Reply
+  .find({})
+  .sort('updated')//按更新时间排序
+  .exec(function (res) {
+    return res.json(res);
+  });//执行回调方法
 };
 
 // Creates a new reply in the DB.
 exports.create = function(req, res) {
   req.body.userName = req.user.name;
+  req.body.updated = Date.now();
   Reply.create(req.body, function(err, reply) {
       //update product
       if(err) { return handleError(res, err); }

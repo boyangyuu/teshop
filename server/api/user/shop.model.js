@@ -19,9 +19,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
-  roles:[],
-  shops :[],
-  userInfo:[{}],
+  userInfo:;
   hashedPassword: String,
   provider: String,
   salt: String,

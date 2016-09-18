@@ -6,7 +6,8 @@ var shopnxApp=angular.module("shopnxApp");
     $scope.errors = {};
     $scope.btn="btn1";
     // 采购商
-    $scope.registerUser = function(formuser) {
+    $scope.registerUser = function(formuser) 
+    {
       $scope.submitted = true;
 
       /*if(formuser.$valid){
@@ -32,7 +33,8 @@ var shopnxApp=angular.module("shopnxApp");
       }*/
     };
     // 供应商
-    $scope.registerSeller = function(formshop){
+    $scope.registerSeller = function(formshop)
+    {
       $scope.submittedshop = true;
 
       /*if(formshop.$valid) {
@@ -60,10 +62,12 @@ var shopnxApp=angular.module("shopnxApp");
             $scope.errors[field] = error.message;
           });
         });
+
       }*/
     };
     // 个人用户
-    $scope.register = function(form){
+    $scope.register = function(form)
+    {
       $scope.submitteduser = true;
 
       // if(form.$valid) {
@@ -92,10 +96,10 @@ var shopnxApp=angular.module("shopnxApp");
       //     });
       //   });
       // }
-    };
+    }
 
-    
     $scope.loginOauth = function(provider){
       $window.location.href = '/auth/' + provider;
     };
+
   });

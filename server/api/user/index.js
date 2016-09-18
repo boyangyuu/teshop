@@ -14,4 +14,8 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
+//获取卖家用户
+router.get('/get/shops/all',  controller.getAllShops)
+router.get('/verifyShop/:id',  controller.verifiedShop);
+
 module.exports = router;

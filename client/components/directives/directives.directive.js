@@ -75,7 +75,7 @@ angular.module('shopnxApp')
                 }, scope.timeout);
             }
         },
-        template:'<button ng-click="onClick()" class="button button-calm xgmm-btn" ng-disabled="timer"><span ng-if="showTimer">{{ timerCount }}</span>{{text}}</button>'
+        template:'<button ng-click="onClick()" class="button button-calm xgmm-btn" ng-disabled="timer"><span ng-if="showTimer">{{ timerCount }}秒</span>{{text}}</button>'
     };
   })
 

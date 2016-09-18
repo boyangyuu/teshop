@@ -33,3 +33,9 @@ button.individual-btn{
 p.individual-p{
 	margin-left:15%;
 }
+button.button{
+	height:34px;
+	line-height:34px;
+	overflow: hidden;
+	transform:translateY(3px);
+}

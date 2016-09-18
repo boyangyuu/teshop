@@ -162,7 +162,7 @@
                 <div role="tabpanel" class=" box tab-pane fade " id="reviews">
 
                     <!-- REVIEW ITEM -->
-                    <div class="block margin-bottom-60" ng-repeat="item in product.replies">
+                    <div class="block margin-bottom-60" ng-repeat="item in replies">
                             <!--<span class="user-avatar">&lt;!&ndash; user-avatar &ndash;&gt;-->
                                 <!--<img class="pull-left media-object" src={{item.img}} width="64" height="64" alt="">-->
                             <!--</span>-->
@@ -192,6 +192,10 @@
                         </div>
                     </div>
                     <!-- /REVIEW ITEM -->
+
+                    <!-- 分页 -->
+                    <pagination num-pages="replyScope.numOfPages" current-page="replyScope.curPage" class="pagination-small"></pagination>
+                    <!-- 分页 -->
 
                     <!-- REVIEW FORM -->
                     <h4 class="page-header margin-bottom-40">ADD A REVIEW</h4>

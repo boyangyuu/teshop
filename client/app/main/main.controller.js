@@ -29,17 +29,7 @@ angular.module('shopnxApp')
     $scope.changeIndex = function(i){
         $scope.i=i;
     };
-    //yuboyang modified (需要解決報錯)
-    // //fenye
-    // var $scope.numPerPage = 5;
-    // var $scope.noOfPages = Math.ceil(myData.count() / $scope.numPerPage);
-    // var $scope.currentPage = 1;
-    // var $scope.s=
-    // $scope.setPage = function () {
-    //     $scope.data = myData.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
-    //     };
-  
-      // $scope.$watch( 'currentPage', $scope.setPage );
+
     // The main function to navigate to a page with some hidden parameters
     $scope.navigate = function(page,params){
       if(params){
@@ -70,16 +60,26 @@ angular.module('shopnxApp')
 
     //reply
     $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : localStorage.productId};
+    $scope.replyScope = {numOfPages : 0, curPage : 1};
+    var numPerPage = 10;
 
+    Reply.count.get({productId : productId}, function (data) {
+        // console.log("$scope.replyScope.numOfPages");
+        // console.log(data);
+        $scope.replyScope.numOfPages = data.count / numPerPage;
+    });
+
+    $scope.setPage = function () {
+        var skipNum = $scope.replyScope.curPage * numPerPage;
+        $scope.replies = Reply.query({productId : productId, skip: skipNum, limit : numPerPage});
+        // console.log("setPage");
+    };
+    $scope.$watch('replyScope.curPage', $scope.setPage);
     $scope.submitReply = function(form) {
       $scope.submitted = true;
-      // console.log($scope.reply);
       if(form.$valid) {
         Reply.save($scope.reply).$promise.then(function(res) {
           toastr.success("Reply info saved successfully","Success");
-          //refresh replies
-          console.log("res");
-          console.log(res);
           $scope.product.replies.push(res);
 
         }, function(error) { // error handler
@@ -95,9 +95,6 @@ angular.module('shopnxApp')
     if ($stateParams.productSku) { // != null
         $scope.product = $scope.store.getProduct($stateParams.productSku);
     }
-
-
-
 
     // For Price slider
     $scope.currencyFormatting = function(value){
@@ -215,79 +212,6 @@ angular.module('shopnxApp')
 
       displayProducts(q,true);
     };
-
-    // $scope.filterFeatures = function() {
-    //   if ($scope.products.busy){ return; }
-    //   $scope.products.busy = true;
-    //   a.fl = [];
-    //   if($scope.fl.features){
-    //       angular.forEach($scope.fl.features,function(val, key){
-    //         if(val.length>0){
-    //           a.fl.push({'features.key' : key, 'features.val' : { $in: val}});
-    //         }
-    //       });
-    //       if(a.fl.length>0 && a.br && a.price) {
-    //         q.where = { $and : [a.price, a.br,{$and : a.fl}]};
-    //       }
-    //       else if(a.br && a.price) {
-    //         q.where = { $and : [a.price, a.br]};
-    //       }else if(a.br) {
-    //         q.where = { $and : [a.br]};
-    //       }else{
-    //         q.where = {};
-    //       }
-    //       displayProducts(q,true);
-    //   }
-    // };
-    //
-    // $scope.filterBrands = function() {
-    //   // This function required to query from database in place of filtering items from angular $scope,
-    //   // In some cases we load only 20 products for pagination in that case we won't be able to filter properly
-    //   if ($scope.products.busy){ return; }
-    //   $scope.products.busy = true;
-    //   a.br = [];
-    //   console.log($scope.priceSlider);
-    //   if($scope.fl.brands){
-    //     if($scope.fl.brands.length>0){
-    //       var brandIds = [];
-    //       angular.forEach($scope.fl.brands,function(brand){
-    //         brandIds.push(brand._id);
-    //       });
-    //       a.price = {'variants.price' : { $gt: $scope.priceSlider.min, $lt:$scope.priceSlider.max } };
-    //         a.br = {'brand._id' : { $in: brandIds } };
-    //         q.where = { $and : [a.price, a.br, {$and : a.fl}]};
-    //     }else if(a.fl){
-    //       q.where = { $and : [a.price, a.fl] };
-    //     }else{
-    //       q.where = { $and : [a.price] };
-    //     }
-    //   }else {
-    //     q.where.brand = undefined;
-    //     q.where['brand._id'] = undefined;
-    //   }
-    //   displayProducts(q,true);
-    // };
-    //
-    // $scope.filterPrice = function(price) {
-    //   // This function required to query from database in place of filtering items from angular $scope,
-    //   // In some cases we load only 20 products for pagination in that case we won't be able to filter properly
-    //   $scope.products.busy = false;
-    //   $scope.products.end = false;
-    //   $scope.products.after = 0;
-    //   $scope.products.items = [];
-    //
-    //   if ($scope.products.busy){ return;}
-    //   $scope.products.busy = true;
-    //     console.log('price');
-    //   if(price){
-    //     a.price = {'variants.price' : { $gt: price.min, $lt:price.max } };
-    //     q.where = { $and : [a.price, a.br, {$and : a.fl}]};
-    //   }else{
-    //     q.where = { $and : [a.br, {$and : a.fl}]};
-    //   }
-    //   // q.where['variants.price'] = { $gt: price.min, $lt:price.max };
-    //   displayProducts(q,true);
-    // };
 
     $scope.sortNow = function(sort){
         q.sort = sort;

@@ -1,12 +1,31 @@
 'use strict';
-var seller=[
-    	{name:'aa',product:'建材',active:false,shopName:'琪琳',phone:4513456431,cellphone:18435140633,email:'59894@136.com',address:'北京市**',describe:'装饰材料:各种涂料、油漆、镀层、贴面、各色瓷砖、具有特殊效果的玻璃等'},
-    	{name:'bb',product:'图纸',active:true,shopName:'麒麟',phone:45613186456,cellphone:18636160693,email:'sede456@sine.cn',address:'天津市**',describe:'建筑立面图,建筑剖面图,建筑平面图,建筑总平面图'},
-    	{name:'cc',product:'混泥土',active:true,shopName:'琪琪',phone:78978946789,cellphone:18756476836,email:'325aser@think.com',address:'上海市**',describe:'水泥混凝土、沥青混凝土、石膏混凝土及聚合物混凝土'}
-    ]
-    
+
 angular.module('shopnxApp')
-	.controller('administrationCtrl',function($scope,Modal){
+  .factory('ShopUsers', ['$resource', function($resource) {
+      var obj = {};
+      obj = $resource('/api/users/get/shops/all',{},{isArray:true});
+      return obj;
+    }])
+  .factory('deleteUser', ['$resource', function($resource) {
+      var obj = {};
+      obj = $resource('/api/users/:id');
+      return obj;
+    }])
+    .factory('verifyShop', ['$resource', function($resource) {
+        var obj = {};
+        obj = $resource('/api/users/verifyShop/:id');
+        return obj;
+      }])
+	.controller('administrationCtrl',function($scope, Modal, ShopUsers, verifyShop, deleteUser){
+
+    $scope.getlist = function getlist() {
+      ShopUsers.query(function(ins){
+        $scope.shopUserList = ins
+      });
+    }
+    $scope.getlist();
+
+
 		var cols = [
       {heading:'用户名',dataType:'text', sortType:'lowercase'},
       {heading:'产品类型',dataType:'text', sortType:'lowercase'}
@@ -18,26 +37,40 @@ angular.module('shopnxApp')
       var title; if(product.name){ title = 'Editing ' + product.name;} else{ title = 'Add New';}
       Modal.show(product,{title:title, api:'Product', columns: cols});
     };
-    $scope.supplier=seller;
+    // $scope.supplier=seller;
     /*删除卖家用户信息*/
-    $scope.del=function(compellation){
-    	angular.forEach($scope.supplier,function(o,i){
-
-    		if(o.compellation==compellation)
-    		{
-    			$scope.supplier.splice(i,1);
-    			
-    		}
-    	})
+    $scope.del=function(id){
+    	// angular.forEach($scope.supplier,function(o,i){
+      //
+    	// 	if(o.compellation==compellation)
+    	// 	{
+    	// 		$scope.supplier.splice(i,1);
+      //
+    	// 	}
+    	// })
+      deleteUser.delete({id:id}, function (res) {
+        console.log(res)
+      })
     }
+
+    $scope.verifyShop = function (id) {
+      verifyShop.get({id:id}, function (res) {
+
+
+        if (res.verify === 'ok') {
+          $scope.getlist();
+        }
+      })
+    }
+
     /*卖家信息修改*/
     $scope.revise=function(){
     	alert(1);
 
     }
     /*卖家信息详情页*/
-    $scope.detail=function(p){
-    	  $state.go('',{obj:{pid:"3423423"}});
-    }
+    // $scope.detail=function(p){
+    // 	  $state.go('',{obj:{pid:"3423423"}});
+    // }
 
 	});
