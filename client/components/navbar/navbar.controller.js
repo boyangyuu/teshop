@@ -51,6 +51,7 @@ angular.module('shopnxApp')
     };
 
     $scope.categories = Category.all.query();
+    $scope.order = "category";
 
 // // Script which calls all category from parent 0 and constructs the category hierarchy
 // // This was moved to the server and now 1 call does it all instead 1 for each parent category + 1 for parent category itself

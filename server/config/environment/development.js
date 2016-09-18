@@ -4,8 +4,11 @@
 // ==================================
 module.exports = {
   // MongoDB connection options
-  mongo: {
-    uri: 'mongodb://localhost/shopnx-dev'
+  // mongo: { //localhost
+  //   uri: 'mongodb://localhost/shopnx-dev'
+  // },
+  mongo: { //alibaba
+    uri: 'mongodb://101.201.81.214/shopnx-dev'
   },
 
   seedDB: true

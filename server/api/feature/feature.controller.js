@@ -7,24 +7,31 @@ var Product = require('../product/product.model');
 // Get all features group
 exports.group = function(req, res) {
   var async = require("async");
-  var fe = [];
+  var featureMaps = [];
   // return res.status(200).json(p);
-  Feature.find().distinct('key',function(err,feature){
+  console.log(req.params.categoryId);
+  Feature.find({categoryId : req.params.categoryId}).distinct('key',function(err,features){
+    console.log("features");
+  console.log(features);
+
   var f = {};
-    async.each(feature, function(k, callback){
+    async.each(features, function(k, callback){
       var x = {};
       x.key = k;
       x.v = [];
       // console.log(x);
         Feature.find({key:k,active:true}).distinct('val').exec(function(err,v){
           x.v = v;
-          fe.push(x);
+          featureMaps.push(x);
           callback();
         });
       },
       // 3rd param is the function to call when everything's done
       function(err){
-        if( err ) { return res.status(404).send('Not Found'); } else { return res.status(200).json(fe); }
+        if( err ) { return res.status(404).send('Not Found'); } else {
+          console.log(featureMaps);
+          return res.status(200).json(featureMaps);
+        }
       }
     );
 });
@@ -62,9 +69,11 @@ exports.index = function(req, res) {
   });
 };
 
-// Get a single feature
+// Get features by categoryId
 exports.show = function(req, res) {
-  Feature.findById(req.params.id, function (err, feature) {
+  console.log("showyby");
+  console.log(req.params);
+  Feature.find({categoryId : req.params.categoryId}, function (err, feature) {
     if(err) { return handleError(res, err); }
     if(!feature) { return res.status(404).send('Not Found'); }
     return res.json(feature);

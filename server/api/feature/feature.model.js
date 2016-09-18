@@ -7,7 +7,8 @@ var FeatureSchema = new Schema({
   key: String,
   val: String,
   info: String,
-  active: Boolean
+  active: Boolean,
+  categoryId:Schema.Types.ObjectId,
 });
 
 module.exports = mongoose.model('Feature', FeatureSchema);

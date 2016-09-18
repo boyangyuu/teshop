@@ -8,16 +8,16 @@ angular.module('shopnxApp')
       var o={};
       o.strict='AE';
       o.scope={
-        orgText:'=compare'
+        text:'='
       };
       o.require='ngModel';
       o.link=function(sco,ele,att,con)
       {
         con.$validators.compare=function(v)
         {
-            return v==sco.orgText;
+            return v==sco.text;
         }
-        sco.$watch('orgText',function()
+        sco.$watch('text',function()
         {
           con.$validate();
         })
