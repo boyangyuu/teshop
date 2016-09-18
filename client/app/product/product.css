@@ -7,3 +7,12 @@
 .error {
     color: #ff0000;
 }
+span.ng-scope{
+	text-align:center;
+	width:100%;
+	display:inline-block;
+	color:#999;
+}
+span.ui-select-match-text{
+	width:100%;
+}

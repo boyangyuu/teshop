@@ -36,10 +36,10 @@ Shipping.find(function (err, data) {
           "_id" : "561f7ff6fb2f8dac199a618f",
           "carrier" : "UPS",
           "country" : "United States",
-          "charge" : 500,
+          "charge" : 0.01,
           "minWeight" : 0,
           "maxWeight" : 100,
-          "freeShipping" : 5000,
+          "freeShipping" : 0.01,
           "__v" : 0,
           "active" : true
       },
@@ -111,7 +111,7 @@ Setting.find(function (err, data) {
   if(data.length < 1){
     Setting.create({
       "minOrderValue" : 20,
-      "shippingCharge" : 15
+      "shippingCharge" : 0.15
     });
   }
 });
@@ -125,7 +125,7 @@ PaymentMethod.find(function (err, data) {
     },
     {
         name: 'PayPal',
-        email: '2lessons@gmail.com',
+        email: 'yuboyanggold@gmail.com',
         active : true
     },
     {

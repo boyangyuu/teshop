@@ -11,11 +11,19 @@ angular.module('shopnxApp')
       obj = $resource('/api/users/:id');
       return obj;
     }])
-	.controller('administrationCtrl',function($scope, Modal, ShopUsers){
+    .factory('verifyShop', ['$resource', function($resource) {
+        var obj = {};
+        obj = $resource('/api/users/verifyShop/:id');
+        return obj;
+      }])
+	.controller('administrationCtrl',function($scope, Modal, ShopUsers, verifyShop, deleteUser){
 
-    ShopUsers.query(function(ins){
-      $scope.shopUserList = ins
-    });
+    $scope.getlist = function getlist() {
+      ShopUsers.query(function(ins){
+        $scope.shopUserList = ins
+      });
+    }
+    $scope.getlist();
 
 
 		var cols = [
@@ -31,24 +39,38 @@ angular.module('shopnxApp')
     };
     // $scope.supplier=seller;
     /*删除卖家用户信息*/
-    $scope.del=function(compellation){
-    	angular.forEach($scope.supplier,function(o,i){
-
-    		if(o.compellation==compellation)
-    		{
-    			$scope.supplier.splice(i,1);
-
-    		}
-    	})
+    $scope.del=function(id){
+    	// angular.forEach($scope.supplier,function(o,i){
+      //
+    	// 	if(o.compellation==compellation)
+    	// 	{
+    	// 		$scope.supplier.splice(i,1);
+      //
+    	// 	}
+    	// })
+      deleteUser.delete({id:id}, function (res) {
+        console.log(res)
+      })
     }
+
+    $scope.verifyShop = function (id) {
+      verifyShop.get({id:id}, function (res) {
+
+
+        if (res.verify === 'ok') {
+          $scope.getlist();
+        }
+      })
+    }
+
     /*卖家信息修改*/
     $scope.revise=function(){
     	alert(1);
 
     }
     /*卖家信息详情页*/
-    $scope.detail=function(p){
-    	  $state.go('',{obj:{pid:"3423423"}});
-    }
+    // $scope.detail=function(p){
+    // 	  $state.go('',{obj:{pid:"3423423"}});
+    // }
 
 	});

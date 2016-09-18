@@ -20,6 +20,18 @@ angular.module('shopnxApp')
     $rootScope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
+    var config = {
+      "admin" : ["userManager"],
+      "shop" : ["productManager"],
+      "user" : []
+    }
+    $rootScope.isShowMenuItem = function (menuItemName) {
+      var roleName = Auth.getRole();
+      if (!roleName) return false;
+      var flag = config[roleName].indexOf(menuItemName) != -1;
+      return flag;
+    }
+
     $rootScope.checkCart = function(id){
         if(!_.contains($scope.cart.skuArray, id)){
             return true;

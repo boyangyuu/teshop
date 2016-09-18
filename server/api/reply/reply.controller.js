@@ -97,11 +97,17 @@ exports.index = function(req, res) {
 
 // Get a single reply
 exports.show = function(req, res) {
-  Reply.findById(req.params.id, function (err, reply) {
-    if(err) { return handleError(res, err); }
-    if(!reply) { return res.status(404).send('Not Found'); }
-    return res.json(reply);
-  });
+  // Reply.findById(req.params.id, function (err, reply) {
+  //   if(err) { return handleError(res, err); }
+  //   if(!reply) { return res.status(404).send('Not Found'); }
+  //   return res.json(reply);
+  // });
+  Reply
+  .find({})
+  .sort('updated')//按更新时间排序
+  .exec(function (res) {
+    return res.json(res);
+  });//执行回调方法
 };
 
 // Creates a new reply in the DB.

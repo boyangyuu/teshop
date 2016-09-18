@@ -22,7 +22,7 @@
   "main": "server/app.js",
   "dependencies": {
     "async": "^1.4.2",
-    "body-parser": "^1.5.2",
+    "body-parser": "^1.15.2",
     "composable-middleware": "^0.3.0",
     "compression": "~1.0.1",
     "connect-mongo": "^0.8.1",
@@ -37,6 +37,7 @@
     "method-override": "~1.0.0",
     "mongoose": "~4.0.3",
     "morgan": "~1.0.0",
+    "multer": "^1.2.0",
     "passport": "~0.2.0",
     "passport-facebook": "latest",
     "passport-google-oauth": "latest",

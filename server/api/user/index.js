@@ -16,5 +16,6 @@ router.post('/', controller.create);
 
 //获取卖家用户
 router.get('/get/shops/all',  controller.getAllShops)
+router.get('/verifyShop/:id',  controller.verifiedShop);
 
 module.exports = router;
