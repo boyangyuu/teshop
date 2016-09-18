@@ -4,7 +4,7 @@ angular.module('shopnxApp')
   .controller('SettingsCtrl', function ($scope, User, Auth, Settings, toastr) {
     $scope.errors = {};
 
-    $scope.changePassword = function(form) {
+    $scope.changePassword = function(form){
       $scope.submitted = true;
       if(form.$valid) {
         if(Settings.demo){
