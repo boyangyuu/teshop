@@ -22,7 +22,7 @@ angular.module('shopnxApp')
     // $scope.items=$scope.features.map(function(name){ return { key:key,val:val}; })
     // $scope.selected.feature[0] = {"key":"Fit","val":"Tight"};
     $loading.start('products');
-    $scope.products = Product.query({}, function() {
+    $scope.products = Product.userProduct.query({}, function() {
       $loading.finish('products');
       socket.syncUpdates('product', $scope.products);
     });

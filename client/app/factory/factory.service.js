@@ -19,6 +19,7 @@ angular.module('shopnxApp')
     var obj = {};
     obj = $resource('/api/products/:id', null, {'update': { method:'PUT' } });
     obj.count = $resource('/api/products/count', null, {'update': { method:'PUT' }});
+    obj.userProduct = $resource('/api/products/user');
     return obj;
   }])
 

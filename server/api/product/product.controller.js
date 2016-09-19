@@ -44,19 +44,53 @@ exports.index = function(req, res) {
   }
 };
 
+// Get list of products
+exports.products = function(req, res) {
+
+    console.log(req.user)
+    Product.find({Sid: req.user.id}, function (err, products) {
+      if(err) { return handleError(res, err); }
+      return res.status(200).json(products);
+    });
+};
 // Get a single product
 exports.show = function(req, res) {
-  Product.findById(req.params.id, function (err, product) {
 
-    if(err) { return handleError(res, err); }
-    if(!product) { return res.status(404).send('Not Found'); }
-    return res.json(product);
-  }).populate("replies");
+
+    Product
+    .find({_id:req.params.id})
+    .populate('Sid')
+    .populate("replies")
+    .exec(function (err, product) {
+      if(err) { return handleError(res, product); }
+      if(!product) { return res.status(404).send('Not Found'); }
+
+      var newproduct = product[0].toObject();
+      var sid = newproduct.Sid;
+      newproduct.Sid = sid.name;
+      return res.json(newproduct);
+
+    });
+
+
+
+  // Product.findById(req.params.id, function (err, product) {
+
+  //   if(err) { return handleError(res, err); }
+  //   if(!product) { return res.status(404).send('Not Found'); }
+  //   return res.json(product);
+  // }).populate("replies");
+
 };
 
 // Creates a new product in the DB.
 exports.create = function(req, res) {
+  console.log('create')
   req.body.uid = req.user.email; // id change on every login hence email is used
+  req.body.Sid = req.user._id;
+
+  console.log(req.body.Sid)
+
   req.body.updated = Date.now();
   if(req.body.name)
     req.body.nameLower = req.body.name.toString().toLowerCase();
