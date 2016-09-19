@@ -47,7 +47,6 @@ exports.index = function(req, res) {
 // Get list of products
 exports.products = function(req, res) {
 
-    console.log(req.user)
     Product.find({seller: req.user.id}, function (err, products) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(products);
@@ -57,16 +56,14 @@ exports.products = function(req, res) {
 exports.show = function(req, res) {
     Product
     .find({_id:req.params.id})
-    .populate('seller')  // shop todo 只获取 name
+    .populate('seller', 'name')  // shop todo 只获取 name
     .populate("replies")
     .exec(function (err, product) {
       if(err) { return handleError(res, product); }
       if(!product) { return res.status(404).send('Not Found'); }
-
       var newproduct = product[0].toObject();
-      // if (!!newproduct.seller) {
-      //   newproduct.seller = sid.name;
-      // }
+            console.log(newproduct)
+
       return res.json(newproduct);
     });
 
