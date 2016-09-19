@@ -132,18 +132,7 @@ angular.module('shopnxApp')
         if(product){ $scope.product = product; }
         else{ $scope.product = {}; }
     };
-    
 
-    // var app = angular.module("demoApp",['ngKeditor']);
-    // app.controller("kindeditorCtrl",["$scope",function($scope){
-    // $scope.info = function($scope){
-    //         content : "hello,world"
-   
-    // $scope.config = {width: '100px'};
-
-    // $scope.reg = /\d+/g;
-    //  };
-    // }]);
     // 二级联动开始
     $scope.categories=
     [
@@ -212,13 +201,13 @@ angular.module('shopnxApp')
             "children":[]
           }
         ]
-      }     
+      }
 
     ];
     $scope.categories2=[];
     $scope.regionText = {};
     $scope.$watch('category1',function(newValue,oldValue){
-      
+
       if(newValue != oldValue){
         var i=0;len = $scope.categories.length;
         if(!newValue){ //判断选择的是否选择省份，如果没有则重置市区
@@ -247,12 +236,3 @@ angular.module('shopnxApp')
     // 二级联动结束
 
   });
-var app = angular.module("demoApp",['ngKeditor']);
-    app.controller("kindeditorCtrl",["$scope",function($scope){
-        $scope.info = {
-                content : "hello,world"
-        };
-        $scope.config = {width: '100px'};
-
-        $scope.reg = /\d+/g;
-    }]);

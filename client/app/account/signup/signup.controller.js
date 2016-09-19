@@ -6,7 +6,7 @@ var shopnxApp=angular.module("shopnxApp");
     $scope.errors = {};
     $scope.btn="btn1";
     // 采购商
-    $scope.registerUser = function(formuser) 
+    $scope.registerUser = function(formuser)
     {
       $scope.submitted = true;
 
@@ -37,7 +37,7 @@ var shopnxApp=angular.module("shopnxApp");
     {
       $scope.submittedshop = true;
 
-      /*if(formshop.$valid) {
+      if(formshop.$valid) {
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
@@ -63,7 +63,7 @@ var shopnxApp=angular.module("shopnxApp");
           });
         });
 
-      }*/
+      }
     };
     // 个人用户
     $scope.register = function(form)

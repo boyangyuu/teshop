@@ -21,12 +21,13 @@ angular.module('shopnxApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     var config = {
-      "admin" : ["userManager"],
-      "shop" : ["productManager"],
-      "user" : []
+      "admin" : ["userManager", "news", "category", "brand", "feature", "coupon"],
+      "shop" : ["productManager", "order", "customer", "paymentMethod"],
+      "user" : ["order", "shipping"]
     }
     $rootScope.isShowMenuItem = function (menuItemName) {
       var roleName = Auth.getRole();
+      // console.log(roleName);
       if (!roleName) return false;
       var flag = config[roleName].indexOf(menuItemName) != -1;
       return flag;

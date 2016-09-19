@@ -48,28 +48,26 @@ exports.index = function(req, res) {
 exports.products = function(req, res) {
 
     console.log(req.user)
-    Product.find({Sid: req.user.id}, function (err, products) {
+    Product.find({seller: req.user.id}, function (err, products) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(products);
     });
 };
 // Get a single product
 exports.show = function(req, res) {
-
-
     Product
     .find({_id:req.params.id})
-    .populate('Sid')
+    .populate('seller')  // shop todo 只获取 name
     .populate("replies")
     .exec(function (err, product) {
       if(err) { return handleError(res, product); }
       if(!product) { return res.status(404).send('Not Found'); }
 
       var newproduct = product[0].toObject();
-      var sid = newproduct.Sid;
-      newproduct.Sid = sid.name;
+      // if (!!newproduct.seller) {
+      //   newproduct.seller = sid.name;
+      // }
       return res.json(newproduct);
-
     });
 
 
@@ -87,9 +85,9 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   console.log('create')
   req.body.uid = req.user.email; // id change on every login hence email is used
-  req.body.Sid = req.user._id;
+  req.body.seller = req.user._id;
 
-  console.log(req.body.Sid)
+  console.log(req.body.seller)
 
   req.body.updated = Date.now();
   if(req.body.name)

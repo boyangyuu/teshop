@@ -16,47 +16,47 @@ _________________________________________________________ -->
                   </a>
                 <ul class="dropdown-menu" role="menu">
                   <!-- 用户管理开始 -->
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/administration')}">
+                  <li ng-show="isShowMenuItem('userManager')" ng-class="{active: isActive('/administration')}">
                     <a href="/administration"><i class="fa fa-tag">&nbsp;</i>用户管理</a>
                   </li>
                   <!-- 用户管理结束 -->
                   <li ng-show="isShowMenuItem('productManager')" ng-class="{active: isActive('/product')}">
                     <a href="/product"><i class="fa fa-truck">&nbsp;</i>商品管理</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/news')}">
+                  <li ng-show="isShowMenuItem('news')" ng-class="{active: isActive('/news')}">
                     <a href="/news"><i class="fa fa-truck">&nbsp;</i>News</a>
-                                   <li ng-show="isAdmin()" ng-class="{active: isActive('/newsManage')}">
+                                   <li ng-show="isShowMenuItem()" ng-class="{active: isActive('/newsManage')}">
                     <a href="/newsManage"><i class="fa fa-truck">&nbsp;</i>newsManage</a>
-                  
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
+
+                  <li ng-show="isShowMenuItem('category')" ng-class="{active: isActive('/category')}">
                     <a href="/category"><i class="fa fa-ticket">&nbsp;</i>Categories</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
+                  <li ng-show="isShowMenuItem('brand')" ng-class="{active: isActive('/brand')}">
                     <a href="/brand"><i class="fa fa-tag">&nbsp;</i>Brands</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/feature')}">
+                  <li ng-show="isShowMenuItem('feature')" ng-class="{active: isActive('/feature')}">
                     <a href="/feature"><i class="fa fa-tag">&nbsp;</i>Features</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
+                  <li ng-show="isShowMenuItem('coupon')" ng-class="{active: isActive('/coupon')}">
                     <a href="/coupon"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
                   </li>
-                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/order')}">
+                  <li ng-show="isLoggedIn('order')" ng-class="{active: isActive('/order')}">
                     <a href="/order"><i class="fa fa-road">&nbsp;</i>订单</a>
                   </li>
                   <li class="divider"></li>
                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
                     <a href="/settings"><i class="fa fa-user">&nbsp;</i>Change Password</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/customer')}">
+                  <li ng-show="isShowMenuItem('customer')" ng-class="{active: isActive('/customer')}">
                     <a href="/customer"><i class="fa fa-user">&nbsp;</i>Customers</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/paymentMethod')}">
+                  <li ng-show="isShowMenuItem('paymentMethod')" ng-class="{active: isActive('/paymentMethod')}">
                     <a href="/paymentMethod"><i class="fa fa-wrench">&nbsp;</i>Payment Method</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/shipping')}">
+                  <li ng-show="isShowMenuItem('shipping')" ng-class="{active: isActive('/shipping')}">
                     <a href="/shipping"><i class="fa fa-wrench">&nbsp;</i>Shipping Settings</a>
                   </li>
-                  <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/country')}">
+                  <!-- <li ng-show="isShowMenuItem()" ng-class="{active: isActive('/country')}">
                     <a href="/country"><i class="fa fa-wrench">&nbsp;</i>Country</a>
                   </li> -->
                   <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}">
