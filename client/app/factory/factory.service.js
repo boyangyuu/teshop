@@ -19,6 +19,7 @@ angular.module('shopnxApp')
     var obj = {};
     obj = $resource('/api/products/:id', null, {'update': { method:'PUT' } });
     obj.count = $resource('/api/products/count', null, {'update': { method:'PUT' }});
+    obj.userProduct = $resource('/api/products/user');
     return obj;
   }])
 
@@ -70,8 +71,8 @@ angular.module('shopnxApp')
   // }])
   .factory('Feature', ['$resource', function($resource) {
     var obj = {};
-    obj = $resource('/api/features/:id', null, {'update': { method:'PUT' } });
-    obj.group = $resource('/api/features/group', null, {'update': { method:'PUT' }});
+    obj = $resource('/api/features/:categoryId', null, {'update': { method:'PUT' } });
+    obj.group = $resource('/api/features/group/:categoryId', null, {'update': { method:'PUT' }});
     return obj;
   }])
   .factory('Reply', ['$resource', function($resource) {

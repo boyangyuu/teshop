@@ -69,7 +69,7 @@
              
                <input type="password" name="password2" class="form-control" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
                <p class="help-block" ng-show="formUser.password2.$error.compare && submitted">
-                 俩次密码输入不一致
+                 两次密码输入不一致
                </p>
              </div>
               <div class="text-center">
@@ -113,9 +113,9 @@
                                                  'has-error': formseller.password2.$invalid && submittedshop }">
                <label>确认密码</label>
              
-               <input type="password" name="password2" class="form-control" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
+               <input type="password" name="password2" class="form-control" ng-model="user.password2" compare text='user.password' required placeholder="请输入确认密码"/>
                <p class="help-block" ng-show="formseller.password2.$error.compare && submittedshop">
-                 俩次密码输入不一致
+                 两次密码输入不一致
                </p>
              </div>
 

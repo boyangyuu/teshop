@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="bower_components/angular-loading/angular-loading.css"/>
   <div class="container">
- 
+
   <div class="col-md-12">
       <ul class="breadcrumb">
           <li><a ui-sref="main" href="">Home</a></li>
@@ -18,7 +18,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">Price Range <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i> Reset</a></h3>
         </div>
-          
+
          <div class="panel-body">
 
              <form>
@@ -178,7 +178,7 @@
                                     <img src="/assets/clothing/{{product.variants[0].image}}" alt="" class="img-responsive">
                                 </a>
                                 <div class="text text-center">
-                                    <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}{{product.variants[0].size}}</a></h3>
+                                    <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a></h3>
                                     <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>
                                     <p class="buttons">
                                       <div class="btn-group">

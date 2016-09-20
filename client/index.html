@@ -13,6 +13,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <script src="bower_components/angular/angular.js"></script>
       <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
       <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -66,7 +67,7 @@
 
       <div id="content">
           <div class="container">
-            
+
     <div ui-view=""></div>
   </div>
   <!-- /.container -->
@@ -242,10 +243,8 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
       ga('create', 'UA-49421899-2', 'auto');
       ga('send', 'pageview');
-
     </script>
 
     <!--[if lt IE 9]>
@@ -255,7 +254,8 @@
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+      
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -279,17 +279,16 @@
       <!-- endbower -->
       <script src="/components/navbar/bootstrap.min.js"></script>
       <script src="socket.io-client/socket.io.js"></script>
-<!-- 
+<!--
       <script src="../client/js/angular.min.js"></script>
       <script src="//cdn.bootcss.com/angular.js/1.2.28/angular.min.js"></script>
       <script src="//cdn.bootcss.com/angular.js/1.2.29/angular.js"></script>
       <script src="../client/js/kindeditor-all-min.js"></script>
       <script src="../client/js/zh-CN.js"></script>
-      <script src="../client/js/angular-kindeditor.js"></script> 
+      <script src="../client/js/angular-kindeditor.js"></script>
 
-     
 -->
-    
+
 
 
     <!-- endbuild -->

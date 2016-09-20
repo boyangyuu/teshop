@@ -21,12 +21,13 @@ angular.module('shopnxApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     var config = {
-      "admin" : ["userManager","productManager"], // 临时写的 
-      "shop" : ["productManager"],
-      "user" : []
+      "admin" : ["userManager", "news", "category", "brand", "feature", "coupon"],
+      "shop" : ["productManager", "order", "customer", "paymentMethod"],
+      "user" : ["order", "shipping"]
     }
     $rootScope.isShowMenuItem = function (menuItemName) {
       var roleName = Auth.getRole();
+      // console.log(roleName);
       if (!roleName) return false;
       var flag = config[roleName].indexOf(menuItemName) != -1;
       return flag;
@@ -63,6 +64,7 @@ angular.module('shopnxApp')
     };
 
     $scope.categories = Category.all.query();
+    $scope.order = "category";
 
 // // Script which calls all category from parent 0 and constructs the category hierarchy
 // // This was moved to the server and now 1 call does it all instead 1 for each parent category + 1 for parent category itself

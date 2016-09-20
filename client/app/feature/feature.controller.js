@@ -114,6 +114,8 @@ angular.module('shopnxApp')
 	        }
 	    }
 	});    
+
+ 	// $scope.query = {"categoryId: xx"};
 	// 分类联动结束
 
   });

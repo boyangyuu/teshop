@@ -35,6 +35,18 @@
             </div>
             <hr/>
             <!-- 修改部分开始 -->
+            <div class="col-md-4">
+                                <!-- <select ng-model="product.category" ng-options="option.name for option in categories | orderBy:'name' track by option._id" class="form-control">
+                                    <option value="">Select Category</option>
+                                </select> -->
+                  <ui-select ng-model="product.category" theme="bootstrap" title="Select Category">
+                    <ui-select-match placeholder="Select Category...">{{$select.selected.name}} </ui-select-match>
+                    <ui-select-choices repeat="c in categories | propsFilter: {name: $select.search}">
+                      <span ng-bind-html="c.name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                  </ui-select>
+
+                </div>
             <div class="form-group row">
               <div class="col-md-3">                  
                     <ui-select ng-model="product.category1" theme="bootstrap" title="Select Category" on-select="onSelectChanged($item, $model)">
@@ -272,20 +284,10 @@
         </div>
 
         <hr/>
-       <!-- 富文本编辑器 -->
-        <!-- <div ng-app="demoApp" ng-controller="kindeditorCtrl"  style="width: 80%; margin: 0 auto">
-            <form action="" name="myForm">
-                <textarea class="keditor" ng-model="info.content" data-config="config" pattern="reg" cols="30" rows="10" required></textarea>
-            </form>
-            <p><span style="color: red">ng-model:</span>{{info.content}}</p>
-            <p><span style="color: #ff0000">必填项myForm.$valid:</span>{{myForm.$valid}} </p>
-            <p ng-hide="myForm.$valid" class="error">验证不通过！</p>
-            <p ng-show="myForm.$valid" class="right">验证通过！</p>
-        </div> -->
       </form>
     </div>
 
-    
+
 
     <div dw-loading="products" dw-loading-options="{text: ''}"></div>
     <div class="box" ng-if="!product._id">
@@ -335,8 +337,7 @@
     <label class="col-sm-2 control-label">下载详细描述</label>
     <div class="col-sm-10">
         <div class="row">
-            <div class="col-sm-12" >   
-            </div> 
+            <div class="col-sm-12" >
+            </div>
         </div>
     </div>
-

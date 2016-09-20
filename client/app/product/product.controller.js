@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Feature, Modal, toastr, $loading, Settings) {
+  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Feature, Modal, toastr, $loading, Settings, $upload, $filter, $timeout) {
     var cols = [
       {heading:'sku',dataType:'text', sortType:'lowercase'},
       {heading:'name',dataType:'text', sortType:'lowercase'},
@@ -22,7 +22,7 @@ angular.module('shopnxApp')
     // $scope.items=$scope.features.map(function(name){ return { key:key,val:val}; })
     // $scope.selected.feature[0] = {"key":"Fit","val":"Tight"};
     $loading.start('products');
-    $scope.products = Product.query({}, function() {
+    $scope.products = Product.userProduct.query({}, function() {
       $loading.finish('products');
       socket.syncUpdates('product', $scope.products);
     });
@@ -211,65 +211,73 @@ angular.module('shopnxApp')
         console.log("onSelectChanged");
         $scope.subCategories=$item.children;
       } 
-
-
-
-      // $scope.option_change=function(){
-      //   var i=0;
-      //   // console.log($select.selected);
-
-      //   var len = $scope.categories.length;
-      //   for(i;i<len;i ++)
-      //     {
-            
-      //       if($scope.categories[i].id == $scope.cate1)
-      //       {
-      //         $scope.categories2 = $scope.categories[i].children;
-
-      //       }
-
-      //     }
-      // }
-      // $scope.$watch('category',function(newValue,oldValue)
-      // {
-      //   console.log(newValue,oldValue);
-      //   $scope.a=$scope.a+1;
-      //   console.log($scope.a);
-      //   if(newValue!=oldValue)
-      //   {
-      //     var i=0;len = $scope.categories.length;
-      //     if(!newValue)
-      //     { 
-      //       $scope.categories2 = [];
-      //       return;
-      //     }
-      //     for(i;i<len;i ++)
-      //     {
-
-      //       if($scope.categories[i].id == $scope.category)
-      //       {
-      //         $scope.categories2 = $scope.categories[i].children;
-      //       }
-      //     }
-
-      //   }
-      // });
-      // $scope.productObj = {};
-      // $scope.$watch('category2',function(newValue,oldValue)
-      // {
-      //   if(newValue != oldValue){
-      //     var i = 0; len = $scope.categories2.length;
-      //     for(i;i < len ; i ++){
-      //       if($scope.categories2[i].id == $scope.category2){
-      //         $scope.productObj = $scope.categories2[i];
-      //       }
-      //     }
-      //   }
-      // });
-    // console.log($scope.productObj);
-    // 二级联动结束
-
-
   });
 
+//files
+$scope.fileList = [];
 
+$scope.$watch('files', function (f) {
+  console.log(f);
+    if(f&&f[0]) {
+        $scope.upload(f);
+        angular.forEach(f, function(file){
+           $scope.fileList.push(file);
+        })
+    }
+});
+
+$scope.removeFile = function(fileName) {
+    angular.forEach($scope.fileList, function(f, index){
+        if(f.name == fileName){
+            $scope.fileList.splice(index, 1);
+            return;
+        }
+    });
+};
+
+$scope.upload = function (files) {
+    if (files && files.length) {
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            file.dynamic = 0;
+            $scope.uploadFile(file);
+            /*$upload.upload({
+                url: '/upload',
+                file: file
+            }).progress(function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                file.dynamic = progressPercentage;
+                console.log('progress: ' + progressPercentage + '% ' +
+                            evt.config.file.name);
+            }).success(function (data, status, headers, config) {
+                console.log('file ' + config.file.name + 'uploaded. Response: ' +
+                            JSON.stringify(data));
+            });*/
+        }
+    }
+};
+
+$scope.uploadFile = function(file){
+
+    file.upload = $upload.upload({
+        url: 'http://127.0.0.1:9000/api/file/image/uploading',
+        file: file
+    });
+
+    file.upload.then(function(response) {
+   $timeout(function() {
+       file.result = response.data;
+   });
+}, function(response) {
+     //if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+});
+
+file.upload.progress(function(evt) {
+   // Math.min is to fix IE which reports 200% sometimes
+   file.dynamic = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+});
+
+file.upload.xhr(function(xhr) {
+   // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
+});
+};

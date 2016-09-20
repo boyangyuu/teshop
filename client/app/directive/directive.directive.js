@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('shopnxApp')
-
   .directive('crudTable',['Modal','$injector','$loading','socket','toastr', 'Settings', function (Modal,$injector,$loading,socket,toastr, Settings) {
     return {
       templateUrl: 'app/directive/table.html',
@@ -9,6 +8,7 @@ angular.module('shopnxApp')
       scope: {obj:'='},
       link: function (scope, element, attrs) {
         // var cols = ['name','info','parent','image'];
+
         scope.title = attrs.api+'s';
         var cols = JSON.parse(attrs.cols);
         var obj = [];
@@ -26,24 +26,39 @@ angular.module('shopnxApp')
             obj.push({heading:k,dataType:v, sortType:v1});
           });
         });
+
         scope.cols = obj;
         // scope.Utils = {
         //    keys : Object.keys,
         //    values : Object.values
         // }
         var api = $injector.get(attrs.api);
+
+
         scope.data = [];
-        // scope.loadingTable = true;
         $loading.start('crudTable');
-        scope.data =api.query(function() {
-          // scope.loadingTable = false;
+        var query = JSON.parse(attrs.query) || {};
+
+        scope.data =api.query(query, function() {
+          //console.log("finish loading"); //todo
           $loading.finish('crudTable');
           socket.syncUpdates(attrs.api.toLowerCase(), scope.data);
         });
+
         scope.edit = function(item) {
-          var title; if(item._id){ title = 'Editing ' + item._id;} else{ title = 'Add New';}
+          var title;
+          if(item._id){
+            title = 'Editing ' + item._id;
+            // item.categoryId = query.categoryId;
+
+          } else {
+            title = 'Add New';
+            item = _.extend(item, query);
+          }
+          //console.log(query);
           Modal.show(item,{title:title, api:attrs.api, columns: obj, disabledColumn: attrs.disabledcolumn});
         };
+
         scope.changeActive = function(b){ // success handler
           b.active = !b.active;
           api.update({ id:b._id }, b).$promise.then(function() {
@@ -84,65 +99,6 @@ angular.module('shopnxApp')
   };
 }])
 
-// .directive('checkCoupon',function(Coupon) {
-//     return {
-//         require: 'ngModel',
-//         link: function(scope, element, attrs, ctrl) {
-//             scope.$watch(attrs.ngModel, function (val) {
-//             console.log(val);
-//               if(val){
-//               // ctrl.$setValidity('phoneLoading', false);
-//               Coupon.get({id:val}, function (data) {
-//                 if(data){
-//                   var customer = data.data[0];
-//                   scope.customer.name = customer.name;
-//                   scope.customer.email = customer.email;
-//                   scope.customer.address = customer.address;
-//                   scope.customer.city = customer.city;
-//                   ctrl.$setValidity('isCustomer', true);
-//                 }else{
-//                   ctrl.$setValidity('isCustomer', false);
-//                 }
-//               });
-//             }else{
-//                   ctrl.$setValidity('isCustomer', false);
-//                   scope.customer = '';
-//             }
-//           });
-//         }
-//     };
-//
-// })
-
-// .directive('autoFillCustomer',function(Customer) {
-//     return {
-//         require: 'ngModel',
-//         link: function(scope, element, attrs,ctrl) {
-//             scope.$watch(attrs.ngModel, function (val) {
-//                 if(val){
-//                 // ctrl.$setValidity('phoneLoading', false);
-//                 Customer.findOne({filter:{where:{phone:val}}}).then(function (data) {
-//                   if(data){
-//                     var customer = data.data[0];
-//                     scope.customer.name = customer.name;
-//                     scope.customer.email = customer.email;
-//                     scope.customer.address = customer.address;
-//                     scope.customer.city = customer.city;
-//                     ctrl.$setValidity('isCustomer', true);
-//                   }else{
-//                     ctrl.$setValidity('isCustomer', false);
-//                   }
-//                 });
-//               }else{
-//                     ctrl.$setValidity('isCustomer', false);
-//                     scope.customer = '';
-//               }
-//             });
-//         }
-//     };
-//
-// })
-
 .directive('sortableColumns', [function () {
     return {
         restrict:'A',
@@ -163,7 +119,7 @@ angular.module('shopnxApp')
             };
 
             scope.sortBy = function(column){
-              console.log(column);
+              //console.log(column);
                 scope.itemsToSort = _.sortBy(scope.itemsToSort,function(obj){
                     switch (column.dataType){
                         case 'number':
@@ -292,5 +248,6 @@ angular.module('shopnxApp')
         }
       });
     }
-  };
-}]);
+  }}])
+
+;
