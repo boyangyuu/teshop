@@ -1,4 +1,17 @@
+<link rel="stylesheet" href="bower_components/angular-tablesort/tablesort.css" />
+<div class="category-box clearfix">
+	<label class="cate-tit col-md-1">category:</label>
+	<div class="col-md-2 feature-cate">
+		<select required="" class="form-control" theme="bootstrap" ng-model="category" ng-options="item.id as item.text for item in categories">  
+        	<option value="">一级分类</option>  
+    	</select>
+	</div>
+	<div class="col-md-2 feature-cate">
+		<select class="form-control" ng-model="category2" theme="bootstrap" ng-options="item.id as item.text for item in categories2">  
+	        <option value="">二级分类</option>  
+	    </select>
+	</div>
+</div>
 <div class="col-md-12">
-	<label>分类子分类</label>
 	<crud-table api='Feature' cols='[{"key":"text"},{"val":"text"},{"active":"boolean"}]'></crud-table>
 </div>

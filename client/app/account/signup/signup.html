@@ -84,7 +84,7 @@
             <form ng-submit="registerSeller(formseller)" novalidate name="formseller" ng-switch-when="btn2">
               <div class="form-group" ng-class="{ 'has-success': formseller.name.$valid && submittedshop,
                                                   'has-error': formseller.name.$invalid && submittedshop }">
-                <label>登录用户名</label>
+                <label>用户名</label>
 
                 <input type="text" name="name" class="form-control" ng-model="user.name"
                        required placeholder="请输入注册用户名"/>
@@ -121,7 +121,7 @@
 
               <div class="form-group" ng-class="{ 'has-success': formseller.shopName.$valid && submittedshop,
                                                   'has-error': formseller.shopName.$invalid && submittedshop }">
-                <label>商户真实全名</label>
+                <label>公司名称</label>
 
                 <input type="text" name="shopName" class="form-control" ng-model="user.shopName"
                        required placeholder="请输入真实的用户名"/>
@@ -130,6 +130,17 @@
                 </p>
 
               </div>
+              <div class="form-group" ng-class="{ 'has-success': formseller.shopName.$valid && submittedshop,
+                                                  'has-error': formseller.shopName.$invalid && submittedshop }">
+                <label>公司名称</label>
+
+                <input type="text" name="shopName" class="form-control" ng-model="user.shopName"
+                       required placeholder="请输入真实的用户名"/>
+                <p class="help-block" ng-show="formseller.shopName.$error.required && submittedshop">
+                  请输入有效的联系方式！！
+                </p>
+              </div>
+                
 
               <div class="form-group" ng-class="{ 'has-success': formseller.phone.$valid && submittedshop,
                                                   'has-error': formseller.phone.$invalid && submittedshop }">
@@ -297,7 +308,7 @@
               <div class="form-group" ng-class="{ 'has-success': form.describe.$valid && submitteduser,
                                                   'has-error': form.describe.$invalid && submitteduser }">
                 <label class="individual-label">短信验证码:</label>
-                <input type="text" name="proving" class="form-control individual-iput" ng-model="user.proving" required placeholder="请输入短信验证码"/>
+                <input type="text" name="describe" class="form-control individual-iput" ng-model="user.describe" required placeholder="请输入短信验证码"/>
                 <timerbutton show-timer="false" timeout="time">获取验证码</timerbutton>
                 <p class="help-block individual-p" ng-show="form.describe.$error.required && submitteduser">
                   请输入短信验证码

@@ -21,7 +21,7 @@ angular.module('shopnxApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     var config = {
-      "admin" : ["userManager"],
+      "admin" : ["userManager","productManager"], // 临时写的 
       "shop" : ["productManager"],
       "user" : []
     }
@@ -31,7 +31,7 @@ angular.module('shopnxApp')
       var flag = config[roleName].indexOf(menuItemName) != -1;
       return flag;
     }
-
+    
     $rootScope.checkCart = function(id){
         if(!_.contains($scope.cart.skuArray, id)){
             return true;
