@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('NewsCtrl', function ($scope, $upload, $filter, $timeout) { //, socket, Category, Modal, toastr
+
+  .controller('NewsCtrl', function ($scope, $upload, $filter, $timeout, vertify) { //, socket, Category, Modal, toastr
   		$scope.news=[
   			{name:"钢铁价格走势",msg:"钢铁的价格要下降"},
   			{name:"钢铁价格走势",msg:"钢铁的价格要下降"},
@@ -10,7 +11,11 @@ angular.module('shopnxApp')
   			{name:"钢铁价格走势",msg:"钢铁的价格要下降"}
   		]
 
+      vertify.get(function (result) {
+        console.log(result);
+        $scope.imgModel = result.buf;
 
+      })
 
 
                   $scope.fileList = [];

@@ -2,6 +2,39 @@
 var shopnxApp=angular.module("shopnxApp");
 
   shopnxApp.controller('SignupCtrl', function ($scope, Auth, $location, $window) {
+    // .factory('vertify', ['$resource', function($resource) {
+    //     var obj = {};
+    //     obj = $resource('/api/vertify/ccap');
+    //     return obj;
+    //   }])
+    // $scope.vertifycole = 0;
+    var myCode = 0;
+    $scope.verBtn = function () {
+      function MathRand() {
+        var Num="";
+        for(var i=0;i<6;i++)
+          {
+            Num+=Math.floor(Math.random()*10);
+          }
+        return Num;
+      }
+      var code = MathRand()
+      $scope.vertifycole = code;
+
+    }
+    $scope.verBtn();
+
+    console.log($scope.vertifycole);
+    
+    $scope.test = function () {
+      if ($scope.user.proving === $scope.vertifycole) {
+        console.log('yes')
+      } else {
+        console.log('nonono');
+      }
+    }
+
+
     $scope.user = {};
     $scope.errors = {};
     $scope.btn="btn1";
