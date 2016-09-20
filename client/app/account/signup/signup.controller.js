@@ -12,7 +12,7 @@ var shopnxApp=angular.module("shopnxApp");
     $scope.verBtn = function () {
       function MathRand() {
         var Num="";
-        for(var i=0;i<6;i++)
+        for(var i=0;i<4;i++)
           {
             Num+=Math.floor(Math.random()*10);
           }
@@ -25,7 +25,7 @@ var shopnxApp=angular.module("shopnxApp");
     $scope.verBtn();
 
     console.log($scope.vertifycole);
-    
+
     $scope.test = function () {
       if ($scope.user.proving === $scope.vertifycole) {
         console.log('yes')

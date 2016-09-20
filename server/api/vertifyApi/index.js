@@ -13,10 +13,9 @@ var router = express.Router();
 
 router.get('/ccap',function(req, res){
 
-    console.log(req.query);
     var captcha = ccap({
 
-    width:256,//set width,default is 256
+    width:200,//set width,default is 256
 
     height:60,//set height,default is 60
 
@@ -37,20 +36,7 @@ router.get('/ccap',function(req, res){
     var txt = ary[0];
 
     var buf = ary[1];
-    // console.log(txt)
-    // console.log(buf);
 
-    // var ary = ccap.get();
-    //
-    // var txt = ary[0];
-    //
-    // var buf = ary[1];
-    //
-    //
-    // console.log(txt);
-    // console.log(buf);
-    // // var result = {code:txt, buf:buf}
-    // // res.status(200).json(result)
     res.end(buf);
 
 })
