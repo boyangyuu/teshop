@@ -291,6 +291,40 @@
         <hr/>
        <!-- 富文本编辑器 todo-->
 
+       <div class="row" >
+           <div class="col-xs-12">
+              <div class="form-group">
+                   <div class="col-sm-12">
+
+                     <div ng-file-drop ng-file-select ng-model="files" class="dropzone"
+                                             drag-over-class="dragover" ng-multiple="true" allow-dir="true"
+                                             accept="">Drop file here or click to upload</div>
+                                         <div ng-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                                         <table class="table table-striped">
+                                             <thead>
+                                                 <tr>
+                                                     <th>File Name</th>
+                                                     <th>File Size</th>
+                                                     <th>Progress</th>
+                                                     <th>预览</th>
+
+                                                 </tr>
+                                             </thead>
+                                             <tbody>
+                                                 <tr ng-repeat="f in fileList" style="font:smaller">
+                                                     <td>{{f.name}}</td>
+                                                     <td>{{f.size}}</td>
+                                                     <td><progressbar value="f.dynamic" style="margin-bottom:0px;" type="success"><b>{{f.dynamic}}%</b></progressbar></td>
+                                                     <td><img style="width:150px;height:auto" src="http://127.0.0.1:4000/{{f.name}}"></td>
+                                                 </tr>
+                                             </tbody>
+                                         </table>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+
       </form>
     </div>
 

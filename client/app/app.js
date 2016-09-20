@@ -15,7 +15,8 @@ angular.module('shopnxApp', [
   'infinite-scroll',
   'darthwade.dwLoading',
   'angularMoment',
-  'ui.select'
+  'ui.select',
+  'angularFileUpload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
