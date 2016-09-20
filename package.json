@@ -23,6 +23,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "body-parser": "^1.15.2",
+    "ccap": "^0.6.10",
     "composable-middleware": "^0.3.0",
     "compression": "~1.0.1",
     "connect-mongo": "^0.8.1",

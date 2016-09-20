@@ -66,7 +66,7 @@
               <div class="form-group" ng-class="{ 'has-success': formUser.password2.$valid && submitted,
                                                  'has-error': formUser.password2.$invalid && submitted }">
                <label>确认密码</label>
-             
+
                <input type="password" name="password2" class="form-control" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
                <p class="help-block" ng-show="formUser.password2.$error.compare && submitted">
                  两次密码输入不一致
@@ -103,7 +103,7 @@
                        mongoose-error placeholder="请输入设置密码"/>
                 <p class="help-block"
                    ng-show="(formseller.password.$error.minlength || formseller.password.$error.required) && submittedshop">
-                  密码必须包含三个字符以上!!               
+                  密码必须包含三个字符以上!!
                 </p>
                 <p class="help-block" ng-show="formseller.password.$error.mongoose">
                   {{ errors.password }}
@@ -112,7 +112,7 @@
               <div class="form-group" ng-class="{ 'has-success': formseller.password2.$valid && submittedshop,
                                                  'has-error': formseller.password2.$invalid && submittedshop }">
                <label>确认密码</label>
-             
+
                <input type="password" name="password2" class="form-control" ng-model="user.password2" compare text='user.password' required placeholder="请输入确认密码"/>
                <p class="help-block" ng-show="formseller.password2.$error.compare && submittedshop">
                  两次密码输入不一致
@@ -244,7 +244,7 @@
                        mongoose-error placeholder="请输入设置密码"/>
                 <p class="help-block individual-p"
                    ng-show="(form.password.$error.minlength || form.password.$error.required) && submitteduser">
-                  密码必须包含三个字符以上!!               
+                  密码必须包含三个字符以上!!
                 </p>
                 <p class="help-block individual-p" ng-show="form.password.$error.mongoose">
                   {{ errors.password }}
@@ -253,7 +253,7 @@
               <div class="form-group" ng-class="{ 'has-success': form.password2.$valid && submitteduser,
                                                  'has-error': form.password2.$invalid && submitteduser }">
                <label class="individual-label">请重输密码:</label>
-             
+
                <input type="password" name="password2" class="form-control individual-iput" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
                <p class="help-block individual-p" ng-show="form.password2.$error.compare && submitteduser">
                  请您再次输入，两次输入的密码要一致哦
@@ -291,21 +291,22 @@
                 </p>
               </div>
 
-              
+
               <div class="form-group" ng-class="{ 'has-success': form.proving.$valid && submitteduser,
                                                   'has-error': form.proving.$invalid && submitteduser }">
                 <label class="individual-label">验证码:</label>
 
                 <input type="text" name="proving" class="form-control individual-iput" ng-model="user.proving"
                        required placeholder="请输入联系地址" />
-                <img src="" bf-captcha alt="图形验证码" class="individual-img" >
+                <img src="/api/vertify/ccap?code={{vertifycole}}"  alt="图形验证码" class="individual-img" ng-click="verBtn()">
                 <p class="help-block individual-p" ng-show="form.proving.$error.required && submitteduser">
                   请输入验证码，如看不清请刷新。
                 </p>
+                <!-- <button  class="btn btn-primary" ng-click="test()"> Sign up</button> -->
               </div>
 
-
-              <div class="form-group" ng-class="{ 'has-success': form.describe.$valid && submitteduser,
+              <!-- TODO: 短信验证码需要收费，列为后期做 -->
+              <!-- <div class="form-group" ng-class="{ 'has-success': form.describe.$valid && submitteduser,
                                                   'has-error': form.describe.$invalid && submitteduser }">
                 <label class="individual-label">短信验证码:</label>
                 <input type="text" name="describe" class="form-control individual-iput" ng-model="user.describe" required placeholder="请输入短信验证码"/>
@@ -313,7 +314,7 @@
                 <p class="help-block individual-p" ng-show="form.describe.$error.required && submitteduser">
                   请输入短信验证码
                 </p>
-              </div>
+              </div> -->
               <div class="text-center">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Sign up</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="" href="/login">Login</a>

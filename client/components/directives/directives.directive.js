@@ -25,14 +25,14 @@ angular.module('shopnxApp')
       }
       return o;
 
-  }) 
+  })
   .directive('bfCaptcha',function(){
     //图片验证码刷新
     return{
       restrict:'A',
       link:function(scope,element){
         var changeSrc=function(){
-          element.attr('src','/api/captcha.jpg?random='+new Date().getTime());
+          element.attr('src','/api/vertify/ccap?code='+new Date().getTime());
         };
         changeSrc();
         element.on('click',function(){
@@ -78,5 +78,3 @@ angular.module('shopnxApp')
         template:'<button ng-click="onClick()" class="button button-calm xgmm-btn" ng-disabled="timer"><span ng-if="showTimer">{{ timerCount }}秒</span>{{text}}</button>'
     };
   })
-
-

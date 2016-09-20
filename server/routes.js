@@ -28,6 +28,7 @@ module.exports = function(app) {
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
   app.use('/api/file', require('./api/imageApi'));
+  app.use('/api/vertify', require('./api/vertifyApi'));
 
 
   app.use('/auth', require('./auth'));
