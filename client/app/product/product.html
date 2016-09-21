@@ -48,36 +48,31 @@
 
                 </div>
             <div class="form-group row">
-              <!-- <label for="id" class="col-md-1 control-label">分类:</label> -->
-              <!-- <div class="col-md-3">
-                  <ui-select ng-model="category1" theme="bootstrap" title="Select Category">
-                      <ui-select-match placeholder="请选着分类...">-- 分类 --</ui-select-match>
-                      <ui-select-choices repeat="c.id as c.text for c in categories | propsFilter: {text: $select.search}">
-                        <span ng-bind-html="c.name | highlight: $select.search">-建材-</span>
-                      </ui-select-choices>
-                  </ui-select>
+              <div class="col-md-3">                  
+                    <ui-select ng-model="product.category1" theme="bootstrap" title="Select Category" on-select="onSelectChanged($item, $model)">
+                     <ui-select-match placeholder="Select Category1...">{{$select.selected.id}} </ui-select-match>
+                     <ui-select-choices repeat="c in categories">
+                      <span ng-bind-html="c.id | highlight: $select.search"></span>
+                     </ui-select-choices>
+                    </ui-select>
               </div>
               <div class="col-md-3">
-                  <ui-select ng-model="category2" theme="bootstrap" title="Select Category">
-                      <ui-select-match placeholder="请选着分类...">-- 二级分类 --</ui-select-match>
-                      <ui-select-choices repeat="c in categories | propsFilter: {name: $select.search}">
-                        <span ng-bind-html="c.name | highlight: $select.search">-建材-</span>
-                      </ui-select-choices>
-                  </ui-select>
-              </div>  -->
-              <div class="col-md-1"></div>
+
+                <ui-select ng-model="product.category" theme="bootstrap" title="Select Category">
+                 <ui-select-match placeholder="Select Category2...">{{$select.selected.id}} </ui-select-match>
+                 <ui-select-choices repeat="c in subCategories">
+                  <span ng-bind-html="c.id | highlight: $select.search"></span>
+                 </ui-select-choices>
+                </ui-select>
+              </div>
               <label for="id" class="col-md-1 control-label">Brand</label>
               <div class="col-md-3">
-                  <!-- <select ng-model="product.brand" ng-options="i.name for i in brands | orderBy:'name' track by i._id" class="form-control">
-                      <option value="">Select Brand</option>
-                    </select> -->
-
-                    <ui-select ng-model="product.brand" theme="bootstrap" title="Select Brand">
-                    <ui-select-match placeholder="Select Brand...">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="b in brands | propsFilter: {name: $select.search}">
-                    <span ng-bind-html="b.name | highlight: $select.search">-建材-</span>
+                <ui-select ng-model="product.brand" theme="bootstrap" title="Select Brand">
+                  <ui-select-match placeholder="Select Brand...">{{$select.selected.name}} </ui-select-match>
+                  <ui-select-choices repeat="b in brands | propsFilter: {name: $select.search}">
+                    <span ng-bind-html="b.name | highlight: $select.search"></span>
                   </ui-select-choices>
-                </ui-select>
+              </ui-select>
               </div>
             </div>
             <!-- 修改部分结束 -->
@@ -289,8 +284,6 @@
         </div>
 
         <hr/>
-       <!-- 富文本编辑器 todo-->
-
       </form>
     </div>
 

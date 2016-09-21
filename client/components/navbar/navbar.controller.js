@@ -32,7 +32,7 @@ angular.module('shopnxApp')
       var flag = config[roleName].indexOf(menuItemName) != -1;
       return flag;
     }
-
+    
     $rootScope.checkCart = function(id){
         if(!_.contains($scope.cart.skuArray, id)){
             return true;

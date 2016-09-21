@@ -1,0 +1,17 @@
+.clearfix:after{
+	display:block;
+	width:100%;
+	height:0;
+	clear:both;
+}
+.category-box{
+	margin-bottom:20px;
+}
+.cate-tit{
+	display:block;
+	line-height:34px;
+	height:34px;
+	text-align: center;
+	font-size:18px;
+}
+
