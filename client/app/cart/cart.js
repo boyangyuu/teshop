@@ -8,5 +8,5 @@ angular.module('shopnxApp')
         url: '/cart',
         templateUrl: 'app/cart/cart.html'
         // controller: 'CartCtrl'
-      });
+      })
   });

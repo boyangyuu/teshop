@@ -16,7 +16,8 @@ angular.module('shopnxApp', [
   'darthwade.dwLoading',
   'angularMoment',
   'ui.select',
-  'angularFileUpload'
+  'angularFileUpload',
+  'pascalprecht.translate',
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

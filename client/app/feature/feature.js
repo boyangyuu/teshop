@@ -8,4 +8,6 @@ angular.module('shopnxApp')
         templateUrl: 'app/feature/feature.html',
         controller: 'FeatureCtrl'
       });
-  });
+  })
+
+;
