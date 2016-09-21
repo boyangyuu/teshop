@@ -37,30 +37,6 @@ exports.group = function(req, res) {
 });
 };
 
-// // Get all features product details
-// exports.products = function(req, res) {
-//   var async = require("async");
-//   var p = [];
-//   // return res.status(200).json(p);
-//   Feature.find().select({name:1}).exec(function(err,feature){
-//     console.log(feature);
-//     // Using async library which will enable us to wait until data received from database
-//     async.each(feature, function(a, callback){
-//         a = a.toObject();
-//         Product.find({'features.key':a.name}).select({name:1,_id:1,slug:1}).exec(function(err,c){
-//           a.sub_features = c;
-//           p.push(a);
-//           callback();
-//         });
-//       },
-//       // 3rd param is the function to call when everything's done
-//       function(err){
-//         if( err ) { return res.status(404).send('Not Found'); } else { return res.status(200).json(p); }
-//       }
-//     );
-// });
-// };
-
 // Get list of features
 exports.index = function(req, res) {
   Feature.find(function (err, features) {

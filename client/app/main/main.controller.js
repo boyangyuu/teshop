@@ -119,6 +119,7 @@ angular.module('shopnxApp')
     }
 
     $scope.removeCategory = function(){
+      console.log("$scope.removeCategory");
       $scope.fl.categories = undefined;
       $scope.filter();
     }
@@ -134,7 +135,7 @@ angular.module('shopnxApp')
     $scope.fl.brands = [];
     $scope.fl.categories = [];
     $scope.priceSlider = {};
-    $scope.features = Feature.group.query();
+    $scope.features = []; // TODO
     $scope.navigate = function(page,params){
       // var params = params.delete('$$hashKey');
       if(page==='sort'){
@@ -164,15 +165,12 @@ angular.module('shopnxApp')
       });
     };
 
-
+    //query and sort
     var sort = $scope.products.sort = $stateParams.sort;
     var q = {where:{active:true},limit:10};
-
-
-    // displayProducts(q);
     var a = {};
     $scope.filter = function(){
-      var f = [];
+      var f = [];       //filter
       if ($scope.products.busy){ return; }
       $scope.products.busy = true;
       if($scope.fl.features){
@@ -198,11 +196,11 @@ angular.module('shopnxApp')
             categoryIds.push(category._id);
           });
           f.push({'category._id' : { $in: categoryIds } });
+
+          //update features
         }
       }
-      // if($scope.priceSlider)
       f.push({'variants.price' : { $gt: $scope.priceSlider.min, $lt:$scope.priceSlider.max } });
-      // console.log(f.length);
       if(f.length>0){
         q.where = { $and : f};
       }else{
@@ -210,14 +208,22 @@ angular.module('shopnxApp')
       }
       // console.log(f,q);
 
+      //refresh
       displayProducts(q,true);
+      displayFeatures();
     };
 
     $scope.sortNow = function(sort){
-        q.sort = sort;
-        displayProducts(q,true);
+      q.sort = sort;
+      displayProducts();
     };
-
+    var displayFeatures = function(q,flush){
+      var categoryId;
+      angular.forEach($scope.fl.categories,function(category){
+        categoryId = category._id;
+      });
+      $scope.features = Feature.group.query({categoryId : categoryId}); // TODO
+    }
     var displayProducts = function(q,flush){
       if(flush){
         q.skip = 0;
