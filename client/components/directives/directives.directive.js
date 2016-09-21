@@ -9,7 +9,7 @@ angular.module('shopnxApp')
       var o={};
       o.strict='AE';
       o.scope={
-        text:'='
+        text:'=compare'
       };
       o.require='ngModel';
       o.link=function(sco,ele,att,con)
