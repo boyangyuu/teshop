@@ -11,10 +11,7 @@ exports.group = function(req, res) {
   // return res.status(200).json(p);
   console.log(req.params.categoryId);
   Feature.find({categoryId : req.params.categoryId}).distinct('key',function(err,features){
-    console.log("features");
-  console.log(features);
-
-  var f = {};
+    var f = {};
     async.each(features, function(k, callback){
       var x = {};
       x.key = k;

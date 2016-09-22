@@ -38,6 +38,10 @@ em {
     border-radius: 3px;
     letter-spacing: 1.5px;
 }
+.brand-filter-panel {
+    height: 200px;
+    overflow: auto;
+}
 .pull-left{
     margin-right: 10px;
 }
