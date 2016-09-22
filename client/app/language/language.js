@@ -49,7 +49,7 @@ angular.module('shopnxApp')
 	  //PREVIEW:'preview',
 	  //------------------特色-----------------------------
 	  THIS_CHARACTER:'This is a paragraph',
-	  CATEGORY:'category:',
+
 	  FIRST_CLASSIFCTION:'first classifction',
 	  SECONDARY_CLASSIFICATION:'Secondary classification',
 	  //--------------------订单----------------------------
@@ -63,7 +63,7 @@ angular.module('shopnxApp')
 	  UNIT_PRICE:'Unit Price',
 	  
 	  //----------------------修改密码-----------------------
-	  CHANGE_PASSWORD:'change password',
+	
 	  PRIMITIVE_PASSWORD:'primitive Password',
 	  NEW_PASSWORD:'New Password',
 	  PASSWORD_CHARACTER:'Password must be at least 3 characters.',
@@ -71,7 +71,7 @@ angular.module('shopnxApp')
 	  OLD_PASSWORD:'Old password',
 	  SET_PASSWORD:'Set a new password',
 	  //-------------------------类别-------------------------
-	  NAME:'name',
+	
 	  INFO:'info',
 	  CATEGORY:'category',
 	  PARENTCATEGORY:'parentCategory',
@@ -130,10 +130,15 @@ angular.module('shopnxApp')
 	//---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'SALE',
 	  HOT_NEW:'NEW',
+	  FEATURES_FILTER_TIP:'Filter Features ...',
 	  PRODUCT_SHOWING_A:'Showing',
 	  PRODUCT_SHOWING_B:'products of',
-	  PRODUCT_SHOWING_C:'in:'
-	  
+	  PRODUCT_SHOWING_C:'in:',
+	  SCROLL_TO_DETAIL:'Scroll to product details, material & care and sizing',
+	  SORT_LOW_PRICE:'Low Price',
+	  SORT_HIGH_PRICE:'High Price',
+	  SORT_NAME_ASC:'Name(A-Z)',
+	  SORT_LOW_DESC:'Name(Z-A):',
 	
     });
     $translateProvider.translations('cn', {
@@ -166,7 +171,7 @@ angular.module('shopnxApp')
 	  DELETE:'删除',
 	  ADD:'添加',
 	  ID:'序列号',
-	  NAME:'用户名',
+	//   NAME:'用户名',
 	  GOODSTYPE:'产品类型',
 	  VERIFY:'审核状态',
 	  HANDLE:'操作',
@@ -184,7 +189,7 @@ angular.module('shopnxApp')
 	  //PREVIEW:'预览',
 	  //-----------------------特色-------------------------
 	  THIS_CHARACTER:'这是一个段落',
-	  CATEGORY:'分类:',
+	
 	  FIRST_CLASSIFCTION:'一级标题',
 	  SECONDARY_CLASSIFICATION:'二级标题',
 	  //-----------------------订单---------------------------
@@ -198,7 +203,7 @@ angular.module('shopnxApp')
 	  PACKING_SIZE:'包装/尺寸',
 	  UNIT_PRICE:'单价',
 	  //----------------------修改密码------------------------------
-	  CHANGE_PASSWORD:'修改密码',
+
 	  PRIMITIVE_PASSWORD:'原始密码',
 	  NEW_PASSWORD:'新密码',
 	  PASSWORD_CHARACTER:'密码必须包含三个字符',
@@ -219,7 +224,6 @@ angular.module('shopnxApp')
 	  PLEASE_PASSWORD_CHARACTER:'请输入你的密码？',
 	  PLEASE_EMAIL_PASSWORD_CHARACTER:'请输入您的电子邮件和密码',
 	  PLEASE_ENTER_VALID_EMAIL:'Please enter a valid email',
-
 	  SEARCH_TIPS:'查找商品，品类，品牌...',
 	  SEARCH:'查找',
 	  CART:'购物车',
@@ -261,11 +265,16 @@ angular.module('shopnxApp')
 	  ADD_TO_CART:'添加购物车',
 	  //---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'热卖',
-
 	  HOT_NEW:'新品',
+	  FEATURES_FILTER_TIP:'搜索过滤条件',
 	  PRODUCT_SHOWING_A:'显示',
 	  PRODUCT_SHOWING_B:'件商品 共',
-	  PRODUCT_SHOWING_C:'件商品 '
+	  PRODUCT_SHOWING_C:'件商品 ',
+	  SCROLL_TO_DETAIL:'转到商品介绍',
+	  SORT_LOW_PRICE:'价格↑',
+	  SORT_HIGH_PRICE:'价格↓',
+	  SORT_NAME_ASC:'商品(A-Z)',
+	  SORT_LOW_DESC:'商品(Z-A)',
 
     });
     $translateProvider.preferredLanguage('cn');
