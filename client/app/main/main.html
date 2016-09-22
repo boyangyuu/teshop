@@ -14,7 +14,7 @@
      <div class="panel panel-default sidebar-menu">
 
         <div class="panel-heading">
-          <h3 class="panel-title">Price Range <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i> Reset</a></h3>
+          <h3 class="panel-title">{{'PRICE_RANGE' | translate}} <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i>{{'PRICE_RESET' | translate}}</a></h3>
         </div>
 
          <div class="panel-body">
@@ -29,7 +29,7 @@
                      rz-slider-translate="currencyFormatting"
                      rz-slider-on-end="filter()"></rzslider>
 
-                    $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
+                  $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
                  </div>
 
              </form>
@@ -40,7 +40,7 @@
       <div class="panel panel-default sidebar-menu">
 
           <div class="panel-heading">
-              <h3 class="panel-title">Brands
+              <h3 class="panel-title" translate="BRANDS">Brands
                 <div class="nav-search" id="nav-search">
                         <span class="input-icon">
                             <input placeholder="Filter Brands ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:100%">
@@ -71,7 +71,7 @@
       <div class="panel panel-default sidebar-menu">
 
           <div class="panel-heading">
-              <h3 class="panel-title">Features
+              <h3 class="panel-title">{{'FEATURES' | translate}}
                 <div class="nav-search" id="nav-search">
                         <span class="input-icon">
                             <input placeholder="Filter Features ..." class="nav-search-input" ng-model="filterFeature" autocomplete="off" type="text" autofocus style="width:100%">
@@ -115,7 +115,7 @@
 
                                         <div class="col-md-12 col-sm-12">
                                             <div class="products-number">
-                                                <strong>Sort</strong>
+                                                <strong>{{'PRODUCT_SORT' | translate}}</strong>
                                                 <div class="btn-group">
                                                   <a href="" ng-repeat="o in sortOptions" ng-class="{active : o.val==products.sort}" class="btn btn-default btn-sm btn-primary"  ng-click="sortNow(o.val);">{{o.name}}</a>
                                                 </div>
@@ -148,7 +148,7 @@
                       <div class="box" ng-if="products.items.length==0 && !products.busy">
                           <div class="row">
                               <div class="col-sm-12">
-                                <h3>No product found. Try removing some filters.</h3>
+                                <h3 translate="NO_PRODUCT_FOUND">No product found. Try removing some filters.</h3>
                               </div>
                           </div>
                       </div>
