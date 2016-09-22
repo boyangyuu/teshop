@@ -133,84 +133,22 @@ angular.module('shopnxApp')
         else{ $scope.product = {}; }
     };
 
-    // 二级联动开始
-    $scope.categories=
-      [
-        {
-          id:"001",
-          "text":"油漆材料",
-          "children":
-          [
-            {
-              "id":"0011",
-              "text":"防火漆",
-              "children":[]
-            },
-            {
-              "id":"0012",
-              "text":"防水漆",
-              "children":[]
-            },
-            {
-              "id":"0013",
-              "text":"外墙乳胶漆",
-              "children":[]
-            }
-          ]
-        },
-        {
-          "id":"002",
-          "text":"石材石料",
-          "children":
-          [
-            {
-              "id":"0021",
-              "text":"大理石",
-              "children":[]
-            },
-            {
-              "id":"0022",
-              "text":"人造石",
-              "children":[]
-            },
-            {
-              "id":"0023",
-              "text":"花岗石",
-              "children":[]
-            }
-          ]
-        },
-        {
-          "id":"003",
-          "text":"地板地毯",
-          "children":
-          [
-            {
-              "id":"0031",
-              "text":"地板配件",
-              "children":[]
-            },
-            {
-              "id":"0032",
-              "text":"防静电地板",
-              "children":[]
-            },
-            {
-              "id":"0033",
-              "text":"实木地板",
-              "children":[]
-            }
-          ]
-        }     
+    //category
+    $scope.categories = Category.all.query();
+    $scope.categories2=[];
+    $scope.onSelectChanged = function($item, $model){
+      console.log("onSelectChanged");
+      $scope.categories2=$item.sub_categories;
+    }
 
-      ];
-      // $scope.subCategories=$scope.categories[0].children[0];
+    $scope.onSubSelectChanged = function($item, $model){
+      console.log("onSelectChanged");
+      $scope.product.category = $item;
+    }
 
 
-      $scope.onSelectChanged = function($item, $model){
-        console.log("onSelectChanged");
-        $scope.subCategories=$item.children;
-      } 
+
+
   });
 
 // //files
