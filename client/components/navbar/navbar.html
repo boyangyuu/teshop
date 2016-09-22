@@ -18,7 +18,7 @@ _________________________________________________________ -->
               </li>
               <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup" translate>SIGN_UP</a></li>
               <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login" translate>LOGIN</a></li>
-              <li ng-show="isLoggedIn()"><a href="" > {{ getCurrentUser().name }} </a></li>
+              <li ng-show="isLoggedIn()"><a href="" >{{'HELLO' | translate}} {{ getCurrentUser().name }} </a></li>
               <li class="dropdown" ng-show="isLoggedIn()" dropdown="">
                 <a href="#" dropdown-toggle="" class="dropdown-toggle" data-toggle="dropdown" translate><i class="fa fa-dashboard">&nbsp;</i>DASHBOARD<b class="caret"></b>
                   </a>
@@ -136,7 +136,7 @@ _________________________________________________________ -->
                     <span class="sr-only">Toggle search</span>
                     <i class="fa fa-search"></i>
                 </button>
-                <a class="btn btn-default navbar-toggle" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-xs">Cart ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
+                <a class="btn btn-default navbar-toggle" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-xs">{{'CART'| translate}} ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
 
             </div>
         </div>
@@ -172,7 +172,7 @@ _________________________________________________________ -->
         <div class="navbar-buttons">
 
             <div class="navbar-collapse collapse right" id="basket-overview">
-                <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm">Cart ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
+                <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm" >{{'CART' | translate}} ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
             </div>
             <!--/.nav-collapse -->
 
