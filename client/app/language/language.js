@@ -26,7 +26,6 @@ angular.module('shopnxApp')
 	  CUSTOMERS: 'Customers',
 	  PAYMENT_METHOD: 'Payment Method',
 	  SHIPPING_SETTINGS: 'Shipping Settings',
-<<<<<<< HEAD
 	  //-------------------用户管理--------------------------
 	  USER_ADMINISTRATION:'User Administration',
 	  DELETE:'Delete',
@@ -86,11 +85,7 @@ angular.module('shopnxApp')
 	  PLEASE_EMAIL_PASSWORD_CHARACTER:'Please enter your email and password',
 	  PLEASE_ENTER_VALID_EMAIL:'Please enter a valid email',
 
-	  
-	  
 
-	 
-=======
 	  SEARCH_TIPS:'Search for a product, category or brand...',
 	  SEARCH:'Search',
 	  CART:'Cart',
@@ -130,7 +125,7 @@ angular.module('shopnxApp')
 	  PRODUCT_SORT:'Sort',
 	  VIEW_DETAIL:'View detail',
 	  ADD_TO_CART:'Add to cart',
->>>>>>> fab9f78872da100e4efe604abe48c8d7be9b1bda
+
 	  
 	//---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'SALE',
@@ -160,7 +155,7 @@ angular.module('shopnxApp')
 	  CUSTOMERS: '顾客',
 	  PAYMENT_METHOD: '支付方式',
 	  SHIPPING_SETTINGS: '设置',
-<<<<<<< HEAD
+
 	  //-------------------用户管理--------------------------
 	  USER_ADMINISTRATION:'用户管理',
 	  DELETE:'删除',
@@ -217,10 +212,9 @@ angular.module('shopnxApp')
 	  PLEASE_EMAIL_CHARACTER:'请输入你的电子邮件',
 	  PASSWORD:'密码',
 	  PLEASE_PASSWORD_CHARACTER:'请输入你的密码？',
-	  PLEASE_EMAIL_PASSWORD_CHARACTER:'Please enter your email and password',
+	  PLEASE_EMAIL_PASSWORD_CHARACTER:'请输入您的电子邮件和密码',
 	  PLEASE_ENTER_VALID_EMAIL:'Please enter a valid email',
-	  
-=======
+
 	  SEARCH_TIPS:'查找商品，品类，品牌...',
 	  SEARCH:'查找',
 	  CART:'购物车',
@@ -263,7 +257,7 @@ angular.module('shopnxApp')
 	  //---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'热卖',
 	  HOT_NEW:'新品'
->>>>>>> fab9f78872da100e4efe604abe48c8d7be9b1bda
+
     });
     $translateProvider.preferredLanguage('cn');
 

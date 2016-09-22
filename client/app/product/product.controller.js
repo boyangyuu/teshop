@@ -148,10 +148,6 @@ angular.module('shopnxApp')
       console.log("onSelectChanged");
       // $scope.product.category = $item;
     }
-
-
-
-
   });
 
 // //files
@@ -222,3 +218,7 @@ angular.module('shopnxApp')
 //    // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
 // });
 // };
+
+
+
+
