@@ -15,68 +15,240 @@
             <p class="text-muted">If you have any questions, please feel free to <a href="/contact">contact us</a>, our customer service center is working for you 24/7.</p>
 
             <hr>
-            <!-- 采购商开始 -->
-            <form ng-submit="registerUser(formUser)" novalidate name="formUser" ng-switch-when="btn1">
-              <div class="form-group" ng-class="{ 'has-success': formUser.name.$valid && submitted,
-                                                  'has-error': formUser.name.$invalid && submitted }">
-                <label>用户名</label>
 
-                <input type="text" name="name" class="form-control" ng-model="user.name"
+            <!-- 采购商开始 -->
+            <form ng-submit="selectUser(selectForm)" novalidate name="selectForm" ng-switch-when="btn1">
+              <h3 class="col-md-12 fo-title">账户信息</h3>
+              <!-- 文件上传开始 -->
+              <div class="form-group" >
+                  <div class="row" >
+                      <div class="col-xs-12" >
+                         <div class="form-group">
+                              <div class="col-sm-12">
+                                  <div ng-file-drop ng-file-select ng-model="files"  ng-init="setForm(files);" class="dropzone"
+                                      drag-over-class="dragover" ng-multiple="true" allow-dir="true"
+                                      accept="" ng-change="changes(files)">Drop file here or click to upload</div>
+                                  <div ng-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                                  <table class="table table-striped">
+                                      <thead>
+                                          <tr>
+                                              <th>File Name</th>
+                                              <th>File Size</th>
+                                              <th>Progress</th>
+                                              <th>预览</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr ng-repeat="f in fileList" style="font:smaller">
+                                              <td>{{f.name}}</td>
+                                              <td>{{f.size}}</td>
+                                              <td><progressbar value="f.dynamic" style="margin-bottom:0px;" type="success"><b>{{f.dynamic}}%</b></progressbar></td>
+                                              <td><img style="width:150px;height:auto" src="http://127.0.0.1:3000/images/{{f.result}}"></td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- 文件上传结束 -->
+
+
+              <!-- 用户名 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.username.$valid && submitSelect,
+                                                  'has-error': selectForm.username.$invalid && submitSelect }">
+                <label class="individual-label">用户名:</label>
+                <input type="text" name="username" class="form-control individual-iput" ng-model="userselect.username"
                        required placeholder="给自己起一个名字吧！！"/>
-                <p class="help-block" ng-show="formUser.name.$error.required && submitted">
+                <p class="help-block" ng-show="selectForm.name.$error.required && submitSelect">
                   请输入用户名
                 </p>
               </div>
-              <!-- 邮件地址 -->
-              <div class="form-group" ng-class="{ 'has-success': formUser.email.$valid && submitted,
-                                                  'has-error': formUser.email.$invalid && submitted }">
-                <label>邮箱</label>
 
-                <input type="email" name="email" class="form-control" ng-model="user.email"
+              <!-- 邮件地址 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.email.$valid && submitSelect,
+                                                  'has-error': selectForm.email.$invalid && submitSelect }">
+                <label class="individual-label">邮箱:</label>
+
+                <input type="email" name="email" class="form-control individual-iput" ng-model="user.email"
                        required
                        mongoose-error placeholder="请输入一个有效的邮箱地址"/>
-                <p class="help-block" ng-show="formUser.email.$error.email && submitted">
+                <p class="help-block" ng-show="selectForm.email.$error.email && submitSelect">
                   请输入一个有效的邮箱地址
                 </p>
-                <p class="help-block" ng-show="formUser.email.$error.required && submitted">
+                <p class="help-block" ng-show="selectForm.email.$error.required && submitSelect">
                   请输入邮件地址
                 </p>
-                <p class="help-block" ng-show="formUser.email.$error.mongoose">
+                <p class="help-block" ng-show="selectForm.email.$error.mongoose">
                   {{ errors.email }}
                 </p>
               </div>
-                <!-- 密码 -->
-              <div class="form-group" ng-class="{ 'has-success': formUser.password.$valid && submitted,
-                                                  'has-error': formUser.password.$invalid && submitted }">
-                <label>密码</label>
 
-                <input type="password" name="password" class="form-control" ng-model="user.password"
+                <!-- 密码 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.password.$valid && submitSelect,
+                                                  'has-error': selectForm.password.$invalid && submitSelect }">
+                <label class="individual-label">请设置密码:</label>
+
+                <input type="password" name="password" class="form-control individual-iput" ng-model="user.password"
                        ng-minlength="3"
                        required
                        mongoose-error placeholder="请输入密码"/>
                 <p class="help-block"
-                   ng-show="(formUser.password.$error.minlength || formUser.password.$error.required) && submitted">
+                   ng-show="(selectForm.password.$error.minlength || selectForm.password.$error.required) && submitSelect">
                   密码必须包含三个以上字符
                 </p>
-                <p class="help-block" ng-show="formUser.password.$error.mongoose">
+                <p class="help-block" ng-show="selectForm.password.$error.mongoose">
                   {{ errors.password }}
                 </p>
               </div>
-              <!-- 确认密码 -->
-              <div class="form-group" ng-class="{ 'has-success': formUser.password2.$valid && submitted,
-                                                 'has-error': formUser.password2.$invalid && submitted }">
-               <label>确认密码</label>
 
-               <input type="password" name="password2" class="form-control" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
-               <p class="help-block" ng-show="formUser.password2.$error.compare && submitted">
+              <!-- 确认密码 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.password2.$valid && submitSelect,
+                                                 'has-error': selectForm.password2.$invalid && submitSelect }">
+               <label class="individual-label">请重输密码:</label>
+
+               <input type="password" name="password2" class="form-control individual-iput" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
+               <p class="help-block" ng-show="selectForm.password2.$error.compare && submitSelect">
                  两次密码输入不一致
-               </p>
+               </p> 
+             </div>
+
+              <h3 class="col-md-12 fo-title">公司信息</h3>
+              <!-- 公司名称 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.name.$valid && submitSelect,
+                                                  'has-error': selectForm.name.$invalid && submitSelect }">
+                <label class="individual-label">公司名称:</label>
+                <input type="text" name="name" class="form-control individual-iput" ng-model="user.name"
+                       required placeholder="公司注册名"/>
+                <p class="help-block" ng-show="selectForm.name.$error.required && submitSelect">
+                  请输入公司名称
+                </p>
               </div>
+              <!-- 营业执照注册号 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.name.$valid && submitSelect,
+                                                  'has-error': selectForm.name.$invalid && submitSelect }">
+                <label class="individual-label">用户名:</label>
+                <input type="text" name="name" class="form-control individual-iput" ng-model="user.name"
+                       required placeholder="给自己起一个名字吧！！"/>
+                <p class="help-block" ng-show="selectForm.name.$error.required && submitSelect">
+                  请输入用户名
+                </p>
+              </div>
+              <!-- 税务登记号 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.name.$valid && submitSelect,
+                                                  'has-error': selectForm.name.$invalid && submitSelect }">
+                <label class="individual-label">用户名:</label>
+                <input type="text" name="name" class="form-control individual-iput" ng-model="user.name"
+                       required placeholder="给自己起一个名字吧！！"/>
+                <p class="help-block" ng-show="selectForm.name.$error.required && submitSelect">
+                  请输入用户名
+                </p>
+              </div>
+              <!-- 组织机构代码 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.name.$valid && submitSelect,
+                                                  'has-error': selectForm.name.$invalid && submitSelect }">
+                <label class="individual-label">用户名:</label>
+                <input type="text" name="name" class="form-control individual-iput" ng-model="user.name"
+                       required placeholder="给自己起一个名字吧！！"/>
+                <p class="help-block" ng-show="selectForm.name.$error.required && submitSelect">
+                  请输入用户名
+                </p>
+              </div>
+
+              <h3 class="col-md-12 fo-title">采购负责人信息<span>(亲，请认真填写,有交易时可以联系到你)</span></h3>
+              <!-- 姓名 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.name.$valid && submitSelect,
+                                                  'has-error': selectForm.name.$invalid && submitSelect }">
+                <label class="individual-label">姓名:</label>
+                <input type="text" name="name" class="form-control individual-iput" ng-model="user.name"
+                       required placeholder="给自己起一个名字吧！！"/>
+                <p class="help-block" ng-show="selectForm.name.$error.required && submitSelect">
+                  请输入用户名
+                </p>
+              </div>
+              <!-- 手机电话-->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.cellphone.$valid && submitSelect,
+                                                  'has-error': selectForm.cellphone.$invalid && submitSelect }">
+                <label class="individual-label">手机号码:</label>
+
+                <input type="number" name="cellphone" class="form-control individual-iput" ng-model="user.cellphone"
+                       required placeholder="移动电话联系方式" ng-pattern="/^1[3,5,8]\d{9}$/"/>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.required && submitSelect">
+                  请输入联系方式
+                </p>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.pattern && selectForm.cellphone.$dirty">
+                  手机号码格式有误，请输入正确的手机号。
+                </p>
+              </div>
+              <!-- 办公电话 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.cellphone.$valid && submitSelect,
+                                                  'has-error': selectForm.cellphone.$invalid && submitSelect }">
+                <label class="individual-label">办公电话:</label>
+
+                <input type="number" name="cellphone" class="form-control individual-iput" ng-model="user.cellphone"
+                       required placeholder="移动电话联系方式" ng-pattern="/^1[3,5,8]\d{9}$/"/>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.required && submitSelect">
+                  请输入联系方式
+                </p>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.pattern && selectForm.cellphone.$dirty">
+                  手机号码格式有误，请输入正确的手机号。
+                </p>
+              </div>
+              <!-- 邮寄地址 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.cellphone.$valid && submitSelect,
+                                                  'has-error': selectForm.cellphone.$invalid && submitSelect }">
+                <label class="individual-label">邮寄地址:</label>
+
+                <input type="number" name="cellphone" class="form-control individual-iput" ng-model="user.cellphone"
+                       required placeholder="移动电话联系方式" ng-pattern="/^1[3,5,8]\d{9}$/"/>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.required && submitSelect">
+                  请输入联系方式
+                </p>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.pattern && selectForm.cellphone.$dirty">
+                  手机号码格式有误，请输入正确的手机号。
+                </p>
+              </div>
+              <!-- 邮政编码 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.cellphone.$valid && submitSelect,
+                                                  'has-error': selectForm.cellphone.$invalid && submitSelect }">
+                <label class="individual-label">邮政编码:</label>
+
+                <input type="number" name="cellphone" class="form-control individual-iput" ng-model="user.cellphone"
+                       required placeholder="移动电话联系方式" ng-pattern="/^1[3,5,8]\d{9}$/"/>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.required && submitSelect">
+                  请输入联系方式
+                </p>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.pattern && selectForm.cellphone.$dirty">
+                  手机号码格式有误，请输入正确的手机号。
+                </p>
+              </div>
+
+              <h3 class="col-md-12 fo-title">手机验证<span>(亲,在提交或保存前请验证您的手机哦!)</span></h3>
+              <!-- 手机号码 -->
+              <div class="form-group" ng-class="{ 'has-success': selectForm.cellphone.$valid && submitSelect,
+                                                  'has-error': selectForm.cellphone.$invalid && submitSelect }">
+                <label class="individual-label">手机号码:</label>
+
+                <input type="number" name="cellphone" class="form-control individual-iput" ng-model="user.cellphone"
+                       required placeholder="移动电话联系方式" ng-pattern="/^1[3,5,8]\d{9}$/"/>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.required && submitSelect">
+                  请输入联系方式
+                </p>
+                <p class="help-block individual-p" ng-show="selectForm.cellphone.$error.pattern && selectForm.cellphone.$dirty">
+                  手机号码格式有误，请输入正确的手机号。
+                </p>
+              </div>
+              <!-- 验证码 -->
+              <!-- 短信验证码 -->
+
               <div class="text-center">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Sign up</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a class="" href="/login">Login</a>
               </div>
+
+
             </form>
             <!-- 采购商结束 -->
 
@@ -84,9 +256,9 @@
             <form ng-submit="registerSeller(formseller)" novalidate name="formseller" ng-switch-when="btn2">
               <div class="form-group" ng-class="{ 'has-success': formseller.name.$valid && submittedshop,
                                                   'has-error': formseller.name.$invalid && submittedshop }">
-                <label>用户名</label>
+                <label class="individual-label">用户名:</label>
 
-                <input type="text" name="name" class="form-control" ng-model="user.name"
+                <input type="text" name="name" class="form-control individual-iput" ng-model="user.name"
                        required placeholder="请输入注册用户名"/>
                 <p class="help-block" ng-show="formseller.name.$error.required && submittedshop">
                   请输入用户名！！
@@ -95,9 +267,9 @@
 
               <div class="form-group" ng-class="{ 'has-success': formseller.password.$valid && submittedshop,
                                                   'has-error': formseller.password.$invalid && submittedshop }">
-                <label>密码</label>
+                <label class="individual-label">密码:</label>
 
-                <input type="password" name="password" class="form-control" ng-model="user.password"
+                <input type="password" name="password" class="form-control individual-iput" ng-model="user.password"
                        ng-minlength="3"
                        required
                        mongoose-error placeholder="请输入设置密码"/>
@@ -111,9 +283,9 @@
               </div>
               <div class="form-group" ng-class="{ 'has-success': formseller.password2.$valid && submittedshop,
                                                  'has-error': formseller.password2.$invalid && submittedshop }">
-               <label>确认密码</label>
+               <label class="individual-label">确认密码:</label>
 
-               <input type="password" name="password2" class="form-control" ng-model="user.password2" compare text='user.password' required placeholder="请输入确认密码"/>
+               <input type="password" name="password2" class="form-control individual-iput" ng-model="user.password2" compare text='user.password' required placeholder="请输入确认密码"/>
                <p class="help-block" ng-show="formseller.password2.$error.compare && submittedshop">
                  两次密码输入不一致
                </p>
@@ -121,9 +293,9 @@
 
               <div class="form-group" ng-class="{ 'has-success': formseller.shopName.$valid && submittedshop,
                                                   'has-error': formseller.shopName.$invalid && submittedshop }">
-                <label>公司名称</label>
+                <label class="individual-label">公司名称:</label>
 
-                <input type="text" name="shopName" class="form-control" ng-model="user.shopName"
+                <input type="text" name="shopName" class="form-control individual-iput" ng-model="user.shopName"
                        required placeholder="请输入真实的用户名"/>
                 <p class="help-block" ng-show="formseller.shopName.$error.required && submittedshop">
                   请输入有效的联系方式！！
@@ -132,9 +304,9 @@
               </div>
               <div class="form-group" ng-class="{ 'has-success': formseller.shopName.$valid && submittedshop,
                                                   'has-error': formseller.shopName.$invalid && submittedshop }">
-                <label>公司名称</label>
+                <label class="individual-label">公司名称:</label>
 
-                <input type="text" name="shopName" class="form-control" ng-model="user.shopName"
+                <input type="text" name="shopName" class="form-control individual-iput" ng-model="user.shopName"
                        required placeholder="请输入真实的用户名"/>
                 <p class="help-block" ng-show="formseller.shopName.$error.required && submittedshop">
                   请输入有效的联系方式！！
@@ -144,17 +316,17 @@
 
               <div class="form-group" ng-class="{ 'has-success': formseller.phone.$valid && submittedshop,
                                                   'has-error': formseller.phone.$invalid && submittedshop }">
-                <label>固定电话</label>
+                <label class="individual-label">固定电话:</label>
 
-                <input type="number" name="phone" class="form-control" ng-model="user.phone"
+                <input type="number" name="phone" class="form-control individual-iput" ng-model="user.phone"
                        placeholder="固定电话联系方式"/>
               </div>
 
               <div class="form-group" ng-class="{ 'has-success': formseller.cellphone.$valid && submittedshop,
                                                   'has-error': formseller.cellphone.$invalid && submittedshop }">
-                <label>手机号码</label>
+                <label class="individual-label">手机号码:</label>
 
-                <input type="number" name="cellphone" class="form-control" ng-model="user.cellphone"
+                <input type="number" name="cellphone" class="form-control individual-iput" ng-model="user.cellphone"
                        required placeholder="移动电话联系方式" ng-minlength='11' ng-maxlength='11'/>
                 <p class="help-block" ng-show="formseller.cellphone.$error.required && submittedshop">
                   请输入联系方式
@@ -166,9 +338,9 @@
 
               <div class="form-group" ng-class="{ 'has-success': formseller.email.$valid && submittedshop,
                                                   'has-error': formseller.email.$invalid && submittedshop }">
-                <label>电子邮箱</label>
+                <label class="individual-label">电子邮箱:</label>
 
-                <input type="email" name="email" class="form-control" ng-model="user.email"
+                <input type="email" name="email" class="form-control individual-iput" ng-model="user.email"
                        required
                        mongoose-error placeholder="请输入有效的邮件地址"/>
                 <p class="help-block" ng-show="formseller.email.$error.email && submittedshop">
@@ -184,9 +356,9 @@
 
               <div class="form-group" ng-class="{ 'has-success': formseller.address.$valid && submittedshop,
                                                   'has-error': formseller.address.$invalid && submittedshop }">
-                <label>联系地址</label>
+                <label class="individual-label">联系地址:</label>
 
-                <input type="text" name="address" class="form-control" ng-model="user.address"
+                <input type="text" name="address" class="form-control individual-iput" ng-model="user.address"
                        required placeholder="请输入联系地址"/>
                 <p class="help-block" ng-show="formseller.address.$error.required && submittedshop">
                   请输入联系地址
@@ -194,8 +366,8 @@
               </div>
               <div class="form-group" ng-class="{ 'has-success': formseller.describe.$valid && submittedshop,
                                                   'has-error': formseller.describe.$invalid && submittedshop }">
-                <label>产品介绍</label>
-                <textarea name="describe" cols="30" rows="10" class="form-control" ng-model="user.describe" placeholder="请输入产品介绍/产品描述"></textarea>
+                <label class="individual-label">产品介绍:</label>
+                <textarea name="describe" cols="30" rows="10" class="form-control individual-iput" ng-model="user.describe" placeholder="请输入产品介绍/产品描述"></textarea>
                 <p class="help-block" ng-show="formseller.describe.$error.required && submittedshop">
                   请输入产品描述
                 </p>
@@ -256,7 +428,7 @@
 
                <input type="password" name="password2" class="form-control individual-iput" ng-model="user.password2" compare='user.password' required placeholder="请输入确认密码"/>
                <p class="help-block individual-p" ng-show="form.password2.$error.compare && submitteduser">
-                 请您再次输入，两次输入的密码要一致哦
+                 请您再次输入,两次输入的密码要一致哦
                </p>
               </div>
 
@@ -277,7 +449,7 @@
                   {{ errors.email }}
                 </p>
                </div>
-                <div class="form-group" ng-class="{ 'has-success': form.cellphone.$valid && submitteduser,
+              <div class="form-group" ng-class="{ 'has-success': form.cellphone.$valid && submitteduser,
                                                   'has-error': form.cellphone.$invalid && submitteduser }">
                 <label class="individual-label">手机号码:</label>
 

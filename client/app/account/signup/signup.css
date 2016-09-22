@@ -1,11 +1,15 @@
-input.individual-iput{
+input.individual-iput,textarea.individual-iput{
 	display:inline-block;
 	width:65%!important;
 }
 label.individual-label{
+	vertical-align:top;
 	display:inline-block;
 	width:14%;
 	text-align:right;
+	margin-top:8px;
+	margin-left:6px;
+	color: #333;
 }
 img.individual-img{
 	display:inline-block;
@@ -38,4 +42,18 @@ button.button{
 	line-height:34px;
 	overflow: hidden;
 	transform:translateY(3px);
+}
+h3.fo-title{
+	background-color:#4FBFA8;
+	height:35px;
+	line-height:35px;
+	border-radius:2px;
+	color:#fff;
+	font-size:18px;
+	margin-bottom:20px;
+}
+h3.fo-title span{
+	font-size:14px;
+	font-weight:600;
+	margin-left:10px;
 }
