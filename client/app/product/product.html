@@ -37,19 +37,19 @@
             <!-- 修改部分开始 -->
             <div class="form-group row">
               <div class="col-md-3">                  
-                    <ui-select ng-model="product.category1" theme="bootstrap" title="Select Category" on-select="onSelectChanged($item, $model)">
-                     <ui-select-match placeholder="Select Category1...">{{$select.selected.id}} </ui-select-match>
+                    <ui-select ng-model="selected_category1" theme="bootstrap" title="Select Category" on-select="onSelectChanged($item, $model)">
+                     <ui-select-match placeholder="Select Category1...">{{$select.selected.name}} </ui-select-match>
                      <ui-select-choices repeat="c in categories">
-                      <span ng-bind-html="c.id | highlight: $select.search"></span>
+                      <span ng-bind-html="c.name | highlight: $select.search"></span>
                      </ui-select-choices>
                     </ui-select>
               </div>
               <div class="col-md-3">
 
-                <ui-select ng-model="product.category" theme="bootstrap" title="Select Category">
-                 <ui-select-match placeholder="Select Category2...">{{$select.selected.id}} </ui-select-match>
-                 <ui-select-choices repeat="c in subCategories">
-                  <span ng-bind-html="c.id | highlight: $select.search"></span>
+                <ui-select ng-model="selected_category2" theme="bootstrap" title="Select Category" on-select="onSubSelectChanged($item, $model)">
+                 <ui-select-match placeholder="Select Category2...">{{$select.selected.name}} </ui-select-match>
+                 <ui-select-choices repeat="c in categories2">
+                  <span ng-bind-html="c.name | highlight: $select.search"></span>
                  </ui-select-choices>
                 </ui-select>
               </div>
