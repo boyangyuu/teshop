@@ -25,7 +25,69 @@ angular.module('shopnxApp')
 	  ADMINISTRATION: 'Administration',
 	  CUSTOMERS: 'Customers',
 	  PAYMENT_METHOD: 'Payment Method',
-	  SHIPPING_SETTINGS: 'Shipping Settings'
+	  SHIPPING_SETTINGS: 'Shipping Settings',
+	  //-------------------用户管理--------------------------
+	  USER_ADMINISTRATION:'User Administration',
+	  DELETE:'Delete',
+	  ADD:'add',
+	  ID:'id',
+	  NAME:'name',
+	  GOODSTYPE:'GoodsType',
+	  VERIFY:'verify',
+	  HANDLE:'handle',
+	  SUPPLIER:'supplier',
+	  PURCHASE:'purchase',
+	  SUPPLIERLIST:'supplierlist',
+	  PURCHASELIST:'purchaselist',
+	  //--------------------新闻资讯-----------------
+	  //NEWS_INFORMATION:'news information',
+	  //DROPFILE_CHARACTER:'Drop file here or click to upload',
+	  //FILEDRAG_CHARACTER:'File Drag/Drop is not supported for this browser',
+	  //FILENAME:'File Name',
+	  //FILESIZE:'File Size',
+	  //PROGRESS:'Progress',
+	  //PREVIEW:'preview',
+	  //------------------特色-----------------------------
+	  THIS_CHARACTER:'This is a paragraph',
+	  CATEGORY:'category:',
+	  FIRST_CLASSIFCTION:'first classifction',
+	  SECONDARY_CLASSIFICATION:'Secondary classification',
+	  //--------------------订单----------------------------
+	  ORDERS_HISTORY:'Orders History',
+	  SHIPPING_CHARGE:'Shipping Charge:',
+	  COUPON:'Coupon:',
+	  Order_Total:'Order Total',
+	  TOTAL_SPENT:'Total Spent',
+	  QTY:'Qty',
+	  PACKING_SIZE:'Packing/Size',
+	  UNIT_PRICE:'Unit Price',
+	  
+	  //----------------------修改密码-----------------------
+	  CHANGE_PASSWORD:'change password',
+	  PRIMITIVE_PASSWORD:'primitive Password',
+	  NEW_PASSWORD:'New Password',
+	  PASSWORD_CHARACTER:'Password must be at least 3 characters.',
+	  SAVE_CHANGES:'Save changes',
+	  OLD_PASSWORD:'Old password',
+	  SET_PASSWORD:'Set a new password',
+	  //-------------------------类别-------------------------
+	  NAME:'name',
+	  INFO:'info',
+	  CATEGORY:'category',
+	  PARENTCATEGORY:'parentCategory',
+	  ACTIVE:'active',
+	  //---------------------登录-------------------------------
+	  ALREADY_CHARACTER:'Already our customer?',
+	  EMAIL:'Email',
+	  PLEASE_EMAIL_CHARACTER:'Please enter your email',
+	  PASSWORD:'Password',
+	  PLEASE_PASSWORD_CHARACTER:'Please enter your password',
+	  PLEASE_EMAIL_PASSWORD_CHARACTER:'Please enter your email and password',
+	  PLEASE_ENTER_VALID_EMAIL:'Please enter a valid email',
+
+	  
+	  
+
 	 
 	  
     });
@@ -52,7 +114,65 @@ angular.module('shopnxApp')
 	  ADMINISTRATION: '用户',
 	  CUSTOMERS: '顾客',
 	  PAYMENT_METHOD: '支付方式',
-	  SHIPPING_SETTINGS: '设置'
+	  SHIPPING_SETTINGS: '设置',
+	  //-------------------用户管理--------------------------
+	  USER_ADMINISTRATION:'用户管理',
+	  DELETE:'删除',
+	  ADD:'添加',
+	  ID:'序列号',
+	  NAME:'用户名',
+	  GOODSTYPE:'产品类型',
+	  VERIFY:'审核状态',
+	  HANDLE:'操作',
+	  PURCHASE:'采购商',
+	  SUPPLIER:'供应商',
+	  SUPPLIERLIST:'供应商列表',
+	  PURCHASELIST:'采购商列表',
+	  //--------------------新闻资讯-----------------
+	  //NEWS_INFORMATION:'新闻资讯',
+	  //DROPFILECHARACTER:'删除文件或单击上传',
+	  //FILEDRAGCHARACTER:'文件拖/下降这个浏览器不支持',
+	  //FILENAME:'文件名',
+	  //FILESIZE:'文件大小',
+	  //PROGRESS:'进展',
+	  //PREVIEW:'预览',
+	  //-----------------------特色-------------------------
+	  THIS_CHARACTER:'这是一个段落',
+	  CATEGORY:'分类:',
+	  FIRST_CLASSIFCTION:'一级标题',
+	  SECONDARY_CLASSIFICATION:'二级标题',
+	  //-----------------------订单---------------------------
+	  ORDERS_HISTORY:'历史订单',
+	  SHIPPING_CHARGE:'运费',
+	  COUPON:'优惠券:',
+	  ORDER_TOTAL:'订单总额',
+	  Order_Total:'订单总数',
+	  TOTAL_SPENT:'总金额',
+	  QTY:'数量',
+	  PACKING_SIZE:'包装/尺寸',
+	  UNIT_PRICE:'单价',
+	  //----------------------修改密码------------------------------
+	  CHANGE_PASSWORD:'修改密码',
+	  PRIMITIVE_PASSWORD:'原始密码',
+	  NEW_PASSWORD:'新密码',
+	  PASSWORD_CHARACTER:'密码必须包含三个字符',
+	  SAVE_CHANGES:'保存设置',
+	  OLD_PASSWORD:'原始的密码',
+	  SET_PASSWORD:'请设置新密码',
+	  //--------------------------类别------------------------
+	  NAME:'名称',
+	  INFO:'信息',
+	  CATEGORY:'类别',
+	  PARENTCATEGORY:'父级分类',
+	  ACTIVE:'状态',
+	   //---------------------登录-------------------------------
+	  ALREADY_CHARACTER:'已经成为我们的客户吗?',
+	  EMAIL:'邮件',
+	  PLEASE_EMAIL_CHARACTER:'请输入你的电子邮件',
+	  PASSWORD:'密码',
+	  PLEASE_PASSWORD_CHARACTER:'请输入你的密码？',
+	  PLEASE_EMAIL_PASSWORD_CHARACTER:'Please enter your email and password',
+	  PLEASE_ENTER_VALID_EMAIL:'Please enter a valid email',
 	  
     });
     $translateProvider.preferredLanguage('cn');
