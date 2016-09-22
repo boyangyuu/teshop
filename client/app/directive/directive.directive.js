@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .directive('crudTable',['Modal','$injector','$loading','socket','toastr', 'Settings', function (Modal,$injector,$loading,socket,toastr, Settings) {
+  .directive('crudTable',['Modal','$injector','$loading','socket','toastr', 'Settings','$parse', function (Modal,$injector,$loading,socket,toastr, Settings, $parse) {
     return {
       templateUrl: 'app/directive/table.html',
       restrict: 'EA',
-      scope: {obj:'='},
+      scope: {
+        ngModel: "=",
+        query:'='
+      },
       link: function (scope, element, attrs) {
         // var cols = ['name','info','parent','image'];
 
@@ -36,14 +39,19 @@ angular.module('shopnxApp')
 
 
         scope.data = [];
-        $loading.start('crudTable');
-        var query = JSON.parse(attrs.query) || {};
+        // $loading.start('crudTable');
+        scope.query = scope.query === 'undefined' ? {} : scope.query;
 
-        scope.data =api.query(query, function() {
-          //console.log("finish loading"); //todo
-          $loading.finish('crudTable');
-          socket.syncUpdates(attrs.api.toLowerCase(), scope.data);
+        scope.$watch("query",function(newValue,oldValue)
+        {
+          scope.data =api.query(scope.query, function() {
+            //console.log("finish loading"); //todo
+            $loading.finish('crudTable');
+            socket.syncUpdates(attrs.api.toLowerCase(), scope.data);
+          });
         });
+
+
 
         scope.edit = function(item) {
           var title;

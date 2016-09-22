@@ -21,7 +21,7 @@ angular.module('shopnxApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     var config = {
-      "admin" : ["userManager", "news", "category", "brand", "feature", "coupon"],
+      "admin" : ["productManager", "userManager", "news", "category", "brand", "feature", "coupon"],
       "shop" : ["productManager", "order", "customer", "paymentMethod"],
       "user" : ["order", "shipping"]
     }

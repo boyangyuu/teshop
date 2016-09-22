@@ -25,8 +25,8 @@ exports.all = function(req, res) {
   var async = require("async");
   var p = [];
   Category.find({parentCategory:0, active:true}).select({name:1,category:1,parentCategory:1,slug:1}).exec(function(err,parents){
-  // Using async library which will enable us to wait until data received from database
-  //   console.log("parents");
+    // Using async library which will enable us to wait until data received from database
+    //   console.log("parents");
     // console.log(parents);
     async.each(parents, function(a, callback){
       a = a.toObject();

@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="bower_components/angular-tablesort/tablesort.css" />
+<<<<<<< HEAD
 <p translate="THIS_CHARACTER" class="ng-scope">This is a paragraph.</p>
+=======
+>>>>>>> fab9f78872da100e4efe604abe48c8d7be9b1bda
 
 <div class="category-box clearfix">
 	<label class="cate-tit col-md-1" translate="CATEGORY">category:</label>
 	<div class="col-md-2 feature-cate">
+<<<<<<< HEAD
 		<select required="" class="form-control" theme="bootstrap" ng-model="selected_category1" ng-options="item as item.name for item in categories">
         	<option value="" translate="FIRST_CLASSIFCTION">一级分类</option>  
     	</select>
@@ -11,11 +15,21 @@
 	<div class="col-md-2 feature-cate">
 		<select class="form-control" ng-model="selected_category2" theme="bootstrap" ng-options="item as item.name for item in categories2">
 	        <option value="" translate="SECONDARY_CLASSIFICATION">二级分类</option>  
+=======
+		<select class="form-control" theme="bootstrap" ng-model="selected_category1" ng-options="item as item.name for item in categories">
+        	<option value="">一级分类</option>
+    	</select>
+	</div>
+	<div class="col-md-2 feature-cate">
+		<select class="form-control" theme="bootstrap" ng-model="selected_category2"  ng-options="item as item.name for item in categories2">
+	        <option value="">二级分类</option>
+>>>>>>> fab9f78872da100e4efe604abe48c8d7be9b1bda
 	    </select>
 	</div>
 </div>
+
 <div class="col-md-12">
-	<crud-table api='Feature' query = {{query}} cols='[{"key":"text"},{"val":"text"},{"active":"boolean"}]'></crud-table>
+	<crud-table api='Feature' query= "query" cols='[{"key":"text"},{"val":"text"},{"active":"boolean"}]'></crud-table>
 </div>
 
 

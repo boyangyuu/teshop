@@ -2,7 +2,7 @@
   "name": "shopnx",
   "version": "0.0.0",
   "dependencies": {
-    "angular": ">=1.2.*",
+    "angular": "1.5.8",
     "ng-file-upload": "~3.3.1",
     "angular-animate": "~1.4.5",
     "angular-bootstrap": "~0.13.4",
