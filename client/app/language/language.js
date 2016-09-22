@@ -261,15 +261,12 @@ angular.module('shopnxApp')
 	  ADD_TO_CART:'添加购物车',
 	  //---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'热卖',
-<<<<<<< HEAD
+
 	  HOT_NEW:'新品',
 	  PRODUCT_SHOWING_A:'显示',
 	  PRODUCT_SHOWING_B:'件商品 共',
 	  PRODUCT_SHOWING_C:'件商品 '
-=======
-	  HOT_NEW:'新品'
 
->>>>>>> 4115052873e640ffa7fcb0c286b71f0ab6172574
     });
     $translateProvider.preferredLanguage('cn');
 

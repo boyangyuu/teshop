@@ -4,7 +4,7 @@ angular.module('shopnxApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        title: 'eCommerce Fashion Store Using AngularJS - ShopNx',
+        title: '首页',
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl',
@@ -13,7 +13,7 @@ angular.module('shopnxApp')
         }
       })
       .state('productDetail', {
-        title: 'Details of selected product',
+        title: '商品详情',
         params: {
           id: null,
           slug: null
@@ -23,7 +23,7 @@ angular.module('shopnxApp')
         controller: 'ProductDetailsCtrl'
       })
       .state('SubProduct', {
-        title: 'All products under current category or brand',
+        title: '分类商品',
         url: '/:page/:slug/:_id',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl',
