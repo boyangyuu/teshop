@@ -25,7 +25,9 @@ angular.module('shopnxApp')
 	  ADMINISTRATION: 'Administration',
 	  CUSTOMERS: 'Customers',
 	  PAYMENT_METHOD: 'Payment Method',
-	  SHIPPING_SETTINGS: 'Shipping Settings'
+	  SHIPPING_SETTINGS: 'Shipping Settings',
+	  SEARCH_TIPS:'Search for a product, category or brand...',
+	  SEARCH:'Search'
 	 
 	  
     });
@@ -52,7 +54,9 @@ angular.module('shopnxApp')
 	  ADMINISTRATION: '用户',
 	  CUSTOMERS: '顾客',
 	  PAYMENT_METHOD: '支付方式',
-	  SHIPPING_SETTINGS: '设置'
+	  SHIPPING_SETTINGS: '设置',
+	  SEARCH_TIPS:'查找商品，品类，品牌...',
+	  SEARCH:'查找'
 	  
     });
     $translateProvider.preferredLanguage('cn');

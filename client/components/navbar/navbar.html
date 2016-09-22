@@ -194,7 +194,7 @@ _________________________________________________________ -->
                 </script>
                 <div class="input-group">
                 <input class="form-control text-left" type="text" name="q" id="q" autocomplete="off"
-                placeholder="Search for a product, category or brand..."
+                placeholder="{{'SEARCH_TIPS'|translate}}"
                 ng-model="search"
                 typeahead="p as p.name for p in globalSearch($viewValue)"
                 typeahead-loading="loadingLocations"
@@ -205,7 +205,7 @@ _________________________________________________________ -->
                 >
                 <span class="input-group-btn">
 
-<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
+<button type="submit" class="btn btn-primary" translate="SEARCH"><i class="fa fa-search"></i>Search</button>
 
 </span>
               </div>
