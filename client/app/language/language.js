@@ -139,7 +139,11 @@ angular.module('shopnxApp')
 	  SORT_HIGH_PRICE:'High Price',
 	  SORT_NAME_ASC:'Name(A-Z)',
 	  SORT_LOW_DESC:'Name(Z-A):',
-	
+	  KEY_FEATURES:'Key Features',
+	  PRODUCT_WEIGHT:'Weight',
+	  PRODUCT_BRAND:'Brand',
+	  SHARE_YOUR_FRIENDS:'Show it to your friends',
+	  PRODUCT_DETAILS:'Product details',
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
@@ -275,7 +279,11 @@ angular.module('shopnxApp')
 	  SORT_HIGH_PRICE:'价格↓',
 	  SORT_NAME_ASC:'商品(A-Z)',
 	  SORT_LOW_DESC:'商品(Z-A)',
-
+	  KEY_FEATURES:'重点特色',
+	  PRODUCT_WEIGHT:'重量',
+      PRODUCT_BRAND:'商品品牌',
+	  SHARE_YOUR_FRIENDS:'分享到朋友圈',
+	  PRODUCT_DETAILS:'商品详情',
     });
     $translateProvider.preferredLanguage('cn');
 
