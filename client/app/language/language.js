@@ -58,11 +58,17 @@ angular.module('shopnxApp')
 	  GET_MORE_NEWS:'The first time to obtain the relevant industry dynamics.',
 	  SUBSCRIBE:'Subscribe',
 	  LOGIN_MODE:'Login mode',
-	 //---------------/client/app/mian/main.html----------------------
+	 //---------------/client/app/main/main.html----------------------
 	  NO_PRODUCT_FOUND:'No product found. Try removing some filters.',
 	  PRICE_RANGE:'Price Range',
 	  PRICE_RESET:'Reset',
-	  PRODUCT_SORT:'Sort'
+	  PRODUCT_SORT:'Sort',
+	  VIEW_DETAIL:'View detail',
+	  ADD_TO_CART:'Add to cart',
+	  
+	//---------------/client/app/main/main.html----------------------  
+	  HOT_SALE:'SALE',
+	  HOT_NEW:'NEW'
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
@@ -120,11 +126,16 @@ angular.module('shopnxApp')
 	  GET_MORE_NEWS:'第一时间获取行业相关动态',
 	  SUBSCRIBE:'订阅',
 	  LOGIN_MODE:'登录方式',
-	  //---------------/client/app/mian/main.html----------------------
+	  //---------------/client/app/main/main.html----------------------
 	  NO_PRODUCT_FOUND:'没有找到相关商品。试试其它筛选条件。',
 	  PRICE_RANGE:'价格范围',
 	  PRICE_RESET:'重置',
-	  PRODUCT_SORT:'排序'
+	  PRODUCT_SORT:'排序',
+	  VIEW_DETAIL:'查看详情',
+	  ADD_TO_CART:'添加购物车',
+	  //---------------/client/app/main/main.html----------------------  
+	  HOT_SALE:'热卖',
+	  HOT_NEW:'新品'
     });
     $translateProvider.preferredLanguage('cn');
 
