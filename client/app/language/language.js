@@ -68,7 +68,12 @@ angular.module('shopnxApp')
 	  
 	//---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'SALE',
-	  HOT_NEW:'NEW'
+	  HOT_NEW:'NEW',
+	  PRODUCT_SHOWING_A:'Showing',
+	  PRODUCT_SHOWING_B:'products of',
+	  PRODUCT_SHOWING_C:'in:'
+	  
+	
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
@@ -135,7 +140,10 @@ angular.module('shopnxApp')
 	  ADD_TO_CART:'添加购物车',
 	  //---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'热卖',
-	  HOT_NEW:'新品'
+	  HOT_NEW:'新品',
+	  PRODUCT_SHOWING_A:'显示',
+	  PRODUCT_SHOWING_B:'件商品 共',
+	  PRODUCT_SHOWING_C:'件商品 '
     });
     $translateProvider.preferredLanguage('cn');
 

@@ -29,7 +29,7 @@
                      rz-slider-translate="currencyFormatting"
                      rz-slider-on-end="filter()"></rzslider>
 
-                  $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
+                  ￥<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; ￥<strong>{{priceSlider.max}}</strong>
                  </div>
 
              </form>
@@ -106,7 +106,7 @@
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-5 products-showing">
-                                Showing {{products.items.length}} products of {{products.count}} in: $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
+                                {{'PRODUCT_SHOWING_A' | translate}}{{products.items.length}}{{'PRODUCT_SHOWING_B' | translate}}{{products.count}} {{'PRODUCT_SHOWING_C' | translate}} ￥<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; ￥<strong>{{priceSlider.max}}</strong>
                             </div>
 
                             <div class="col-sm-12 col-md-7 text-right products-number-sort">
@@ -177,7 +177,7 @@
                                 </a>
                                 <div class="text text-center">
                                     <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a></h3>
-                                    <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>
+                                    <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '￥'}}</del> {{product.variants[0].price | currency : '￥'}}</p>
                                     <p class="buttons">
                                       <div class="btn-group">
                                       <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">{{'VIEW_DETAIL' | translate}}</a>
