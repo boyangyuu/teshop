@@ -46,7 +46,7 @@
               </div>
               <div class="col-md-3">
 
-                <ui-select ng-model="selected_category2" theme="bootstrap" title="Select Category" on-select="onSubSelectChanged($item, $model)">
+                <ui-select ng-model="product.category" theme="bootstrap" title="Select Category" on-select="onSubSelectChanged($item, $model)">
                  <ui-select-match placeholder="Select Category2...">{{$select.selected.name}} </ui-select-match>
                  <ui-select-choices repeat="c in categories2">
                   <span ng-bind-html="c.name | highlight: $select.search"></span>

@@ -16,6 +16,8 @@ angular.module('shopnxApp')
     $scope.product.variants = [];
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
+    $scope.product.category = {}; //todo
+
     // $scope.selected = {};
     // $scope.selected.feature = [];
     $scope.features = Feature.query();
@@ -71,7 +73,7 @@ angular.module('shopnxApp')
       // console.log($scope.newKF);
       if('val' in $scope.newKF){
         $scope.product.keyFeatures.push($scope.newKF.val);
-        console.log($scope.product.keyFeatures);
+        // console.log($scope.product.keyFeatures);
       }
       if('key' in $scope.newFeature){
         $scope.product.features.push($scope.newFeature);
@@ -80,6 +82,7 @@ angular.module('shopnxApp')
       $scope.variant = {};
       $scope.newKF = {};
       $scope.newFeature = {};
+      $scope.product.category = {};
 
       // $scope.feature.key = feature.key.name;
       // $scope.product.feature = $scope.selected.feature;
@@ -143,7 +146,7 @@ angular.module('shopnxApp')
 
     $scope.onSubSelectChanged = function($item, $model){
       console.log("onSelectChanged");
-      $scope.product.category = $item;
+      // $scope.product.category = $item;
     }
 
 
