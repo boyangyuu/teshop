@@ -131,8 +131,8 @@ angular.module('shopnxApp')
 	  HOT_SALE:'SALE',
 	  HOT_NEW:'NEW',
 	  FEATURES_FILTER_TIP:'Filter Features ...',
-	  PRODUCT_SHOWING_A:'Showing',
-	  PRODUCT_SHOWING_B:'products of',
+	  PRODUCT_SHOWING_A:'Showing ',
+	  PRODUCT_SHOWING_B:' products of ',
 	  PRODUCT_SHOWING_C:'in:',
 	  SCROLL_TO_DETAIL:'Scroll to product details, material & care and sizing',
 	  SORT_LOW_PRICE:'Low Price',
@@ -285,9 +285,12 @@ angular.module('shopnxApp')
 	  SHARE_YOUR_FRIENDS:'分享到朋友圈',
 	  PRODUCT_DETAILS:'商品详情',
     });
-    $translateProvider.preferredLanguage('cn');
-
-    $translateProvider.useSanitizeValueStrategy('escapeParameters');
+	var lang = window.localStorage.lang||'cn';
+	
+    $translateProvider.preferredLanguage(lang);
+	$translateProvider.useSanitizeValueStrategy('escapeParameters');
+    $translateProvider.useLoaderCache(true); // default is false which means disable
+    $translateProvider.use(lang);
   })
 ;
 
