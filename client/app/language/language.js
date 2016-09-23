@@ -144,6 +144,7 @@ angular.module('shopnxApp')
 	  PRODUCT_BRAND:'Brand',
 	  SHARE_YOUR_FRIENDS:'Show it to your friends',
 	  PRODUCT_DETAILS:'Product details',
+	  
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
