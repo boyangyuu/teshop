@@ -30,13 +30,13 @@ angular.module('shopnxApp')
     return obj;
   }])
 
-  .factory('SortOptions', [function() {
+  .factory('SortOptions', ['$translate',function($translate) {
     var obj = {};
     obj.server= [
-       {name:'Low Price', val:{'variants.price':1}},
-       {name:'Hign Price', val:{'variants.price':-1}},
-       {name:'Name (A-Z)', val:{'name':1}},
-       {name:'Name (Z-A)', val:{'name':-1}}
+       {name:$translate.instant('SORT_LOW_PRICE'), val:{'variants.price':1}},
+       {name:$translate.instant('SORT_HIGH_PRICE'), val:{'variants.price':-1}},
+       {name:$translate.instant('SORT_NAME_ASC'), val:{'name':1}},
+       {name:$translate.instant('SORT_LOW_DESC'), val:{'name':-1}}
     ];
     obj.client= [
        {name:'Price Asc', val:'variants[0].price'},
