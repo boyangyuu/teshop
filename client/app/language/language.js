@@ -138,7 +138,7 @@ angular.module('shopnxApp')
 	  SORT_LOW_PRICE:'Low Price',
 	  SORT_HIGH_PRICE:'High Price',
 	  SORT_NAME_ASC:'Name(A-Z)',
-	  SORT_LOW_DESC:'Name(Z-A):',
+	  SORT_LOW_DESC:'Name(Z-A)',
 	  KEY_FEATURES:'Key Features',
 	  PRODUCT_WEIGHT:'Weight',
 	  PRODUCT_BRAND:'Brand',
@@ -270,7 +270,7 @@ angular.module('shopnxApp')
 	  //---------------/client/app/main/main.html----------------------  
 	  HOT_SALE:'热卖',
 	  HOT_NEW:'新品',
-	  FEATURES_FILTER_TIP:'搜索过滤条件',
+	  FEATURES_FILTER_TIP:'输入过滤条件',
 	  PRODUCT_SHOWING_A:'显示',
 	  PRODUCT_SHOWING_B:'件商品 共',
 	  PRODUCT_SHOWING_C:'件商品 ',

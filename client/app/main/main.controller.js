@@ -98,7 +98,7 @@ angular.module('shopnxApp')
 
     // For Price slider
     $scope.currencyFormatting = function(value){
-      return  '$ ' + value.toString();
+      return  '￥ ' + value.toString();
     };
 
     $scope.removeBrand = function(brand){
@@ -130,7 +130,7 @@ angular.module('shopnxApp')
     $scope.products.end = false;
     $scope.products.after = 0;
     $scope.products.items = [];
-    // $scope.products.sort = sortOptions[0].val;
+    //  $scope.products.sort = sortOptions[0].val;
     $scope.fl = {};
     $scope.fl.brands = [];
     $scope.fl.categories = [];
