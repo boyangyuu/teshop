@@ -25,6 +25,22 @@ exports.getAllShops = function(req, res) {
     res.status(200).json(users);
   });
 };
+
+exports.changerole = function(req, res) {
+  var userId = req.params.id;
+  User.findById(userId, function (err, user) {
+
+      if(user.role === 'shop') {
+        user.role = 'user';
+      }else {
+        user.role = 'shop';
+      }
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.status(200).json({verify:'ok'});
+      });
+  });
+}
 /**
  * Get list of users
  * restriction: 'admin'
