@@ -226,7 +226,7 @@ angular.module('shopnxApp')
 	  PLEASE_EMAIL_CHARACTER:'请输入你的电子邮件',
 	  PASSWORD:'密码',
 	  PLEASE_PASSWORD_CHARACTER:'请输入你的密码？',
-	  PLEASE_EMAIL_PASSWORD_CHARACTER:'请输入您的电子邮件和密码',s
+	  PLEASE_EMAIL_PASSWORD_CHARACTER:'请输入您的电子邮件和密码',
 	  PLEASE_ENTER_VALID_EMAIL:'请输入一个有效的电子邮件',
 	  SEARCH_TIPS:'查找商品，品类，品牌...',
 	  SEARCH:'查找',
