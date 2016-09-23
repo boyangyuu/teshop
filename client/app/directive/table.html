@@ -25,7 +25,7 @@
           <div class="panel-footer">
             <div class="row">
               <div class="col-xs-12" dw-loading="crudTable" dw-loading-options="{text: ''}">
-                <button type="button" class="btn btn-danger" ng-click="edit({});" ng-if="!noadd">Add New <i class="fa fa-plus"></i> </button>
+                <button type="button" class="btn btn-danger" ng-click="edit({});" ng-if="!noadd">添加 <i class="fa fa-plus"></i> </button>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
                 <th ng-repeat="c in cols" ts-criteria="{{c.heading}} | {{c.sortType}}">
                   {{c.heading | labelCase}}
                 </th>
-                <th>Edit / Remove</th>
+                <th>编辑 / 移除</th>
               </tr>
           </thead>
           <tbody>
