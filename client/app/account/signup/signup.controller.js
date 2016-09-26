@@ -44,7 +44,7 @@ var shopnxApp=angular.module("shopnxApp");
     {
       // $scope.selectForm={};
       $scope.submitSelect = true;
-      
+
       if(selectForm.$valid){
         Auth.createUser({
           name: $scope.user.name,
@@ -96,8 +96,8 @@ var shopnxApp=angular.module("shopnxApp");
           cellphone: $scope.user.cellphone,
           add: $scope.user.add,
           describe: $scope.user.describe,
-          
-          
+
+
         })
         .then( function() {
           // Account created, redirect to the page with requested a signup
@@ -118,7 +118,32 @@ var shopnxApp=angular.module("shopnxApp");
     // 个人用户 unit
     $scope.unitUser = function(unitform)
     {
-      $scope.submitUnit = true;
+      // $scope.formSeller={};
+      $scope.submitSupply = true;
+      if(unitform.$valid) {
+        Auth.createUser({
+          name: $scope.user.name,
+          email: $scope.user.email,
+          password: $scope.user.password,
+          cardId: $scope.user.cardId,
+          cellphone: $scope.user.cellphone
+        })
+        .then( function() {
+          // Account created, redirect to the page with requested a signup
+          Auth.redirectToAttemptedUrl();
+        })
+        .catch( function(err) {
+          err = err.data;
+          $scope.errors = {};
+          // Update validity of formshop fields that match the mongoose errors
+          angular.forEach(err.errors, function(error, field) {
+            formshop[field].$setValidity('mongoose', false);
+            $scope.errors[field] = error.message;
+          });
+        });
+
+      }
+
     }
 
     $scope.loginOauth = function(provider){
