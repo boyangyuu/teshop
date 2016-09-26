@@ -144,7 +144,25 @@ angular.module('shopnxApp')
 	  PRODUCT_BRAND:'Brand',
 	  SHARE_YOUR_FRIENDS:'Show it to your friends',
 	  PRODUCT_DETAILS:'Product details',
+	//----------------contact------------------------------------------------
+	  ASK_QUESTION_ABOUT_SOMETHING:'Are you curious about something? Do you have some kind of problem with our products?',
+	  FREE_TO_CONTACT_US:'Please feel free to contact us, our customer service center is working for you 24/7.',
+	  ADDRESS_ADDRESS:'Address',
+	  CALL_CENTER:'Call center',
+	  ELECTRONIC_SUPPORT:'Electronic support',
+	  WRITE_EMAIL_TO_US:'Please feel free to write an email to us.',
+	  CONTACT_WAY:'contact way',
+	  COMPANY_ADDRESS:'Company address：Beijing fengtai district mas castle road  156 number  Bldg 5',
+	  CONTACT_FORM:'Contact form',
+	  CONTACT_FIRSTNAME:'Firstname',
+	  CONTACT_LASTNAME:'Lastname',
+	  CONTACT_EMAIL:'Email',
+	  CONTACT_SUBJECT:'Subject',
+	  CONTACT_MESSAGE:'Message',
+	  CONTACT_SEND_MESSAGE:'Send message',
 	  
+	 
+
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
@@ -285,6 +303,22 @@ angular.module('shopnxApp')
       PRODUCT_BRAND:'商品品牌',
 	  SHARE_YOUR_FRIENDS:'分享到朋友圈',
 	  PRODUCT_DETAILS:'商品详情',
+	//----------------contact------------------------------------------------
+	  ASK_QUESTION_ABOUT_SOMETHING:'你有什么疑问吗？或者您对我们的产品有什么问题吗？',
+	  FREE_TO_CONTACT_US:'请随时与我们联系，我们的客户服务中心为您7×24在线服务',
+	  ADDRESS_ADDRESS:'公司地址',
+	  CALL_CENTER:'客服中心',
+	  ELECTRONIC_SUPPORT:'邮件支持',
+	  WRITE_EMAIL_TO_US:'请随时给我们写一封电子邮件。',
+	  CONTACT_WAY:'联系方式',
+	  COMPANY_ADDRESS:'公司地址：北京市丰台区马家堡东路156号院5号楼',
+	  CONTACT_FORM:'联系表格',
+	  CONTACT_FIRSTNAME:'姓',
+	  CONTACT_LASTNAME:'名字',
+	  CONTACT_EMAIL:'电子邮箱',
+	  CONTACT_SUBJECT:'主题',
+	  CONTACT_MESSAGE:'内容',
+	  CONTACT_SEND_MESSAGE:'发送',
     });
 	var lang = window.localStorage.lang||'cn';
 	
