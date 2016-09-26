@@ -41,6 +41,13 @@ exports.changerole = function(req, res) {
       });
   });
 }
+
+exports.shopInfo = function(req, res) {
+  var userId = req.params.id;
+  User.findById(userId, function (err, user) {
+    
+  });
+}
 /**
  * Get list of users
  * restriction: 'admin'
@@ -57,7 +64,7 @@ exports.index = function(req, res) {
  */
 exports.create = function (req, res, next) {
 
-  if (req.body.shopName) {
+  if (req.body.companyName) {
     req.body.verify = false;
     req.body.class = 'shop';
   };
