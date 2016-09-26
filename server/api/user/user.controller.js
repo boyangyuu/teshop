@@ -25,6 +25,29 @@ exports.getAllShops = function(req, res) {
     res.status(200).json(users);
   });
 };
+
+exports.changerole = function(req, res) {
+  var userId = req.params.id;
+  User.findById(userId, function (err, user) {
+
+      if(user.role === 'shop') {
+        user.role = 'user';
+      }else {
+        user.role = 'shop';
+      }
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.status(200).json({verify:'ok'});
+      });
+  });
+}
+
+exports.shopInfo = function(req, res) {
+  var userId = req.params.id;
+  User.findById(userId, function (err, user) {
+    
+  });
+}
 /**
  * Get list of users
  * restriction: 'admin'
@@ -41,7 +64,7 @@ exports.index = function(req, res) {
  */
 exports.create = function (req, res, next) {
 
-  if (req.body.shopName) {
+  if (req.body.companyName) {
     req.body.verify = false;
     req.body.class = 'shop';
   };

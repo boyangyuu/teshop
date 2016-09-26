@@ -8,8 +8,8 @@ var Product = require('../product/product.model');
 exports.group = function(req, res) {
   var async = require("async");
   var featureMaps = [];
-  // return res.status(200).json(p);
-  console.log(req.params.categoryId);
+  // console.log("ybytest");
+  // console.log(req.params.categoryId);
   Feature.find({categoryId : req.params.categoryId}).distinct('key',function(err,features){
     var f = {};
     async.each(features, function(k, callback){

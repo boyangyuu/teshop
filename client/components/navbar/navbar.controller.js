@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('NavbarCtrl', ['$scope', '$rootScope', '$location', 'Auth', '$modal', 'Cart', 'Category', 'Brand', 'SortOptions', '$q', 'Product', '$state', function ($scope, $rootScope, $location, Auth, $modal, Cart, Category, Brand,SortOptions,$q, Product, $state) {
+  .controller('NavbarCtrl', ['$scope', '$rootScope', '$location', 'Auth', '$modal', 'Cart', 'Category', 'Brand', 'SortOptions', '$q', 'Product', '$state','$translate', function ($scope, $rootScope, $location, Auth, $modal, Cart, Category, Brand,SortOptions,$q, Product, $state,$translate) {
     $scope.hideSubMenu = function(){
       // $('.megamenu .dropdown:hover .dropdown-menu').hide(); // Hide the navbar submenu once a category is selected
     }
@@ -142,4 +142,12 @@ angular.module('shopnxApp')
             };
         };
         cartEditCtrl.$inject = ['$scope', '$modalInstance', 'cart'];
+
+        $scope.changeLanguage = function (lang) {
+		   $translate.use(lang);
+            window.localStorage.lang = lang;
+            window.location.reload();
+           console.log('lang ');
+	    };
+        $scope.cur_lang = $translate.use();
   }]);

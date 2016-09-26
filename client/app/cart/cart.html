@@ -7,7 +7,7 @@
 </button>
 
 <div class="modal-header">
-    <h3 class="modal-title">Cart Details</h3> Total Amount: {{cart.getTotalPrice() | currency}} - ({{cart.getTotalCount()}} items)
+    <h3 class="modal-title">Cart Details</h3> Total Amount: {{cart.getTotalPrice() | currency:"￥"}} - ({{cart.getTotalCount()}} items)
 </div>
 
 <div class="modal-body">

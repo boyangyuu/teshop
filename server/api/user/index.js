@@ -18,4 +18,11 @@ router.post('/', controller.create);
 router.get('/get/shops/all',  controller.getAllShops)
 router.get('/verifyShop/:id',  controller.verifiedShop);
 
+router.get('/changerole/:id',  controller.changerole);
+
+
+router.get('/shopInfo/:id',  controller.shopInfo);
+
+
+
 module.exports = router;
