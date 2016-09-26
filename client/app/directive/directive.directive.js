@@ -39,8 +39,9 @@ angular.module('shopnxApp')
 
 
         scope.data = [];
-        // $loading.start('crudTable');
+        $loading.start('crudTable');
         scope.query = scope.query === 'undefined' ? {} : scope.query;
+
 
         scope.$watch("query",function(newValue,oldValue)
         {
@@ -61,7 +62,7 @@ angular.module('shopnxApp')
 
           } else {
             title = 'Add New';
-            item = _.extend(item, query);
+            item = _.extend(item, attrs.query);
           }
           //console.log(query);
           Modal.show(item,{title:title, api:attrs.api, columns: obj, disabledColumn: attrs.disabledcolumn});
