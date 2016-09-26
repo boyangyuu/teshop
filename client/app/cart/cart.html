@@ -53,7 +53,7 @@
                     <a ui-sref="productDetail({id:item.sku, slug:item.slug})" ng-click="cancel();">{{item.name}}</a>
                 </td>
 
-                <td>{{item.price | currency}}</td>
+                <td>{{item.price | currency:"￥"}}</td>
 
                 <td>
                     <div class="input-group" style="width:105px;">
@@ -63,7 +63,7 @@
                     </div>
                 </td>
 
-                <td><span><strong>{{item.price * item.quantity | currency}}</strong></span></td>
+                <td><span><strong>{{item.price * item.quantity | currency:"￥"}}</strong></span></td>
 
                 <td class="product-actions">
                     <a title="Remove this item" class="remove" href="" ng-click="cart.addItem({sku:item.sku}, -10000000)">
