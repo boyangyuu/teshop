@@ -4,6 +4,7 @@ angular.module('shopnxApp')
   .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Reply, Category, socket,toastr, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
+    // hekenan
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
     if (localStorage !== null && JSON !== null && id !== null) {
         localStorage.productId = id;
