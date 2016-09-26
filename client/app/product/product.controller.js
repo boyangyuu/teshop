@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Feature, Modal, toastr, $loading, Settings, $upload, $filter, $timeout) {
+  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Feature, Modal, toastr, $loading, Settings) {
     var cols = [
       {heading:'sku',dataType:'text', sortType:'lowercase'},
       {heading:'name',dataType:'text', sortType:'lowercase'},
@@ -16,15 +16,14 @@ angular.module('shopnxApp')
     $scope.product.variants = [];
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
-    $scope.product.category = {}; //todo
-
+    $scope.product.introduction = [];
     // $scope.selected = {};
     // $scope.selected.feature = [];
     $scope.features = Feature.query();
     // $scope.items=$scope.features.map(function(name){ return { key:key,val:val}; })
     // $scope.selected.feature[0] = {"key":"Fit","val":"Tight"};
     $loading.start('products');
-    $scope.products = Product.userProduct.query({}, function() {
+    $scope.products = Product.query({}, function() {
       $loading.finish('products');
       socket.syncUpdates('product', $scope.products);
     });
@@ -35,7 +34,7 @@ angular.module('shopnxApp')
     $scope.brands = Brand.query(function() {
       socket.syncUpdates('brand', $scope.brands);
     });
-    $scope.edit = function(product){
+    $scope.edit = function(product) {
       var title; if(product.name){ title = 'Editing ' + product.name;} else{ title = 'Add New';}
       Modal.show(product,{title:title, api:'Product', columns: cols});
     };
@@ -73,16 +72,22 @@ angular.module('shopnxApp')
       // console.log($scope.newKF);
       if('val' in $scope.newKF){
         $scope.product.keyFeatures.push($scope.newKF.val);
-        // console.log($scope.product.keyFeatures);
+        console.log($scope.product.keyFeatures);
       }
       if('key' in $scope.newFeature){
         $scope.product.features.push($scope.newFeature);
         // console.log($scope.product.features);
       }
+
+      // if('introduction' in $scope.product.introduction){
+      //     // ueditor.getContent();
+      // }else{
+      //    $scope.product.introduction ='';
+      // }
+
       $scope.variant = {};
       $scope.newKF = {};
       $scope.newFeature = {};
-      $scope.product.category = {};
 
       // $scope.feature.key = feature.key.name;
       // $scope.product.feature = $scope.selected.feature;
@@ -136,89 +141,23 @@ angular.module('shopnxApp')
         else{ $scope.product = {}; }
     };
 
-    //category
-    $scope.categories = Category.all.query();
-    $scope.categories2=[];
-    $scope.onSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      $scope.categories2=$item.sub_categories;
-    }
+    // var app = angular.module("demoApp",['ngKeditor']);
+    // app.controller("kindeditorCtrl",["$scope",function($scope){
+    $scope.info = function($scope){
+            content : "hello,world"
+   
+    $scope.config = {width: '100px'};
 
-    $scope.onSubSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      // $scope.product.category = $item;
-    }
+    $scope.reg = /\d+/g;
+     };
+  
+  //  ueditor.getContent();
+    // ueditor.ready(function() {
+    //   ueditor.setContent(scope.product.introduction);
+    // });
+  // var ueditor = UE.getEditor('container');
+  // console.log(ueditor.getContent());
+
+
   });
-
-// //files
-// $scope.fileList = [];
-//
-// $scope.$watch('files', function (f) {
-//   console.log(f);
-//     if(f&&f[0]) {
-//         $scope.upload(f);
-//         angular.forEach(f, function(file){
-//            $scope.fileList.push(file);
-//         })
-//     }
-// });
-//
-// $scope.removeFile = function(fileName) {
-//     angular.forEach($scope.fileList, function(f, index){
-//         if(f.name == fileName){
-//             $scope.fileList.splice(index, 1);
-//             return;
-//         }
-//     });
-// };
-//
-// $scope.upload = function (files) {
-//     if (files && files.length) {
-//         for (var i = 0; i < files.length; i++) {
-//             var file = files[i];
-//             file.dynamic = 0;
-//             $scope.uploadFile(file);
-//             /*$upload.upload({
-//                 url: '/upload',
-//                 file: file
-//             }).progress(function (evt) {
-//                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-//                 file.dynamic = progressPercentage;
-//                 console.log('progress: ' + progressPercentage + '% ' +
-//                             evt.config.file.name);
-//             }).success(function (data, status, headers, config) {
-//                 console.log('file ' + config.file.name + 'uploaded. Response: ' +
-//                             JSON.stringify(data));
-//             });*/
-//         }
-//     }
-// };
-//
-// $scope.uploadFile = function(file){
-//
-//     file.upload = $upload.upload({
-//         url: 'http://127.0.0.1:9000/api/file/image/uploading',
-//         file: file
-//     });
-//
-//     file.upload.then(function(response) {
-//    $timeout(function() {
-//        file.result = response.data;
-//    });
-// }, function(response) {
-//      //if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
-// });
-//
-// file.upload.progress(function(evt) {
-//    // Math.min is to fix IE which reports 200% sometimes
-//    file.dynamic = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-// });
-//
-// file.upload.xhr(function(xhr) {
-//    // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
-// });
-// };
-
-
-
 

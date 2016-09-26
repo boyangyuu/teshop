@@ -18,6 +18,7 @@ angular.module('shopnxApp', [
   'ui.select',
   'angularFileUpload',
   'pascalprecht.translate',
+  'ms.ueditor'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

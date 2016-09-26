@@ -7,16 +7,16 @@
 </button>
 
 <div class="modal-header">
-    <h3 class="modal-title">Cart Details</h3> Total Amount: {{cart.getTotalPrice() | currency:"￥"}} - ({{cart.getTotalCount()}} items)
+    <h3 class="modal-title">{{'CART_DETAILS' | translate}}</h3> {{'TOTAL_AMOUNT' | translate}}: {{cart.getTotalPrice() | currency:"￥"}} - ({{cart.getTotalCount()}} {{'CART_ITEMS' | translate}})
 </div>
 
 <div class="modal-body">
     <div class="actions-continue">
-        <button class="btn btn-default pull-left" ng-click="cart.clearItems();" ng-disabled="cart.getTotalCount() <= 0">Clear Cart</button>
+        <button class="btn btn-default pull-left" ng-click="cart.clearItems();" ng-disabled="cart.getTotalCount() <= 0">{{'CLEAR_CART' | translate}}</button>
 
-        <input type="text" placeholder="Filter Cart" class="form-control col-md-4" style="width:250px;margin-left:20px;" ng-model="filterCart" autofocus/>
+        <input type="text" placeholder="{{'FILTER_CART' | translate}}" class="form-control col-md-4" style="width:250px;margin-left:20px;" ng-model="filterCart" autofocus/>
 
-        <button value="Proceed to Checkout →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/checkout'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Proceed to Checkout →</button>
+        <button value="Proceed to Checkout →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/checkout'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">{{'PROCEED_TO_CHECKOUT' | translate}} →</button>
 
         <div class="clearfix"></div>
     </div><br/>
@@ -26,11 +26,11 @@
             <tr>
                 <th>#</th>
                 <th></th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Remove</th>
+                <th>{{'CART_PRODUCT' | translate}}</th>
+                <th>{{'CART_PRICE' | translate}}</th>
+                <th>{{'CART_QUANTITY' | translate}}</th>
+                <th>{{'CART_TOTAL' | translate}}</th>
+                <th>{{'CART_REMOVE' | translate}}</th>
             </tr>
         </thead>
         <tbody>

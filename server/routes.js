@@ -7,6 +7,8 @@
 var errors = require('./components/errors');
 var path = require('path');
 
+var ueditorHandler = require('./components/ueditor/ueditorHandler');
+
 module.exports = function(app) {
 
   // Insert routes below

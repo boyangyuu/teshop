@@ -11,3 +11,4 @@ angular.module('shopnxApp')
         authenticate: true
       });
   });
+

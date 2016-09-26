@@ -160,9 +160,19 @@ angular.module('shopnxApp')
 	  CONTACT_SUBJECT:'Subject',
 	  CONTACT_MESSAGE:'Message',
 	  CONTACT_SEND_MESSAGE:'Send message',
-	  
-	 
-
+	//----------------cart------------------------------------------------	  
+	  CART_DETAILS:'Cart Details',
+	  TOTAL_AMOUNT: 'Total Amount',
+	  CLEAR_CART:'Clear Cart',
+	  FILTER_CART:'Filter Cart',
+	  PROCEED_TO_CHECKOUT:'Proceed to Checkout',
+	  CART_PRODUCT:'Product',
+	  CART_PRICE:'Price',
+	  CART_QUANTITY:'Quantity',
+	  CART_TOTAL:'Total',
+	  CART_REMOVE:'Remove',
+	  CART_ITEMS:'items',
+	
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
@@ -319,6 +329,22 @@ angular.module('shopnxApp')
 	  CONTACT_SUBJECT:'主题',
 	  CONTACT_MESSAGE:'内容',
 	  CONTACT_SEND_MESSAGE:'发送',
+	  
+	  //----------------cart------------------------------------------------	  
+	  CART_DETAILS:'购物车详情',
+	  TOTAL_AMOUNT: '总金额',
+	  CLEAR_CART:'清空购物车',
+	  FILTER_CART:'请输入关键字，搜索购物车商品',
+	  PROCEED_TO_CHECKOUT:'去支付',
+	  CART_PRODUCT:'商品名称',
+	  CART_PRICE:'价格',
+	  CART_QUANTITY:'数量',
+	  CART_TOTAL:'总金额',
+	  CART_REMOVE:'移除',
+	  CART_ITEMS:'件',
+	  
+	  
+	 
     });
 	var lang = window.localStorage.lang||'cn';
 	
