@@ -64,21 +64,23 @@
     <div ng-include="'components/navbar/navbar.html'"></div>
     <div id="all">
 
-      <div id="content">
+      <div id="content" style="min-height:480px;">
+          <div class="section-banner">
+            <div class="bn-overlay"></div>
+          </div>
           <div class="container">
-
-    <div ui-view=""></div>
-  </div>
+            <div ui-view=""></div>
+          </div>
   <!-- /.container -->
-</div>
+      </div>
 <!-- /#content -->
 
             <!-- *** FOOTER ***
      _________________________________________________________ -->
-             <div id="footer" data-animate="fadeInUp">
+            <div id="footer" data-animate="fadeInUp">
                 <div class="container">
                         <div class="col-md-3 col-sm-6">
-                            <h4 translate="HOMEPAGE">首页</h4>
+                            <h4 translate="HOMEPAGE" class="footer-title">首页</h4>
 
                             <ul>
                                 <li><a href="/login" translate="LOGIN">登录</a>
@@ -100,9 +102,9 @@
 
                         <div class="col-md-3 col-sm-6">
 
-                            <h4 translate="TOP_CATEGORIES">热门推荐</h4>
+                            <h4 translate="TOP_CATEGORIES" class="footer-title">热门推荐</h4>
 
-                            <h5 translate="BIM_COLLEGE">BIM学院</h5>
+                            <h5 translate="BIM_COLLEGE" class="footer-title">BIM学院</h5>
 
                             <ul>
                                 <li><a href="/" translate="BIM_INFORMATION">BIM资讯</a>
@@ -113,7 +115,7 @@
                                 </li>
                             </ul>
 
-                            <h5 translate="PROJECT_SERVICES">项目服务</h5>
+                            <h5 translate="PROJECT_SERVICES" class="footer-title">项目服务</h5>
                             <ul>
                                 <li><a href="/" translate="PUBLISHING_TASKS">发布任务</a>
                                 </li>
@@ -132,7 +134,7 @@
 
                         <div class="col-md-3 col-sm-6">
 
-                            <h4 translate="CONTACT">联系我们</h4>
+                            <h4 translate="CONTACT" class="footer-title">联系我们</h4>
 
                             <p><strong translate="ADDRESS_BUILD">5号楼</strong>
                                 <br><span translate="ADDRESS_COURTYARD" style="text-align: left;">156号院</span>
@@ -143,7 +145,7 @@
                                 <strong translate="CHINA">中国</strong>
                             </p>
 
-                            <a href="/contact" translate="MORE">了解更多</a>
+                            <a href="/contact" translate="MORE" class="link">了解更多</a>
 
                             <hr class="hidden-md hidden-lg">
 
@@ -154,7 +156,7 @@
 
                         <div class="col-md-3 col-sm-6">
 
-                            <h4  translate="INDUSTRY_INFORMATION">行业资讯</h4>
+                            <h4  translate="INDUSTRY_INFORMATION" class="footer-title">行业资讯</h4>
 
                             <p class="text-muted"  translate="GET_MORE_NEWS">第一时间获取行业相关动态</p>
 
@@ -175,7 +177,7 @@
 
                             <hr>
 
-                            <h4 translate="LOGIN_MODE">登录方式</h4>
+                            <h4 translate="LOGIN_MODE" class="footer-title">登录方式</h4>
 
                             <p class="social">
                                 <a href="https://www.facebook.com/codenx2" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
@@ -202,11 +204,11 @@
            <div id="copyright">
                 <div class="container">
                     <div class="col-md-6">
-                        <p class="pull-left">© 2016  &nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/" translate="COPYRIGHT_GOV">京ICP备11011249号-1</a></p>
+                        <p class="pull-left">© 2016  &nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/" translate="COPYRIGHT_GOV" style="color:#9B9EA1" class="link">京ICP备11011249号-1</a></p>
                     </div>
                     <div class="col-md-6">
                         <p class="pull-right">
-                          <a href="http://www.bjjy.com/" translate="COPYRIGHT_COM">北京建谊投资发展（集团）有限公司</a>
+                          <a href="http://www.bjjy.com/" translate="COPYRIGHT_COM" style="color:#9B9EA1" class="link">北京建谊投资发展（集团）有限公司</a>
                         </p>
                     </div>
                 </div>
@@ -258,7 +260,6 @@
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
       <script src="bower_components/checklist-model/checklist-model.js"></script>
-      <script src="bower_components/json3/lib/json3.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
       <script src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>

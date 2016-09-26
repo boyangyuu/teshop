@@ -136,7 +136,7 @@ angular.module('shopnxApp')
     $scope.fl.brands = [];
     $scope.fl.categories = [];
     $scope.priceSlider = {};
-    $scope.features = []; // TODO
+    $scope.features = [];
     $scope.navigate = function(page,params){
       // var params = params.delete('$$hashKey');
       if(page==='sort'){
@@ -223,7 +223,10 @@ angular.module('shopnxApp')
       angular.forEach($scope.fl.categories,function(category){
         categoryId = category._id;
       });
-      $scope.features = Feature.group.query({categoryId : categoryId}); // TODO
+      if (typeof categoryId != 'undefined'){
+        $scope.features = Feature.group.query({categoryId : categoryId});
+      }
+
     }
     var displayProducts = function(q,flush){
       if(flush){

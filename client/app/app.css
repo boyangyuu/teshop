@@ -116,8 +116,9 @@ padding-left: 24px;
 padding-right: 6px;
 }
 .sw-search {
-float: right;
-margin-top: -4.5px;
+/*float: right;*/
+margin-top:16px;
+
 }
 .nav-search .nav-search-input {
 border: 1px solid #6fb3e0;

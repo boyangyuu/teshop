@@ -12,9 +12,19 @@ var UserSchema = new Schema({
   describe: String,
   class: String,
   verify:Boolean,
-  shopName: String,
+  companyName: String,
+  businessLicense: String,
+  taxFileNumber: String,
+  Organization: String,
+  username: String,
   phone: String,
   cellphone: String,
+  postalcode: String,
+  enterpriseProperty: String,
+  legalPerson: String,
+  cardId: String,
+  add: String,
+
   role: {
     type: String,
     default: 'user'
