@@ -1,14 +1,15 @@
 'use strict';
 var shopnxApp=angular.module("shopnxApp");
 
-  shopnxApp.controller('SignupCtrl', function ($scope, Auth, $location, $window) {
+  shopnxApp.controller('SignupCtrl', function ($scope, Auth, $location, $window, $upload, $filter, $timeout) {
     // .factory('vertify', ['$resource', function($resource) {
     //     var obj = {};
     //     obj = $resource('/api/vertify/ccap');
     //     return obj;
     //   }])
     // $scope.vertifycole = 0;
-    var myCode = 0;
+
+    var myCode=0;
     $scope.verBtn = function () {
       function MathRand() {
         var Num="";
@@ -38,48 +39,26 @@ var shopnxApp=angular.module("shopnxApp");
     $scope.user = {};
     $scope.errors = {};
     $scope.btn="btn1";
-    // 采购商
-    $scope.registerUser = function(formuser)
+    // 采购商 select
+    $scope.selectUser = function(selectForm)
     {
-      $scope.submitted = true;
-
-      /*if(formuser.$valid){
-        Auth.createUser({
-          name: $scope.user.name,
-          email: $scope.user.email,
-          password: $scope.user.password
-        })
-        .then( function() {
-          // Account created, redirect to the page with requested a signup
-          Auth.redirectToAttemptedUrl();
-        })
-        .catch( function(err) {
-          err = err.data;
-          $scope.errors = {};
-
-          // Update validity of formuser fields that match the mongoose errors
-          angular.forEach(err.errors, function(error, field) {
-            formuser[field].$setValidity('mongoose', false);
-            $scope.errors[field] = error.message;
-          });
-        });
-      }*/
-    };
-    // 供应商
-    $scope.registerSeller = function(formshop)
-    {
-      $scope.submittedshop = true;
-
-      if(formshop.$valid) {
+      // $scope.selectForm={};
+      $scope.submitSelect = true;
+      
+      if(selectForm.$valid){
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
           password: $scope.user.password,
-          shopName: $scope.user.shopName,
-          phone: $scope.user.phone,
+          companyName: $scope.user.companyName,
+          businessLicense: $scope.user.businessLicense,
+          taxFileNumber: $scope.user.taxFileNumber,
+          Organization: $scope.user.Organization,
+          username: $scope.user.username,
           cellphone: $scope.user.cellphone,
+          phone: $scope.user.phone,
           address: $scope.user.address,
-          describe: $scope.user.describe
+          postalcode: $scope.user.postalcode
         })
         .then( function() {
           // Account created, redirect to the page with requested a signup
@@ -89,6 +68,44 @@ var shopnxApp=angular.module("shopnxApp");
           err = err.data;
           $scope.errors = {};
 
+          // Update validity of selectForm fields that match the mongoose errors
+          angular.forEach(err.errors, function(error, field) {
+            selectForm[field].$setValidity('mongoose', false);
+            $scope.errors[field] = error.message;
+          });
+        });
+      }
+    };
+    // 供应商 supply
+    $scope.supplyUser = function(supplyform)
+    {
+      // $scope.formSeller={};
+      $scope.submitSupply = true;
+      if(supplyform.$valid) {
+        Auth.createUser({
+          name: $scope.user.name,
+          email: $scope.user.email,
+          password: $scope.user.password,
+          companyName: $scope.user.companyName,
+          businessLicense: $scope.user.businessLicense,
+          taxFileNumber: $scope.user.taxFileNumber,
+          enterpriseProperty: $scope.user.enterpriseProperty,
+          legalPerson: $scope.user.legalPerson,
+          address: $scope.user.address,
+          cardId: $scope.user.cardId,
+          cellphone: $scope.user.cellphone,
+          add: $scope.user.add,
+          describe: $scope.user.describe,
+          
+          
+        })
+        .then( function() {
+          // Account created, redirect to the page with requested a signup
+          Auth.redirectToAttemptedUrl();
+        })
+        .catch( function(err) {
+          err = err.data;
+          $scope.errors = {};
           // Update validity of formshop fields that match the mongoose errors
           angular.forEach(err.errors, function(error, field) {
             formshop[field].$setValidity('mongoose', false);
@@ -98,37 +115,10 @@ var shopnxApp=angular.module("shopnxApp");
 
       }
     };
-    // 个人用户
-    $scope.register = function(form)
+    // 个人用户 unit
+    $scope.unitUser = function(unitform)
     {
-      $scope.submitteduser = true;
-
-      // if(form.$valid) {
-      //   Auth.createUser({
-      //     name: $scope.user.name,
-      //     email: $scope.user.email,
-      //     password: $scope.user.password,
-      //     shopName: $scope.user.shopName,
-      //     phone: $scope.user.phone,
-      //     cellphone: $scope.user.cellphone,
-      //     address: $scope.user.address,
-      //     describe: $scope.user.describe
-      //   })
-      //   .then( function() {
-      //     // Account created, redirect to the page with requested a signup
-      //     Auth.redirectToAttemptedUrl();
-      //   })
-      //   .catch( function(err) {
-      //     err = err.data;
-      //     $scope.errors = {};
-
-      //     // Update validity of form fields that match the mongoose errors
-      //     angular.forEach(err.errors, function(error, field) {
-      //       form[field].$setValidity('mongoose', false);
-      //       $scope.errors[field] = error.message;
-      //     });
-      //   });
-      // }
+      $scope.submitUnit = true;
     }
 
     $scope.loginOauth = function(provider){

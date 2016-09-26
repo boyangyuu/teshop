@@ -3,33 +3,33 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="box">
-      <h1>修改密码</h1>
+      <h1>{{'CHANGE_PASSWORD' | translate}}</h1>
       <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
         <div class="form-group">
-          <label>原始密码</label>
+          <label>{{'PRIMITIVE_PASSWORD' | translate}}</label>
 
           <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-                 mongoose-error placeholder="Old password"/>
+                 mongoose-error placeholder="{{'OLD_PASSWORD' | translate}}"/>
           <p class="help-block" ng-show="form.password.$error.mongoose">
               {{ errors.other }}
           </p>
         </div>
 
         <div class="form-group">
-          <label>新密码</label>
+          <label>{{'NEW_PASSWORD' | translate}}</label>
 
           <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
                  ng-minlength="3"
-                 required placeholder="Set a new password"/>
+                 required placeholder="{{'SET_PASSWORD' | translate}}"/>
           <p class="help-block"
              ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
-            Password must be at least 3 characters.
-          </p>
+            {{'PASSWORD_CHARACTER' | translate}}
+            </p>
         </div>
 
         <p class="help-block"> {{ message }} </p>
 
-        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+        <button class="btn btn-lg btn-primary" type="submit">{{'SAVE_CHANGES' | translate}}</button>
       </form>
     </div>
   </div>

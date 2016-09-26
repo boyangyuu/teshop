@@ -1,10 +1,18 @@
 <link rel="stylesheet" href="bower_components/angular-tablesort/tablesort.css" />
 
+<p translate="THIS_CHARACTER" class="ng-scope">This is a paragraph.</p>
 <div class="category-box clearfix">
-	<label class="cate-tit col-md-1">category:</label>
+	<label class="cate-tit col-md-1" translate="CATEGORY">category:</label>
 	<div class="col-md-2 feature-cate">
+		<select required="" class="form-control" theme="bootstrap" ng-model="selected_category1" ng-options="item as item.name for item in categories">
+        	<option value="" translate="FIRST_CLASSIFCTION">一级分类</option>  
+    	</select>
+	</div>
+	<div class="col-md-2 feature-cate">
+		<select class="form-control" ng-model="selected_category2" theme="bootstrap" ng-options="item as item.name for item in categories2">
+	        <option value="" translate="SECONDARY_CLASSIFICATION">二级分类</option>  
+
 		<select class="form-control" theme="bootstrap" ng-model="selected_category1" ng-options="item as item.name for item in categories">
-        	<option value="">一级分类</option>
     	</select>
 	</div>
 	<div class="col-md-2 feature-cate">

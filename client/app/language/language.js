@@ -26,6 +26,66 @@ angular.module('shopnxApp')
 	  CUSTOMERS: 'Customers',
 	  PAYMENT_METHOD: 'Payment Method',
 	  SHIPPING_SETTINGS: 'Shipping Settings',
+	  //-------------------用户管理--------------------------
+	  USER_ADMINISTRATION:'User Administration',
+	  DELETE:'Delete',
+	  ADD:'add',
+	  ID:'id',
+	  USERNAME:'name',
+	  GOODSTYPE:'GoodsType',
+	  VERIFY:'verify',
+	  HANDLE:'handle',
+	  SUPPLIER:'supplier',
+	  PURCHASE:'purchase',
+	  SUPPLIERLIST:'supplierlist',
+	  PURCHASELIST:'purchaselist',
+	  //--------------------新闻资讯-----------------
+	  //NEWS_INFORMATION:'news information',
+	  //DROPFILE_CHARACTER:'Drop file here or click to upload',
+	  //FILEDRAG_CHARACTER:'File Drag/Drop is not supported for this browser',
+	  //FILENAME:'File Name',
+	  //FILESIZE:'File Size',
+	  //PROGRESS:'Progress',
+	  //PREVIEW:'preview',
+	  //------------------特色-----------------------------
+	  THIS_CHARACTER:'This is a paragraph',
+
+	  FIRST_CLASSIFCTION:'first classifction',
+	  SECONDARY_CLASSIFICATION:'Secondary classification',
+	  //--------------------订单----------------------------
+	  ORDERS_HISTORY:'Orders History',
+	  SHIPPING_CHARGE:'Shipping Charge:',
+	  COUPON:'Coupon:',
+	  Order_Total:'Order Total',
+	  TOTAL_SPENT:'Total Spent',
+	  QTY:'Qty',
+	  PACKING_SIZE:'Packing/Size',
+	  UNIT_PRICE:'Unit Price',
+	  
+	  //----------------------修改密码-----------------------
+	
+	  PRIMITIVE_PASSWORD:'primitive Password',
+	  NEW_PASSWORD:'New Password',
+	  PASSWORD_CHARACTER:'Password must be at least 3 characters.',
+	  SAVE_CHANGES:'Save changes',
+	  OLD_PASSWORD:'Old password',
+	  SET_PASSWORD:'Set a new password',
+	  //-------------------------类别-------------------------
+	
+	  INFO:'info',
+	  CATEGORY:'category',
+	  PARENTCATEGORY:'parentCategory',
+	  ACTIVE:'active',
+	  //---------------------登录-------------------------------
+	  ALREADY_CHARACTER:'Already our customer?',
+	  EMAIL:'Email',
+	  PLEASE_EMAIL_CHARACTER:'Please enter your email',
+	  PASSWORD:'Password',
+	  PLEASE_PASSWORD_CHARACTER:'Please enter your password',
+	  PLEASE_EMAIL_PASSWORD_CHARACTER:'Please enter your email and password',
+	  PLEASE_ENTER_VALID_EMAIL:'Please enter a valid email',
+
+
 	  SEARCH_TIPS:'Search for a product, category or brand...',
 	  SEARCH:'Search',
 	  CART:'Cart',
@@ -58,11 +118,51 @@ angular.module('shopnxApp')
 	  GET_MORE_NEWS:'The first time to obtain the relevant industry dynamics.',
 	  SUBSCRIBE:'Subscribe',
 	  LOGIN_MODE:'Login mode',
-	 //---------------/client/app/mian/main.html----------------------
+	 //---------------/client/app/main/main.html----------------------
 	  NO_PRODUCT_FOUND:'No product found. Try removing some filters.',
 	  PRICE_RANGE:'Price Range',
 	  PRICE_RESET:'Reset',
-	  PRODUCT_SORT:'Sort'
+	  PRODUCT_SORT:'Sort',
+	  VIEW_DETAIL:'View detail',
+	  ADD_TO_CART:'Add to cart',
+
+	  
+	//---------------/client/app/main/main.html----------------------  
+	  HOT_SALE:'SALE',
+	  HOT_NEW:'NEW',
+	  FEATURES_FILTER_TIP:'Filter Features ...',
+	  PRODUCT_SHOWING_A:'Showing ',
+	  PRODUCT_SHOWING_B:' products of ',
+	  PRODUCT_SHOWING_C:'in:',
+	  SCROLL_TO_DETAIL:'Scroll to product details, material & care and sizing',
+	  SORT_LOW_PRICE:'Low Price',
+	  SORT_HIGH_PRICE:'High Price',
+	  SORT_NAME_ASC:'Name(A-Z)',
+	  SORT_LOW_DESC:'Name(Z-A)',
+	  KEY_FEATURES:'Key Features',
+	  PRODUCT_WEIGHT:'Weight',
+	  PRODUCT_BRAND:'Brand',
+	  SHARE_YOUR_FRIENDS:'Show it to your friends',
+	  PRODUCT_DETAILS:'Product details',
+	//----------------contact------------------------------------------------
+	  ASK_QUESTION_ABOUT_SOMETHING:'Are you curious about something? Do you have some kind of problem with our products?',
+	  FREE_TO_CONTACT_US:'Please feel free to contact us, our customer service center is working for you 24/7.',
+	  ADDRESS_ADDRESS:'Address',
+	  CALL_CENTER:'Call center',
+	  ELECTRONIC_SUPPORT:'Electronic support',
+	  WRITE_EMAIL_TO_US:'Please feel free to write an email to us.',
+	  CONTACT_WAY:'contact way',
+	  COMPANY_ADDRESS:'Company address：Beijing fengtai district mas castle road  156 number  Bldg 5',
+	  CONTACT_FORM:'Contact form',
+	  CONTACT_FIRSTNAME:'Firstname',
+	  CONTACT_LASTNAME:'Lastname',
+	  CONTACT_EMAIL:'Email',
+	  CONTACT_SUBJECT:'Subject',
+	  CONTACT_MESSAGE:'Message',
+	  CONTACT_SEND_MESSAGE:'Send message',
+	  
+	 
+
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
@@ -88,6 +188,65 @@ angular.module('shopnxApp')
 	  CUSTOMERS: '顾客',
 	  PAYMENT_METHOD: '支付方式',
 	  SHIPPING_SETTINGS: '设置',
+
+	  //-------------------用户管理--------------------------
+	  USER_ADMINISTRATION:'用户管理',
+	  DELETE:'删除',
+	  ADD:'添加',
+	  ID:'序列号',
+	  USERNAME:'用户名',
+	  GOODSTYPE:'产品类型',
+	  VERIFY:'审核状态',
+	  HANDLE:'操作',
+	  PURCHASE:'采购商',
+	  SUPPLIER:'供应商',
+	  SUPPLIERLIST:'供应商列表',
+	  PURCHASELIST:'采购商列表',
+	  //--------------------新闻资讯-----------------
+	  //NEWS_INFORMATION:'新闻资讯',
+	  //DROPFILECHARACTER:'删除文件或单击上传',
+	  //FILEDRAGCHARACTER:'文件拖/下降这个浏览器不支持',
+	  //FILENAME:'文件名',
+	  //FILESIZE:'文件大小',
+	  //PROGRESS:'进展',
+	  //PREVIEW:'预览',
+	  //-----------------------特色-------------------------
+	  THIS_CHARACTER:'这是一个段落',
+	
+	  FIRST_CLASSIFCTION:'一级标题',
+	  SECONDARY_CLASSIFICATION:'二级标题',
+	  //-----------------------订单---------------------------
+	  ORDERS_HISTORY:'历史订单',
+	  SHIPPING_CHARGE:'运费',
+	  COUPON:'优惠券:',
+	  ORDER_TOTAL:'订单总额',
+	  Order_Total:'订单总数',
+	  TOTAL_SPENT:'总金额',
+	  QTY:'数量',
+	  PACKING_SIZE:'包装/尺寸',
+	  UNIT_PRICE:'单价',
+	  //----------------------修改密码------------------------------
+
+	  PRIMITIVE_PASSWORD:'原始密码',
+	  NEW_PASSWORD:'新密码',
+	  PASSWORD_CHARACTER:'密码必须包含三个字符',
+	  SAVE_CHANGES:'保存设置',
+	  OLD_PASSWORD:'原始的密码',
+	  SET_PASSWORD:'请设置新密码',
+	  //--------------------------类别------------------------
+	  NAME:'名称',
+	  INFO:'信息',
+	  CATEGORY:'类别',
+	  PARENTCATEGORY:'父级分类',
+	  ACTIVE:'状态',
+	   //---------------------登录-------------------------------
+	  ALREADY_CHARACTER:'已经成为我们的客户了吗?',
+	  EMAIL:'邮件',
+	  PLEASE_EMAIL_CHARACTER:'请输入你的电子邮件',
+	  PASSWORD:'密码',
+	  PLEASE_PASSWORD_CHARACTER:'请输入你的密码？',
+	  PLEASE_EMAIL_PASSWORD_CHARACTER:'请输入您的电子邮件和密码',
+	  PLEASE_ENTER_VALID_EMAIL:'请输入一个有效的电子邮件',
 	  SEARCH_TIPS:'查找商品，品类，品牌...',
 	  SEARCH:'查找',
 	  CART:'购物车',
@@ -120,15 +279,53 @@ angular.module('shopnxApp')
 	  GET_MORE_NEWS:'第一时间获取行业相关动态',
 	  SUBSCRIBE:'订阅',
 	  LOGIN_MODE:'登录方式',
-	  //---------------/client/app/mian/main.html----------------------
+	  //---------------/client/app/main/main.html----------------------
 	  NO_PRODUCT_FOUND:'没有找到相关商品。试试其它筛选条件。',
 	  PRICE_RANGE:'价格范围',
 	  PRICE_RESET:'重置',
-	  PRODUCT_SORT:'排序'
+	  PRODUCT_SORT:'排序',
+	  VIEW_DETAIL:'查看详情',
+	  ADD_TO_CART:'添加购物车',
+	  //---------------/client/app/main/main.html----------------------  
+	  HOT_SALE:'热卖',
+	  HOT_NEW:'新品',
+	  FEATURES_FILTER_TIP:'输入过滤条件',
+	  PRODUCT_SHOWING_A:'显示',
+	  PRODUCT_SHOWING_B:'件商品 共',
+	  PRODUCT_SHOWING_C:'件商品 ',
+	  SCROLL_TO_DETAIL:'转到商品介绍',
+	  SORT_LOW_PRICE:'价格↑',
+	  SORT_HIGH_PRICE:'价格↓',
+	  SORT_NAME_ASC:'商品(A-Z)',
+	  SORT_LOW_DESC:'商品(Z-A)',
+	  KEY_FEATURES:'重点特色',
+	  PRODUCT_WEIGHT:'重量',
+      PRODUCT_BRAND:'商品品牌',
+	  SHARE_YOUR_FRIENDS:'分享到朋友圈',
+	  PRODUCT_DETAILS:'商品详情',
+	//----------------contact------------------------------------------------
+	  ASK_QUESTION_ABOUT_SOMETHING:'你有什么疑问吗？或者您对我们的产品有什么问题吗？',
+	  FREE_TO_CONTACT_US:'请随时与我们联系，我们的客户服务中心为您7×24在线服务',
+	  ADDRESS_ADDRESS:'公司地址',
+	  CALL_CENTER:'客服中心',
+	  ELECTRONIC_SUPPORT:'邮件支持',
+	  WRITE_EMAIL_TO_US:'请随时给我们写一封电子邮件。',
+	  CONTACT_WAY:'联系方式',
+	  COMPANY_ADDRESS:'公司地址：北京市丰台区马家堡东路156号院5号楼',
+	  CONTACT_FORM:'联系表格',
+	  CONTACT_FIRSTNAME:'姓',
+	  CONTACT_LASTNAME:'名字',
+	  CONTACT_EMAIL:'电子邮箱',
+	  CONTACT_SUBJECT:'主题',
+	  CONTACT_MESSAGE:'内容',
+	  CONTACT_SEND_MESSAGE:'发送',
     });
-    $translateProvider.preferredLanguage('cn');
-
-    $translateProvider.useSanitizeValueStrategy('escapeParameters');
+	var lang = window.localStorage.lang||'cn';
+	
+    $translateProvider.preferredLanguage(lang);
+	$translateProvider.useSanitizeValueStrategy('escapeParameters');
+    $translateProvider.useLoaderCache(true); // default is false which means disable
+    $translateProvider.use(lang);
   })
 ;
 

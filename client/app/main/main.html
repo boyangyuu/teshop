@@ -29,7 +29,7 @@
                      rz-slider-translate="currencyFormatting"
                      rz-slider-on-end="filter()"></rzslider>
 
-                  $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
+                  ￥<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; ￥<strong>{{priceSlider.max}}</strong>
                  </div>
 
              </form>
@@ -74,7 +74,7 @@
               <h3 class="panel-title">{{'FEATURES' | translate}}
                 <div class="nav-search" id="nav-search">
                         <span class="input-icon">
-                            <input placeholder="Filter Features ..." class="nav-search-input" ng-model="filterFeature" autocomplete="off" type="text" autofocus style="width:100%">
+                            <input placeholder="{{'FEATURES_FILTER_TIP' | translate}}" class="nav-search-input" ng-model="filterFeature" autocomplete="off" type="text" autofocus style="width:100%">
                             <i class="search-icon fa fa-search nav-search-icon"></i>
                         </span>
                 </div>
@@ -106,7 +106,7 @@
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-5 products-showing">
-                                Showing {{products.items.length}} products of {{products.count}} in: $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
+                                {{'PRODUCT_SHOWING_A' | translate}}{{products.items.length}}{{'PRODUCT_SHOWING_B' | translate}}{{products.count}} {{'PRODUCT_SHOWING_C' | translate}} ￥<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; ￥<strong>{{priceSlider.max}}</strong>
                             </div>
 
                             <div class="col-sm-12 col-md-7 text-right products-number-sort">
@@ -115,7 +115,7 @@
 
                                         <div class="col-md-12 col-sm-12">
                                             <div class="products-number">
-                                                <strong>{{'PRODUCT_SORT' | translate}}</strong>
+                                                <strong>Sort</strong>
                                                 <div class="btn-group">
                                                   <a href="" ng-repeat="o in sortOptions" ng-class="{active : o.val==products.sort}" class="btn btn-default btn-sm btn-primary"  ng-click="sortNow(o.val);">{{o.name}}</a>
                                                 </div>
@@ -177,17 +177,17 @@
                                 </a>
                                 <div class="text text-center">
                                     <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a></h3>
-                                    <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>
+                                    <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '￥'}}</del> {{product.variants[0].price | currency : '￥'}}</p>
                                     <p class="buttons">
                                       <div class="btn-group">
-                                      <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
+                                      <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">{{'VIEW_DETAIL' | translate}}</a>
                                       <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
 
                                       <a ng-hide="checkCart(product._id)" class="btn btn-info">{{getQuantity(product._id);}}</a>
 
                                       <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
                                       </div>
-                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>{{'ADD_TO_CART' | translate}}</a>
                                     </p>
                                 </div>
                                 <!-- /.text -->

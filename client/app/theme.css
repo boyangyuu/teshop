@@ -1455,6 +1455,7 @@ label {
 }
 .form-group {
   margin-bottom: 20px;
+  vertical-align:top;
 }
 /* pager*/
 .pager {
