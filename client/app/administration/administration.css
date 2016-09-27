@@ -20,11 +20,11 @@
   background-color:rgba(0,0,0,0);
   float:left;
   font-size:18px;
-  color:#4FBFA8;
+  color:#333;
   font-weight:600;
 }
 #title2 .green{
-  background-color:#4FBFA8;
+  background-color:#3C3C3C;
   color:#fff;
 }
 .tablesort-sortable{

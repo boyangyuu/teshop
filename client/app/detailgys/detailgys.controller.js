@@ -11,12 +11,11 @@ angular.module('shopnxApp')
 		        Auth.createUser({
 		          name: $scope.user.name,
 		          email: $scope.user.email,
-		          // password: $scope.user.password,
-		          shopName: $scope.user.shopName,
-		          phone: $scope.user.phone,
+		          companyName: $scope.user.companyName,
 		          cellphone: $scope.user.cellphone,
 		          address: $scope.user.address,
-		          describe: $scope.user.describe
+		          businessLicense: $scope.user.businessLicense,
+         		  taxFileNumber: $scope.user.taxFileNumber
 		        })
 		        .then( function() {
 		          // Account created, redirect to the page with requested a signup

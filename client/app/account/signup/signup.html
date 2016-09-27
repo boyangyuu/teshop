@@ -306,16 +306,6 @@
                   请输入组织机构代码
                 </p>
               </div>
-              <!-- 企业性质 -->
-              <div class="form-group" ng-class="{ 'has-success': supplyform.enterpriseProperty.$valid && submitSupply,
-                                                  'has-error': supplyform.enterpriseProperty.$invalid && submitSupply }">
-                <label class="individual-label">企业性质:</label>
-                <input type="text" name="enterpriseProperty" class="form-control individual-iput" ng-model="user.enterpriseProperty"
-                       required placeholder="请您输入企业性质"/>
-                <p class="help-block individual-p" ng-show="supplyform.enterpriseProperty.$error.required && submitSupply">
-                  请输入企业性质
-                </p>
-              </div>
               <!-- 法定代表人 -->
               <div class="form-group" ng-class="{ 'has-success': supplyform.legalPerson.$valid && submitSupply,
                                                   'has-error': supplyform.legalPerson.$invalid && submitSupply }">
@@ -350,7 +340,7 @@
                 <p class="help-block individual-p" ng-show="supplyform.cardId.$error.pattern && submitSupply">
                   您输入的身份证号不正确。
                 </p>
-               </div>
+              </div>
                <!-- 注册资本 -->
                <!-- 成立日期 -->
 

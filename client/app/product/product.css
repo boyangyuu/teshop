@@ -11,7 +11,7 @@ span.ng-scope{
 	text-align:center;
 	width:100%;
 	/*display:inline-block;*/
-	color:#999;
+	/*color:#999;*/
 }
 span.ui-select-match-text{
 	width:100%;
@@ -24,4 +24,7 @@ span.ui-select-match-text{
     font: 20pt bold;
     color: #bbb;
     margin-bottom: 20px;
+}
+.green span.ng-scope{
+    color:#fff!important；
 }
