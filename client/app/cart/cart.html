@@ -37,7 +37,7 @@
             <!-- empty cart message -->
             <tr ng-hide="cart.getTotalCount() > 0" >
                 <td class="tdCenter" colspan="7">
-                    Your cart is empty. &nbsp;&nbsp;<a class="btn btn-primary" href="/" ng-click="cancel();">Shop Now</a>
+                    {{'CART_EMPTY' | translate}} &nbsp;&nbsp;<a class="btn btn-primary" href="/" ng-click="cancel();">{{'SHOP_NOW' | translate}}</a>
                 </td>
             </tr>
 

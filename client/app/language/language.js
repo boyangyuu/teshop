@@ -173,6 +173,8 @@ angular.module('shopnxApp')
 	  CART_TOTAL:'Total',
 	  CART_REMOVE:'Remove',
 	  CART_ITEMS:'items',
+	  CART_EMPTY:'Your cart is empty.',
+	  SHOP_NOW:'Shop Now',
 	 
 	
     });
@@ -345,7 +347,8 @@ angular.module('shopnxApp')
 	  CART_TOTAL:'总金额',
 	  CART_REMOVE:'移除',
 	  CART_ITEMS:'件',
-	  
+	  CART_EMPTY:'购物车是空的.',
+	  SHOP_NOW:'现在去购物',
 	  
 	 
     });
