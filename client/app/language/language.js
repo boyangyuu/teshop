@@ -177,7 +177,7 @@ angular.module('shopnxApp')
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
       BRANDS: '品牌',
-      JIANYI_GROUP: '建宜集团',
+      JIANYI_GROUP: '建谊集团',
       LOGIN: '登录',
       INDUSTRY_LEADER: '行业领导者',
 	  SIGN_UP: '注册',
