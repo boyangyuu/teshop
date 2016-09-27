@@ -15,7 +15,7 @@
 
 
 
-  <div class="col-md-8">
+  <div class="col-md-9">
     <button type="button" class="btn btn-danger" ng-click="edit({});"><i class="fa fa-plus"></i>&nbsp;Add New</button>
     <button type="submit" class="btn btn-info" ng-click="save(product);"><i class="fa fa-save"></i> &nbsp;Save</button>
     &nbsp;&nbsp;<a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a>
@@ -50,19 +50,22 @@
                     </div>
                     <hr/>
                     <div class="form-group row">
-                      <label for="id" class="col-md-2 control-label">Category</label>
-                      <div class="col-md-4">
-                          <!-- <select ng-model="product.category" ng-options="option.name for option in categories | orderBy:'name' track by option._id" class="form-control">
-                              <option value="">Select Category</option>
-                            </select> -->
-
-                            <ui-select ng-model="product.category" theme="bootstrap" title="Select Category">
-                            <ui-select-match placeholder="Select Category...">{{$select.selected.name}} </ui-select-match>
-                            <ui-select-choices repeat="c in categories | propsFilter: {name: $select.search}">
+                      <div class="col-md-3">
+                        <ui-select ng-model="selected_category1" theme="bootstrap" title="Select Category" on-select="onSelectChanged($item, $model)">
+                          <ui-select-match placeholder="Select Category1...">{{$select.selected.name}} </ui-select-match>
+                          <ui-select-choices repeat="c in categories">
                             <span ng-bind-html="c.name | highlight: $select.search"></span>
                           </ui-select-choices>
                         </ui-select>
+                      </div>
+                      <div class="col-md-3">
 
+                        <ui-select ng-model="product.category" theme="bootstrap" title="Select Category" on-select="onSubSelectChanged($item, $model)">
+                          <ui-select-match placeholder="Select Category2...">{{$select.selected.name}} </ui-select-match>
+                          <ui-select-choices repeat="c in categories2">
+                            <span ng-bind-html="c.name | highlight: $select.search"></span>
+                          </ui-select-choices>
+                        </ui-select>
                       </div>
                       <label for="id" class="col-md-1 control-label">Brand</label>
                       <div class="col-md-4">
@@ -325,12 +328,10 @@
     	<button ng-click="getValue()">获取值</button>
     </div>-->
 
-    <!-- 富文本编辑器 -->
-	<ms-ueditor ng-model="product.introduction" value="{{product.introduction}}" style="width:100%;height:500px;">
-  </ms-ueditor>
+            <!-- 富文本编辑器 -->
 
-
-
+	          <ms-ueditor ng-model="product.introduction" value="{{product.introduction}}" style="width:100%;height:500px;">
+              </ms-ueditor>
 
             </form>
           </div>
@@ -555,7 +556,7 @@
   </div>
 
 
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="panel panel-primary">
       <div class="panel-heading">List of products
         <div class="sw-search" >
