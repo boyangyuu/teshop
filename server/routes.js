@@ -35,6 +35,8 @@ module.exports = function(app) {
 
   app.use('/auth', require('./auth'));
 
+  app.use('/js/ueditor/ueditor',ueditorHandler(path.join('../', 'public')));
+
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets|public)/*')
    .get(errors[404]);
