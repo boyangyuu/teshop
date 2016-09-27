@@ -93,7 +93,7 @@
                     <a href="/" class="btn btn-default"><i class="fa fa-chevron-left"></i>返回主页</a>
                 </div>
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-primary" ng-click="placeOrder(cart.items,cart.getTotalPriceAfterShipping(shipping , coupon.amount));cart.checkout({paymentMethod:customer.paymentMethod, options: cart.getTotalPriceAfterShipping(shipping , coupon.amount)},true);cart.clearItems();" ng-disabled="true" tabindex="6">支付<i class="fa fa-chevron-right"></i>
+                    <button type="submit" class="btn btn-primary" ng-click="placeOrder(cart.items,cart.getTotalPriceAfterShipping(shipping , coupon.amount));cart.checkout({paymentMethod:customer.paymentMethod, options: cart.getTotalPriceAfterShipping(shipping , coupon.amount)},true);cart.clearItems();" ng-disabled="checkout_form.$invalid" tabindex="6">支付<i class="fa fa-chevron-right"></i>
                     </button>
                 </div>
             </div>

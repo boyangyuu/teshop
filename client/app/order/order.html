@@ -3,7 +3,7 @@
   <div class="row">
 <div class="col-md-12">
   <h1 translate="ORDERS_HISTORY">Orders History</h1>
-  <h3  class="bg-info well text-center">{{'TOTAL_SPENT' | translate}}: {{orders.total | currency}}</h3>
+  <h3  class="bg-info well text-center">{{'TOTAL_SPENT' | translate}}: {{orders.total | currency:"￥"}}</h3>
 <div class="panel panel-primary" ng-repeat="o in orders | orderBy : 'orderDate' : 'reverse'">
 
       <div class="panel-heading">
@@ -25,25 +25,25 @@
                     <td>{{i.name}}
                       <br/><span class="text-muted">{{'QTY' | translate}}: {{i.quantity}}</span>
                       <br/><span class="text-muted">{{'PACKING_SIZE' | translate}}: {{i.size}}</span>
-                      <br/><span class="text-muted">{{'UNIT_PRICE' | translate}}: {{i.price | currency}}</span>
+                      <br/><span class="text-muted">{{'UNIT_PRICE' | translate}}: {{i.price |  currency:"￥"}}</span>
                     </td>
-                    <td><span class="text-muted">= {{i.quantity * i.price | currency}}</span></td>
+                    <td><span class="text-muted">= {{i.quantity * i.price |  currency:"￥" }}</span></td>
 
                 </tr>
                 <tr class="well text-muted">
                 <td colspan="1" class="text-right"> </td>
                 <td class="text-right" translate="SHIPPING_CHARGE">Shipping Charge:</td>
-                <td colspan="1"> {{o.shipping.charge | currency}}</td>
+                <td colspan="1"> {{o.shipping.charge |  currency:"￥"}}</td>
                 </tr>
                 <tr class="well text-muted">
                 <td colspan="1" class="text-right"> </td>
                 <td class="text-right" translate="COUPON">Coupon:</td>
-                <td colspan="1"> {{o.shipping.couponAmount | currency}}</td>
+                <td colspan="1"> {{o.shipping.couponAmount |  currency:"￥"}}</td>
                 </tr>
                 <tr class="well">
                 <td colspan="1" class="text-right"> </td>
                 <td class="text-right" translate="Order_Total">Order Total:</td>
-                <td colspan="1">{{o.shipping.total | currency}}</td>
+                <td colspan="1">{{o.shipping.total |  currency:"￥"}}</td>
                 </tr>
 
 
