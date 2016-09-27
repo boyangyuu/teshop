@@ -1,5 +1,5 @@
 .panel-heading a{
-  color:#fff;
+    color:#fff;
 }
 .right {
     color: #008000;
@@ -7,15 +7,14 @@
 .error {
     color: #ff0000;
 }
-
 span.ng-scope{
-	text-align:center;
-	width:100%;
-	/*display:inline-block;*/
-	color:#999;
+    text-align:center;
+    width:100%;
+    /*display:inline-block;*/
+    color:#999;
 }
 span.ui-select-match-text{
-	width:100%;
+    width:100%;
 }
 .dropzone {
     border: 2px dashed #bbb;
@@ -26,4 +25,3 @@ span.ui-select-match-text{
     color: #bbb;
     margin-bottom: 20px;
 }
-
