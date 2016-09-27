@@ -143,6 +143,10 @@
                                 <li ng-repeat="f in product.keyFeatures">{{f}}</li>
                             </ul>
                         </div>
+                        <div ng-if="product.introduction.length>0">
+                            <h4>{{'KEY_INTRODUCTION' | translate}} </h4>
+                            <p>{{product.introduction}}</p>
+                        </div>
                         <blockquote>
                             <p>2002年建谊集团率先在行业内自主研发了企业办公OA系统，并成立清科智源科技公司（建谊世纪科技公司前身），专门从事建筑路桥施工企业信息系统的研发。建谊世纪科技公司成立后，专注于做服务企业内部业务的ERP系统。
                             </p>

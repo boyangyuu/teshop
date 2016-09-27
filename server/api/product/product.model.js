@@ -20,6 +20,7 @@ var ProductSchema = new Schema({
   keyFeatures: Array,
   active: { type: Boolean, default: true },
   updated: {type: Date, default: Date.now},
+  introduction: { type: String,default:'暂无商品介绍' },
  }, { versionKey: false });
 
 module.exports = mongoose.model('Product', ProductSchema);

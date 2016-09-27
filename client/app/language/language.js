@@ -140,6 +140,7 @@ angular.module('shopnxApp')
 	  SORT_NAME_ASC:'Name(A-Z)',
 	  SORT_LOW_DESC:'Name(Z-A)',
 	  KEY_FEATURES:'Key Features',
+	  KEY_INTRODUCTION:'Introduction',
 	  PRODUCT_WEIGHT:'Weight',
 	  PRODUCT_BRAND:'Brand',
 	  SHARE_YOUR_FRIENDS:'Show it to your friends',
@@ -172,12 +173,13 @@ angular.module('shopnxApp')
 	  CART_TOTAL:'Total',
 	  CART_REMOVE:'Remove',
 	  CART_ITEMS:'items',
+	 
 	
     });
     $translateProvider.translations('cn', {
 	  //---------------header----------------------
       BRANDS: '品牌',
-      JIANYI_GROUP: '建谊集团',
+      JIANYI_GROUP: '建宜集团',
       LOGIN: '登录',
       INDUSTRY_LEADER: '行业领导者',
 	  SIGN_UP: '注册',
@@ -309,6 +311,7 @@ angular.module('shopnxApp')
 	  SORT_NAME_ASC:'商品(A-Z)',
 	  SORT_LOW_DESC:'商品(Z-A)',
 	  KEY_FEATURES:'重点特色',
+	  KEY_INTRODUCTION:'商品介绍',
 	  PRODUCT_WEIGHT:'重量',
       PRODUCT_BRAND:'商品品牌',
 	  SHARE_YOUR_FRIENDS:'分享到朋友圈',
