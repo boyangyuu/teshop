@@ -6,6 +6,11 @@ angular.module('shopnxApp')
       obj = $resource('/api/users/get/shops/all',{},{isArray:true});
       return obj;
     }])
+    .factory('supplier', ['$resource', function($resource) {
+        var obj = {};
+        obj = $resource('/api/users/get/supplier/all',{},{isArray:true});
+        return obj;
+      }])
   .factory('deleteUser', ['$resource', function($resource) {
       var obj = {};
       obj = $resource('/api/users/:id');
@@ -16,16 +21,24 @@ angular.module('shopnxApp')
         obj = $resource('/api/users/verifyShop/:id');
         return obj;
       }])
-	.controller('administrationCtrl',function($scope, Modal, ShopUsers, verifyShop, deleteUser){
+	.controller('administrationCtrl',function($scope, Modal, ShopUsers, verifyShop, deleteUser, supplier){
 
     $scope.getlist = function getlist() {
       ShopUsers.query(function(ins){
         $scope.shopUserList = ins
       });
     }
+
+
+    $scope.getsupplierlist = function getlist() {
+      supplier.query(function(ins){
+        $scope.supplier = ins
+      });
+    }
+
     $scope.getlist();
 
-
+    $scope.getsupplierlist();
 		var cols = [
       {heading:'用户名',dataType:'text', sortType:'lowercase'},
       {heading:'产品类型',dataType:'text', sortType:'lowercase'}

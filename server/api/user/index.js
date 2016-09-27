@@ -23,6 +23,6 @@ router.get('/changerole/:id',  controller.changerole);
 
 router.get('/shopInfo/:id',  controller.shopInfo);
 
-
+router.get('/get/supplier/all', controller.supplier)
 
 module.exports = router;

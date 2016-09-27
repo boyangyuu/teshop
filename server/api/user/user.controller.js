@@ -25,7 +25,13 @@ exports.getAllShops = function(req, res) {
     res.status(200).json(users);
   });
 };
-
+exports.supplier = function(req, res) {
+  console.log('dddd');
+  User.find({class:'supplier'}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
+};
 exports.changerole = function(req, res) {
   var userId = req.params.id;
   User.findById(userId, function (err, user) {
@@ -45,7 +51,7 @@ exports.changerole = function(req, res) {
 exports.shopInfo = function(req, res) {
   var userId = req.params.id;
   User.findById(userId, function (err, user) {
-    
+
   });
 }
 /**
@@ -63,12 +69,16 @@ exports.index = function(req, res) {
  * Creates a new user
  */
 exports.create = function (req, res, next) {
+  // 供应商 supply
 
-  if (req.body.companyName) {
+  if (req.body.legalPerson) {
     req.body.verify = false;
     req.body.class = 'shop';
   };
-
+  if (req.body.Organization) {
+    req.body.verify = false;
+    req.body.class = 'supplier';
+  };
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
