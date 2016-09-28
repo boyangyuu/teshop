@@ -12,6 +12,23 @@ function isJson(str) {
   return str
 }
 
+//push imgaes to product
+exports.images = function(req, res) {
+    // console.log(req.body);
+    // console.log('images');
+    Product.findByIdAndUpdate(
+      req.body.pid,
+      {$push: { "images": req.body.image } },
+      {safe: true, upsert: true, new : true},
+      function(err, instance) {
+        if (err) {
+          return handleError(res, err);
+        }
+        return res.status(200).json(instance);
+      }
+    );
+};
+
 // Get all features group
 exports.count = function(req, res) {
   if(req.query){
