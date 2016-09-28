@@ -121,7 +121,7 @@ h1 {
 }
 .navbar #search {
   clear: both;
-  border-top: solid 1px #9adacd;
+  border-top: solid 1px #BABABA;
   text-align: right;
 }
 .navbar #search .navbar-form {
@@ -678,7 +678,7 @@ h1 {
 }
 #content #checkout .nav {
   margin-bottom: 20px;
-  border-bottom: solid 1px #4fbfa8;
+  border-bottom: solid 1px #898989;
 }
 #content #checkout .nav li {
   height: 100%;
@@ -892,8 +892,11 @@ h1 {
   padding-left: 0;
   list-style: none;
 }
+#footer ul li{
+  margin-top:10px;
+}
 #footer ul a {
-  color: #999999;
+  color: #BBBBBB;
 }
 #footer .social {
   text-align: left;
@@ -1051,7 +1054,7 @@ h1 {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #4fbfa8;
+  background-color: #898989;
 }
 .nav-tabs-justified > li > a {
   border-radius: 4px;
@@ -1422,8 +1425,8 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #4fbfa8;
-  border-color: #41b39c;
+  background-color: #444444;
+  border-color: #333333;
 }
 .btn-primary .badge {
   color: #4fbfa8;
@@ -1699,6 +1702,7 @@ address {
   font-size:18px;
   color:#777;
   font-weight:600;
+  transform:translateX(1px);
 }
 #title .green{
   background-color:#333333;
@@ -1714,6 +1718,7 @@ address {
   background-size:100% auto;
   color:#fff;
   position:relative;
+  transition:all 1s;
 }
 #all .bn-overlay{
     background-color: rgba(0,0,0,.2);
@@ -1736,4 +1741,21 @@ address {
 #footer .container h4{
   color:#fff;
 }
-
+#footer span.ng-scope,#footer strong.ng-scope{
+  margin-top:10px;
+  display:inline-block;
+}
+/*shopping*/
+.btn-info{
+    color: #fff;
+    background-color: #5D5D5D;
+    border-color: #555555;
+}
+.btn-info:hover{
+  background-color:#666;
+  border-color:#5c5D5a;
+}
+.home-company{
+  box-shadow:0px 0px 2px #fff;
+  margin-right:15px;
+}

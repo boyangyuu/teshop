@@ -19,5 +19,17 @@
   background: #f0ad4e;
 }
 .modal-danger .modal-header {
-  background: #d9534f;
+  background:url('/assets/img/add-bg.jpg')no-repeat bottom center;
+  opacity:0.9
+  /*background: #d9534f;*/
+}
+/*close*/
+.close{
+	color:#ddd!important;
+	box-shadow:2px 2px 5 #fff;
+	font-size:30px!important;
+	opacity:1!important;
+}
+.close:hover,.close:focus{
+	opacity:0.7!important;
 }
