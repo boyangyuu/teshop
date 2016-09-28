@@ -8,7 +8,7 @@ angular.module('shopnxApp')
 
       Country.active.query().$promise.then(function(res){
         $scope.countries = res;
-        $scope.customer.country = {"name":"India","dial_code":"+91","code":"IN"};
+        $scope.customer.country = {"name":"India","dial_code":"+86","code":"IN"};
       });
 
       PaymentMethod.active.query().$promise.then(function(res){
