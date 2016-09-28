@@ -16,7 +16,7 @@ angular.module('shopnxApp')
     $scope.product.variants = [];
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
-    $scope.product.category = {}; //todo
+    $scope.product.categorycategory = {}; //todo
 
     // $scope.selected = {};
     // $scope.selected.feature = [];
@@ -40,7 +40,7 @@ angular.module('shopnxApp')
       Modal.show(product,{title:title, api:'Product', columns: cols});
     };
     $scope.delete = function(product) {
-      if(Settings.demo){
+      if(Settings.demo){a
         toastr.error('Delete not allowed in demo mode');
         return;
       }
@@ -148,6 +148,21 @@ angular.module('shopnxApp')
       console.log("onSelectChanged");
       // $scope.product.category = $item;
     }
+
+    //category
+    $scope.categories = Category.all.query();
+    $scope.categories2=[];
+    $scope.onSelectChanged = function($item, $model){
+      console.log("onSelectChanged");
+      $scope.categories2=$item.sub_categories;
+    }
+
+    $scope.onSubSelectChanged = function($item, $model){
+      console.log("onSelectChanged");
+      // $scope.product.category = $item;
+    }
+
+
   });
 
 // //files
@@ -218,7 +233,3 @@ angular.module('shopnxApp')
 //    // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
 // });
 // };
-
-
-
-

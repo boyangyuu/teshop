@@ -18,6 +18,7 @@ angular.module('shopnxApp', [
   'ui.select',
   'angularFileUpload',
   'pascalprecht.translate',
+  'ms.ueditor'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -66,7 +67,7 @@ angular.module('shopnxApp', [
     });
 
     $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
-        window.document.title = toState.title + ' - 建宜集团';
+        window.document.title = toState.title + ' - 建谊集团';
     });
 
     $rootScope.spinner = {

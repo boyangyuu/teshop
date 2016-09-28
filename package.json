@@ -23,6 +23,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "body-parser": "^1.15.2",
+    "busboy": "^0.2.13",
     "composable-middleware": "^0.3.0",
     "compression": "~1.0.1",
     "connect-mongo": "^0.8.1",
@@ -49,7 +50,8 @@
     "shortid": "^2.2.2",
     "socket.io": "^1.0.6",
     "socket.io-client": "^1.0.6",
-    "socketio-jwt": "^3.0.0"
+    "socketio-jwt": "^3.0.0",
+    "utility": "^1.8.0"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

@@ -53,16 +53,16 @@ _________________________________________________________ -->
                   </li>
                   <li class="divider"></li>
                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
-                    <a href="/settings" translate><i class="fa fa-user">&nbsp;</i>CHANGE_PASSWORD</a>
+                    <a href="/settings"><i class="fa fa-user">&nbsp;</i>{{'CHANGE_PASSWORD'| translate}}</a>
                   </li>
                   <li ng-show="isShowMenuItem('customer')" ng-class="{active: isActive('/customer')}">
-                    <a href="/customer"><i class="fa fa-user">&nbsp;</i>CUSTOMERS</a>
+                    <a href="/customer"><i class="fa fa-user">&nbsp;</i>{{'CUSTOMERS'| translate}}</a>
                   </li>
                   <li ng-show="isShowMenuItem('paymentMethod')" ng-class="{active: isActive('/paymentMethod')}">
-                    <a href="/paymentMethod"><i class="fa fa-wrench">&nbsp;</i>PAYMENT_METHOD</a>
+                    <a href="/paymentMethod"><i class="fa fa-wrench">&nbsp;</i>{{'PAYMENT_METHOD'| translate}}</a>
                   </li>
                   <li ng-show="isShowMenuItem('shipping')" ng-class="{active: isActive('/shipping')}">
-                    <a href="/shipping"><i class="fa fa-wrench">&nbsp;</i>SHIPPING_SETTINGS</a>
+                    <a href="/shipping"><i class="fa fa-wrench">&nbsp;</i>{{'SHIPPING_SETTINGS'| translate}}</a>
                   </li>
                   <!-- <li ng-show="isShowMenuItem()" ng-class="{active: isActive('/country')}">
                     <a href="/country"><i class="fa fa-wrench">&nbsp;</i>Country</a>
@@ -172,7 +172,7 @@ _________________________________________________________ -->
         <div class="navbar-buttons">
 
             <div class="navbar-collapse collapse right" id="basket-overview">
-                <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm" >{{'CART' | translate}} ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
+                <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm" >{{'CART' | translate}} ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"￥"}}</span></a>
             </div>
             <!--/.nav-collapse -->
 
