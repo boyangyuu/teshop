@@ -16,7 +16,7 @@ angular.module('shopnxApp')
     $scope.product.variants = [];
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
-    $scope.product.categorycategory = {}; //todo
+    $scope.product.category = {};
 
     // $scope.selected = {};
     // $scope.selected.feature = [];
@@ -82,12 +82,7 @@ angular.module('shopnxApp')
       $scope.variant = {};
       $scope.newKF = {};
       $scope.newFeature = {};
-      $scope.product.category = {};
 
-      // $scope.feature.key = feature.key.name;
-      // $scope.product.feature = $scope.selected.feature;
-
-      // console.log($scope.selected.feature);
       if('_id' in product){
           Product.update({ id:$scope.product._id }, $scope.product).$promise.then(function() {
             toastr.success("Product info saved successfully","Success");
@@ -145,38 +140,21 @@ angular.module('shopnxApp')
         }
       };
 
-    //category
-    $scope.categories = Category.all.query();
-    $scope.categories2=[];
-    $scope.onSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      $scope.categories2=$item.sub_categories;
-    }
-
-    $scope.onSubSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      // $scope.product.category = $item;
-    }
 
     //category
     $scope.categories = Category.all.query();
     $scope.categories2=[];
     $scope.onSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
       $scope.categories2=$item.sub_categories;
     }
 
     $scope.onSubSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      // $scope.product.category = $item;
+      $scope.product.category = $item;
     }
 
     //file upload
     $scope.fileList = [];
     var fileArray = [];
-
-
-
     $scope.$watch('files', function (f) {
       if(f&&f[0]) {
         $scope.upload(f);
@@ -208,7 +186,7 @@ angular.module('shopnxApp')
     $scope.uploadFile = function(file){
 
       file.upload = $upload.upload({
-        url: 'http://127.0.0.1:9000/api/file/image/uploading',
+        url: '/api/file/image/uploading',
         file: file
       });
 
@@ -216,9 +194,8 @@ angular.module('shopnxApp')
         $timeout(function() {
           file.result = response.data;
           fileArray.push(response.data)
-          console.log(response);
+
           Product.productImages.save({pid:$scope.pid, image:response.data}, function(res){
-              console.log(res);
             })
           });
       }, function(response) {});

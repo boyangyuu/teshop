@@ -14,8 +14,6 @@ function isJson(str) {
 
 //push imgaes to product
 exports.images = function(req, res) {
-    // console.log(req.body);
-    // console.log('images');
     Product.findByIdAndUpdate(
       req.body.pid,
       {$push: { "images": req.body.image } },
@@ -24,6 +22,8 @@ exports.images = function(req, res) {
         if (err) {
           return handleError(res, err);
         }
+        console.log(err);
+        console.log(instance);
         return res.status(200).json(instance);
       }
     );
@@ -97,7 +97,6 @@ exports.show = function(req, res) {
 
 // Creates a new product in the DB.
 exports.create = function(req, res) {
-  console.log('create')
   req.body.uid = req.user.email; // id change on every login hence email is used
   req.body.seller = req.user._id;
 

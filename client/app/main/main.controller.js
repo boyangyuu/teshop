@@ -20,7 +20,11 @@ angular.module('shopnxApp')
 
     $scope.product = Product.get({id:productId},function(data) {
       socket.syncUpdates('product', $scope.data);
-      generateBreadCrumb('Category',data.category._id);
+      // if(data.category._id){
+        generateBreadCrumb('Category',data.category._id);
+      // }
+      $scope.indexImage = data.variants[0].image;
+      $scope.imgs = data.images
     });
 
     // console.log($scope.product);
@@ -58,6 +62,14 @@ angular.module('shopnxApp')
         }
       });
     };
+
+    //轮播图片
+   $scope.pictureClick=function(imgurl){
+     console.log(imgurl);
+     $scope.indexImage = imgurl;
+     // $scope.productImgUrl=imgurl;
+   }
+
 
     //reply
     $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : localStorage.productId};
