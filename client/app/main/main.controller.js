@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Reply, Category, socket,toastr, $stateParams, $location, $state, $injector) {
+  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Feature, Product, Reply, Category, socket,toastr, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
     // hekenan
@@ -228,16 +228,20 @@ angular.module('shopnxApp')
 
     $scope.sortNow = function(sort){
       q.sort = sort;
-      displayProducts();
+
+      displayProducts(q,true);
+
     };
-    var displayFeatures = function(q,flush){
+    var displayFeatures = function(){
       var categoryId;
       angular.forEach($scope.fl.categories,function(category){
         categoryId = category._id;
       });
+
       if (typeof categoryId != 'undefined'){
         $scope.features = Feature.group.query({categoryId : categoryId});
       }
+
 
     }
     var displayProducts = function(q,flush){
@@ -249,6 +253,10 @@ angular.module('shopnxApp')
       }
       $loading.start('products');
       $scope.products.busy = true;
+
+
+
+
       Product.query(q, function(data){
           for (var i = 0; i < data.length; i++) {
               $scope.products.items.push(data[i]);

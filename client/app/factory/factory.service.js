@@ -49,6 +49,7 @@ angular.module('shopnxApp')
     return obj;
   }])
 
+
   .factory('Category', ['$resource', function($resource) {
     var obj = {};
     obj = $resource('/api/category/:id', null, {'update': { method:'PUT' }});

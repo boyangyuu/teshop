@@ -22,8 +22,7 @@ exports.images = function(req, res) {
         if (err) {
           return handleError(res, err);
         }
-        console.log(err);
-        console.log(instance);
+
         return res.status(200).json(instance);
       }
     );
@@ -43,9 +42,7 @@ exports.count = function(req, res) {
 // Get list of products
 exports.index = function(req, res) {
   if(req.query){
-    // console.log(req.query,req.query.skip,req.query.limit,req.query.sort);
     var q = isJson(req.query.where);
-    // console.log(q);
     var sort = isJson(req.query.sort);
     var select = isJson(req.query.select);
       Product.find(q).limit(req.query.limit).skip(req.query.skip).sort(sort).select(select).exec(function (err, products) {
@@ -79,7 +76,6 @@ exports.show = function(req, res) {
       if(err) { return handleError(res, product); }
       if(!product) { return res.status(404).send('Not Found'); }
       var newproduct = product[0].toObject();
-            console.log(newproduct)
 
       return res.json(newproduct);
     });
@@ -100,7 +96,6 @@ exports.create = function(req, res) {
   req.body.uid = req.user.email; // id change on every login hence email is used
   req.body.seller = req.user._id;
 
-  console.log(req.body.seller)
 
   req.body.updated = Date.now();
   if(req.body.name)
