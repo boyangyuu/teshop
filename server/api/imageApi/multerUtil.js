@@ -3,7 +3,7 @@ var path = require("path");
 
 var storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-    		var myPath = path.normalize(__dirname+'/../../../public/images')
+    		var myPath = path.normalize(__dirname+'/../../../client/assets/clothing')
 
 		cb(null, myPath)
 	},
@@ -14,8 +14,8 @@ var storage = multer.diskStorage({
 	  }
 });
 
-var upload = multer({
+var multerUtil = multer({
 	storage: storage
 })
 
-module.exports = upload;
+module.exports = multerUtil;

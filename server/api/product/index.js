@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/user', auth.isAuthenticated(), controller.products);
+router.post('/images', controller.images);
 
 router.get('/count', controller.count);
 router.get('/:id', controller.show);

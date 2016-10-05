@@ -18,7 +18,7 @@
                   <span class="input-icon">
                       <input placeholder="{{'FEATURES_FILTER_TIP' | translate}}" class="nav-search-input" ng-model="filterFeature" autocomplete="off" type="text" autofocus style="width:100%">
                       <i class="search-icon fa fa-search nav-search-icon"></i>
-                  </span>      
+                  </span>
               </div>
           </div>
 
@@ -39,7 +39,7 @@
           </div>
     </div>
   </div>
-  
+
   <div class="col-md-2">
 
     <div class="panel panel-default sidebar-menu">
@@ -56,7 +56,7 @@
                      rz-slider-high="priceSlider.max"
                      rz-slider-translate="currencyFormatting"
                      rz-slider-on-end="filter()"></rzslider>
-         
+
                   ￥<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; ￥<strong>{{priceSlider.max}}</strong>
                  </div>
               </form>
@@ -113,7 +113,7 @@
                                                   <a href="" ng-repeat="o in sortOptions" ng-class="{active : o.val==products.sort}" class="btn btn-default btn-sm btn-primary"  ng-click="sortNow(o.val);">{{o.name}}</a>
                                                 </div>
                                             </div>
-                                        </div>   
+                                        </div>
                       </form>
                   </div>
               </div>
@@ -142,7 +142,7 @@
                         <div class="col-sm-12">
                             <h3 translate="NO_PRODUCT_FOUND">No product found. Try removing some filters.</h3>
                         </div>
-                    </div>      
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-6" ng-repeat="product in products.items">
                     <div class="product">
@@ -151,19 +151,19 @@
                                 <div class="front">
                                   <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="pro-a">
                                       <img ng-src="/assets/clothing/{{product.variants[0].image}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
-                                  </a>          
-                                </div>        
+                                  </a>
+                                </div>
                                 <div class="back">
                                     <a ui-sref="productDetail({id:product._id, slug:product.slug})">
                                         <img ng-src="/assets/clothing/{{product.variants[0].image}}"
                                         err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
                                     </a>
                                 </div>
-                            </div>      
-                        </div>      
+                            </div>
+                        </div>
                         <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="invisible">
                             <img src="/assets/clothing/{{product.variants[0].image}}" alt="" class="img-responsive">
-                        </a>        
+                        </a>
                         <div class="text text-center">
                             <h3 class="product-title"><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a></h3>
                             <p class="price product-price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '￥'}}</del> {{product.variants[0].price | currency : '￥'}}</p>

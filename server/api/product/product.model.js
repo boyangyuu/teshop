@@ -7,6 +7,7 @@ var ProductSchema = new Schema({
   sku: String,
   name: String,
   nameLower: String,
+  images: [{}],
   seller: { type: Schema.Types.ObjectId, ref: 'User'}, // seller
   slug: String,
   category: {_id: String, name: String, slug: String, category: String, parentCategory: String, },

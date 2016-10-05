@@ -16,7 +16,7 @@ angular.module('shopnxApp')
     $scope.product.variants = [];
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
-    $scope.product.categorycategory = {}; //todo
+    $scope.product.category = {};
 
     // $scope.selected = {};
     // $scope.selected.feature = [];
@@ -82,12 +82,7 @@ angular.module('shopnxApp')
       $scope.variant = {};
       $scope.newKF = {};
       $scope.newFeature = {};
-      $scope.product.category = {};
 
-      // $scope.feature.key = feature.key.name;
-      // $scope.product.feature = $scope.selected.feature;
-
-      // console.log($scope.selected.feature);
       if('_id' in product){
           Product.update({ id:$scope.product._id }, $scope.product).$promise.then(function() {
             toastr.success("Product info saved successfully","Success");
@@ -131,105 +126,88 @@ angular.module('shopnxApp')
       $scope.save(product)
     };
 
-    $scope.productDetail = function(product){
-        if(product){ $scope.product = product; }
-        else{ $scope.product = {}; }
+
+      $scope.productDetail = function(product){
+        if(product){
+          $scope.product = product;
+          $scope.pid = product._id;
+          $scope.fileList = [];
+          $scope.visible = true;
+        }
+        else{
+          $scope.product = {};
+          $scope.visible = false;
+        }
+      };
+
+
+    //category
+    $scope.categories = Category.all.query();
+    $scope.categories2=[];
+    $scope.onSelectChanged = function($item, $model){
+      $scope.categories2=$item.sub_categories;
+    }
+
+    $scope.onSubSelectChanged = function($item, $model){
+      $scope.product.category = $item;
+    }
+
+    //file upload
+    $scope.fileList = [];
+    var fileArray = [];
+    $scope.$watch('files', function (f) {
+      if(f&&f[0]) {
+        $scope.upload(f);
+        angular.forEach(f, function(file){
+          $scope.fileList.push(file);
+        })
+      }
+    });
+
+    // $scope.removeFile = function(fileName) {
+    //   angular.forEach($scope.fileList, function(f, index){
+    //     if(f.name == fileName){
+    //       $scope.fileList.splice(index, 1);
+    //       return;
+    //     }
+    //   });
+    // };
+
+    $scope.upload = function (files) {
+      if (files && files.length) {
+        for (var i = 0; i < files.length; i++) {
+          var file = files[i];
+          file.dynamic = 0;
+          $scope.uploadFile(file);
+        }
+      }
     };
 
-    //category
-    $scope.categories = Category.all.query();
-    $scope.categories2=[];
-    $scope.onSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      $scope.categories2=$item.sub_categories;
-    }
+    $scope.uploadFile = function(file){
 
-    $scope.onSubSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      // $scope.product.category = $item;
-    }
+      file.upload = $upload.upload({
+        url: '/api/file/image/uploading',
+        file: file
+      });
 
-    //category
-    $scope.categories = Category.all.query();
-    $scope.categories2=[];
-    $scope.onSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      $scope.categories2=$item.sub_categories;
-    }
+      file.upload.then(function(response) {
+        $timeout(function() {
+          file.result = response.data;
+          fileArray.push(response.data)
 
-    $scope.onSubSelectChanged = function($item, $model){
-      console.log("onSelectChanged");
-      // $scope.product.category = $item;
-    }
+          Product.productImages.save({pid:$scope.pid, image:response.data}, function(res){
+            })
+          });
+      }, function(response) {});
 
+      file.upload.progress(function(evt) {
+        // Math.min is to fix IE which reports 200% sometimes
+        file.dynamic = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+      });
+
+      // file.upload.xhr(function(xhr) {
+      //   // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
+      // });
+    };
 
   });
-
-// //files
-// $scope.fileList = [];
-//
-// $scope.$watch('files', function (f) {
-//   console.log(f);
-//     if(f&&f[0]) {
-//         $scope.upload(f);
-//         angular.forEach(f, function(file){
-//            $scope.fileList.push(file);
-//         })
-//     }
-// });
-//
-// $scope.removeFile = function(fileName) {
-//     angular.forEach($scope.fileList, function(f, index){
-//         if(f.name == fileName){
-//             $scope.fileList.splice(index, 1);
-//             return;
-//         }
-//     });
-// };
-//
-// $scope.upload = function (files) {
-//     if (files && files.length) {
-//         for (var i = 0; i < files.length; i++) {
-//             var file = files[i];
-//             file.dynamic = 0;
-//             $scope.uploadFile(file);
-//             /*$upload.upload({
-//                 url: '/upload',
-//                 file: file
-//             }).progress(function (evt) {
-//                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-//                 file.dynamic = progressPercentage;
-//                 console.log('progress: ' + progressPercentage + '% ' +
-//                             evt.config.file.name);
-//             }).success(function (data, status, headers, config) {
-//                 console.log('file ' + config.file.name + 'uploaded. Response: ' +
-//                             JSON.stringify(data));
-//             });*/
-//         }
-//     }
-// };
-//
-// $scope.uploadFile = function(file){
-//
-//     file.upload = $upload.upload({
-//         url: 'http://127.0.0.1:9000/api/file/image/uploading',
-//         file: file
-//     });
-//
-//     file.upload.then(function(response) {
-//    $timeout(function() {
-//        file.result = response.data;
-//    });
-// }, function(response) {
-//      //if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
-// });
-//
-// file.upload.progress(function(evt) {
-//    // Math.min is to fix IE which reports 200% sometimes
-//    file.dynamic = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-// });
-//
-// file.upload.xhr(function(xhr) {
-//    // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
-// });
-// };

@@ -29,7 +29,7 @@ p.price .text-muted{
 }
 .products .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height:220px;
-}   
+}
 /*div.front {
 	text-align: center;
 }*/
@@ -106,7 +106,7 @@ div.inline-block{
 }
 h1.inline-block,h2.inline-block,h3.inline-block,h4.inline-block,h5.inline-block,h6.inline-block{
     display:inline-block;
-    
+
 }
 /*product list*/
 #content .product .text h3.product-title{
@@ -127,9 +127,32 @@ a.product-btn{
 
 .row{
     margin-left:0!important;
-   margin-right:0!important; 
+   margin-right:0!important;
 }
 
 .pic_adapt img{
 width:100%;height:100%;
+}
+
+
+.list ul li{
+    list-style: none;
+    margin-left: 10px;
+    float: left;
+    padding: -5px;
+
+}
+
+.list ul li img{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+}
+.list ul li img:hover{
+   transform: scale(1.1, 1.1);
+   transition: .3s transform;
+}
+#mainImage{
+    width: 350px;
+    height: 350px;
 }

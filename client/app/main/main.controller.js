@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Reply, Category, socket,toastr, $stateParams, $location, $state, $injector) {
+  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Feature, Product, Reply, Category, socket,toastr, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
     // hekenan
@@ -20,7 +20,11 @@ angular.module('shopnxApp')
 
     $scope.product = Product.get({id:productId},function(data) {
       socket.syncUpdates('product', $scope.data);
-      generateBreadCrumb('Category',data.category._id);
+      // if(data.category._id){
+        generateBreadCrumb('Category',data.category._id);
+      // }
+      $scope.indexImage = data.variants[0].image;
+      $scope.imgs = data.images
     });
 
     // console.log($scope.product);
@@ -58,6 +62,14 @@ angular.module('shopnxApp')
         }
       });
     };
+
+    //轮播图片
+   $scope.pictureClick=function(imgurl){
+     console.log(imgurl);
+     $scope.indexImage = imgurl;
+     // $scope.productImgUrl=imgurl;
+   }
+
 
     //reply
     $scope.reply = {comment :"comment", star : 1, email : "test@gmail.com", productId : localStorage.productId};
@@ -216,16 +228,20 @@ angular.module('shopnxApp')
 
     $scope.sortNow = function(sort){
       q.sort = sort;
-      displayProducts();
+
+      displayProducts(q,true);
+
     };
-    var displayFeatures = function(q,flush){
+    var displayFeatures = function(){
       var categoryId;
       angular.forEach($scope.fl.categories,function(category){
         categoryId = category._id;
       });
+
       if (typeof categoryId != 'undefined'){
         $scope.features = Feature.group.query({categoryId : categoryId});
       }
+
 
     }
     var displayProducts = function(q,flush){
@@ -237,6 +253,10 @@ angular.module('shopnxApp')
       }
       $loading.start('products');
       $scope.products.busy = true;
+
+
+
+
       Product.query(q, function(data){
           for (var i = 0; i < data.length; i++) {
               $scope.products.items.push(data[i]);
