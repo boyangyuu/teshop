@@ -1,9 +1,7 @@
+var Busboy = require('busboy');
 var fs = require('fs');
 var path = require('path');
-
-var Busboy = require('busboy');
 var utility = require('utility');
-
 var uploadConfig = require('./config').upload;
 
 var ueditor = function(static_path){

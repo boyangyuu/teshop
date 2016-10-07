@@ -17,6 +17,7 @@ angular.module('shopnxApp')
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
     $scope.product.category = {};
+    $scope.product.introduction=[];
 
     // $scope.selected = {};
     // $scope.selected.feature = [];
