@@ -9,7 +9,6 @@ angular.module('shopnxApp')
     }
 
     return {
-
       /**
        * Authenticate user and save token
        *

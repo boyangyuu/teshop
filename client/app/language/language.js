@@ -60,7 +60,7 @@ angular.module('shopnxApp')
 	  TOTAL_SPENT:'Total Spent',
 	  QTY:'Qty',
 	  PACKING_SIZE:'Packing/Size',
-	  UNIT_PRICE:'Unit Price',
+	  OUNIT_PRICE:'Unit Price',
 	  
 	  //----------------------修改密码-----------------------
 	
@@ -120,7 +120,7 @@ angular.module('shopnxApp')
 	  LOGIN_MODE:'Login mode',
 	 //---------------/client/app/main/main.html----------------------
 	  NO_PRODUCT_FOUND:'No product found. Try removing some filters.',
-	  PRICE_RANGE:'Price Range',
+	  PRICE_RANGE:'Range',
 	  PRICE_RESET:'Reset',
 	  PRODUCT_SORT:'Sort',
 	  VIEW_DETAIL:'View detail',
@@ -266,7 +266,7 @@ angular.module('shopnxApp')
 	  TOTAL_SPENT:'总金额',
 	  QTY:'数量',
 	  PACKING_SIZE:'包装/尺寸',
-	  UNIT_PRICE:'单价',
+	  OUNIT_PRICE:'单价',
 	  //----------------------修改密码------------------------------
 
 	  PRIMITIVE_PASSWORD:'原始密码',
