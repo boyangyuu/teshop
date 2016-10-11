@@ -68,28 +68,22 @@ exports.products = function(req, res) {
 };
 // Get a single product
 exports.show = function(req, res) {
-    Product
-    .find({_id:req.params.id})
+  Product
+    .find({_id: req.params.id})
     .populate('seller', 'name')  // shop todo 只获取 name
     .populate("replies")
     .exec(function (err, product) {
-      if(err) { return handleError(res, product); }
-      if(!product) { return res.status(404).send('Not Found'); }
+      if (err) {
+        return handleError(res, product);
+      }
+      if (!product) {
+        return res.status(404).send('Not Found');
+      }
       var newproduct = product[0].toObject();
 
       return res.json(newproduct);
     });
-
-
-
-  // Product.findById(req.params.id, function (err, product) {
-
-  //   if(err) { return handleError(res, err); }
-  //   if(!product) { return res.status(404).send('Not Found'); }
-  //   return res.json(product);
-  // }).populate("replies");
-
-};
+}
 
 // Creates a new product in the DB.
 exports.create = function(req, res) {

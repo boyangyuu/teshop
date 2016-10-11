@@ -8,6 +8,7 @@ Install the following 2 softwares
 1.    Node http://nodejs.org/ (Server)
 2.    MongoDB https://www.mongodb.org/ (Database) -
       You need to start the mongodb database by browsing into the bin directory and running mongod.exe or mongod.sh
+3.    Robomongo 0.9.0-RC9 Shell-centric MongoDB management tool. Visit Robomongo website: www.robomongo.org  
 
 # Install
 Run the following commands and the application will start automatically
@@ -23,6 +24,7 @@ Run the following commands and the application will start automatically
 
 8.    grunt serve:dist --force (--- Optional --- This will generate the code for production/distribution)
       The code is placed inside the dist directory
+9.    mongorestore proj/db  (restore all dbs to your localhost)
 
 # Scaffolding the application
 The following are basic commands which will generate the required code for your app.
