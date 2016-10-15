@@ -8,7 +8,8 @@ module.exports = {
   //   uri: 'mongodb://localhost/shopnx-dev'
   // },
   mongo: { //alibaba
-    uri: 'mongodb://101.201.81.214/shopnx-dev'
+    // uri: 'mongodb://101.201.81.214/shopnx-dev' // alibaba
+    uri: 'mongodb://127.0.0.1/shopnx-dev' // localhost
   },
 
   seedDB: true

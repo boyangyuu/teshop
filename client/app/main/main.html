@@ -150,19 +150,19 @@
                             <div class="flipper">
                                 <div class="front">
                                   <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="pro-a">
-                                      <img ng-src="/assets/clothing/{{product.variants[0].image}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
+                                      <img ng-src="/assets/product/{{product.variants[0].image}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
                                   </a>
                                 </div>
                                 <div class="back">
                                     <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                        <img ng-src="/assets/clothing/{{product.variants[0].image}}"
+                                        <img ng-src="/assets/product/{{product.variants[0].image}}"
                                         err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="invisible">
-                            <img src="/assets/clothing/{{product.variants[0].image}}" alt="" class="img-responsive">
+                            <img src="/assets/product/{{product.variants[0].image}}" alt="" class="img-responsive">
                         </a>
                         <div class="text text-center">
                             <h3 class="product-title"><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a></h3>
