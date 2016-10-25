@@ -111,4 +111,10 @@ angular.module('shopnxApp')
       {name:'Not in Stock', val:404}
     ];
     return obj;
+  }])
+  .factory('Store', ['$resource', function($resource) {
+    var obj = {};
+    obj = $resource('/api/store/:id', null, {'update': { method:'PUT' } });
+   
+    return obj;
   }]);

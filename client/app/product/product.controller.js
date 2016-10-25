@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Feature, Modal, toastr, $loading, Settings, $upload, $filter, $timeout) {
+  .controller('ProductCtrl', function ($scope, socket, Product, Category, Brand, Feature, Modal, toastr, $loading, Settings, $upload, $filter, $timeout,Store) {
     var cols = [
       {heading:'sku',dataType:'text', sortType:'lowercase'},
       {heading:'name',dataType:'text', sortType:'lowercase'},
@@ -210,5 +210,16 @@ angular.module('shopnxApp')
       //   // xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
       // });
     };
+
+    //var testStore=new Store({name:'kkkkk'});
+    // Store.save({name:'kkkkk'});
+
+    console.log("--- ");
+
+    
+    console.log(Store.query());
+     
+
+
 
   });
