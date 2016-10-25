@@ -254,9 +254,6 @@ angular.module('shopnxApp')
       $loading.start('products');
       $scope.products.busy = true;
 
-
-
-
       Product.query(q, function(data){
           for (var i = 0; i < data.length; i++) {
               $scope.products.items.push(data[i]);

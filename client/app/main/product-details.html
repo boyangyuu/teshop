@@ -48,8 +48,8 @@
                 <div class="row" id="productMain">
                   <div class="col-sm-6">
                       <div id="mainImage">
-                          <!-- <img src="/assets/clothing/{{product.variants[0].image}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive"> -->
-                          <img src="/assets/clothing/{{indexImage}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
+                          <!-- <img src="/assets/product/{{product.variants[0].image}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive"> -->
+                          <img src="/assets/product/{{indexImage}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
                       </div>
 
                       <div class="ribbon sale">
@@ -68,7 +68,7 @@
                          <!--  <a href="" ng-click=""><i class="glyphicon-chevron-right"></i></a> -->
                           <ul ng-repeat="item in imgs" ng-maxlength="5" >
                               <li>
-                                  <a href="" ng-click="pictureClick(item)"><img src="/assets/clothing/{{item}}" alt=""></a>
+                                  <a href="" ng-click="pictureClick(item)"><img src="/assets/product/{{item}}" alt=""></a>
                               </li>
                           </ul>
                           <!-- <a href="" ng-click=""><i class="glyphicon-chevron-right"></i></a> -->
@@ -99,7 +99,7 @@
                         <div class="row" id="thumbs">
                             <div class="col-xs-4" ng-repeat="v in product.variants" ng-click="changeIndex($index);" ng-if="v.size!=product.variants[i].size">
                                 <a href="" class="thumb">
-                                  <img src="/assets/clothing/{{v.image}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
+                                  <img src="/assets/product/{{v.image}}" err-src="/assets/images/photo.png" alt="{{product.name}}" class="img-responsive">
                                   {{product.name}} (Size: {{v.size}})
                                   <p class="price"><del class="text-muted" ng-if="v.price!=v.mrp" >{{v.mrp | currency:"￥"}}</del>&nbsp;{{v.price | currency:"￥"}}</p>
                                 </a>
