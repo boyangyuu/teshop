@@ -32,6 +32,7 @@ exports.group = function(req, res) {
         }
       }
     );
+
 });
 };
 

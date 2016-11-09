@@ -19,7 +19,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
-  userInfo:;
+  userInfo:String,
   hashedPassword: String,
   provider: String,
   salt: String,

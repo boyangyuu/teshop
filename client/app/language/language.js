@@ -26,6 +26,7 @@ angular.module('shopnxApp')
 	  CUSTOMERS: 'Customers',
 	  PAYMENT_METHOD: 'Payment Method',
 	  SHIPPING_SETTINGS: 'Shipping Settings',
+	  STORE: 'STORE',
 	  //-------------------用户管理--------------------------
 	  USER_ADMINISTRATION:'User Administration',
 	  DELETE:'Delete',
@@ -230,6 +231,7 @@ angular.module('shopnxApp')
 	  CUSTOMERS: '顾客',
 	  PAYMENT_METHOD: '支付方式',
 	  SHIPPING_SETTINGS: '设置',
+	  STORE: '店铺',
 
 	  //-------------------用户管理--------------------------
 	  USER_ADMINISTRATION:'用户管理',
