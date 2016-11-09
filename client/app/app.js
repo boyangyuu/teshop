@@ -54,17 +54,6 @@ angular.module('shopnxApp', [
   })
 
   .run(function ($rootScope, Auth, $state) {
-    //
-    console.log("开始");
-    var object = {1 : "1", a : "A"};
-    console.log(object);
-    function removeObject(object) {
-      console.log(object);
-      object.a = "B";
-      object = null;
-    }
-    removeObject(object);
-    console.log(object);
 
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
