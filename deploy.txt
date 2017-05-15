@@ -1,0 +1,10 @@
+##mongoldb create db
+https://mlab.com
+
+##server herokuapp create server
+
+##client 
+
+
+              
+          
