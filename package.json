@@ -111,9 +111,10 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "grunt server",
-    "test": "grunt test",
-    "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
+    "start": "npm start"
+  //,
+   // "test": "grunt test",
+    //"update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
   "private": true
 }
