@@ -54,7 +54,7 @@
     "grunt-ng-annotate": "^1.0.1",
     "grunt-usemin": "^3.1.1",
     "grunt-env": "~0.4.1",
-    "grunt-node-inspector": "~0.1.5",
+    "grunt-node-inspector": ">=0.1.5",
     "grunt-nodemon": "~0.2.0",
     "grunt-angular-templates": "^0.5.4",
     "grunt-dom-munger": "^3.4.0",
