@@ -34,6 +34,7 @@
     "express": "~4.9.0",
     "express-jwt": "^3.1.0",
     "express-session": "~1.0.2",
+    "grunt-contrib-uglify": "0.4.1",
     "jsonwebtoken": "^5.0.0",
     "lodash": "~2.4.1",
     "method-override": "~1.0.0",
@@ -111,6 +112,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "postinstall": "grunt serve",
     "start": "node server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
