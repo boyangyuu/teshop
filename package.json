@@ -112,6 +112,9 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "heroku-prebuild": "echo yby This runs before Heroku installs your dependencies.",
+    "heroku-postbuild": "echo This runs afterwards.",
+
     "postinstall1": "bower cache clean && bower install",
     "start1": "node server/app.js",
     "start": "grunt serve",
