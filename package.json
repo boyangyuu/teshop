@@ -115,9 +115,8 @@
     "heroku-prebuild": "echo yby This runs before Heroku installs your dependencies.",
     "heroku-postbuild": "echo This runs afterwards.",
 
-    "postinstall1": "bower cache clean && bower install",
-    "start1": "node server/app.js",
-    "start": "grunt serve",
+    "postinstall": "bower cache clean && bower install && grunt build",
+    "start": "node server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
