@@ -112,7 +112,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "postinstall": "bower cache clean && bower install",
+    "postinstall1": "bower cache clean && bower install",
+    "start1": "node server/app.js",
     "start": "grunt serve",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
