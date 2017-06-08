@@ -410,7 +410,7 @@ angular.module('shopnxApp')
 	  TOTAL_PRICES:'总价',
 	 
     });
-	var lang = window.localStorage.lang||'cn';
+	var lang = window.localStorage.lang||'en';
 	
     $translateProvider.preferredLanguage(lang);
 	$translateProvider.useSanitizeValueStrategy('escapeParameters');
